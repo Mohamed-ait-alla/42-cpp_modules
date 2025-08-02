@@ -6,11 +6,12 @@
 class PhoneBook {
 	private:
 	Contact contacts[8];
+	int		countContact;
 	
 	public:
-	void	addContact(std::string firstName, std::string lastName, 
-						std::string nickName, std::string phoneNumber,
-						std::string darkestSecret);
+	void	addContact();
+	void	setCountContact(int countContact);
+	int	getCountContact();
 };
 
 

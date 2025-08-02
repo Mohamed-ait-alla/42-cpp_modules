@@ -8,8 +8,11 @@
 
 int main()
 {
+	PhoneBook	phoneb;
 	std::string userInput;
 
+	phoneb.setCountContact(0);
+	std::cout << "count is "  << phoneb.getCountContact() << "\n";
 	do
 	{
 		std::cout << "------------ PhoneBook Menu ------------\n";
@@ -17,10 +20,12 @@ int main()
 		std::cout << "- 2. Search for a Contact\n";
 		std::cout << "- 2. Exit\n";
 		std::cout << "-----------------------------------------\n";
-		std::cout << "Enter your choice (Add, search, exit)\n";
+		std::cout << "Enter your choice (ADD, SEARCH, EXIT)\n";
 		getline(std::cin, userInput);
-		std::cout << "choice entred is " + userInput << "\n";
+		if (userInput == "ADD")
+			phoneb.addContact();
+
 		
-	} while (userInput.compare("exit") != 0);
+	} while (userInput.compare("EXIT") != 0);
 	
 }

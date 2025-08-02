@@ -10,6 +10,7 @@ void	Contact::setContact(std::string first, std::string last,
 	nickName = nick;
 	phoneNumber = phone;
 	darkestSecret = secretMsg;
+	// displayContact();
 }
 
 void	Contact::displayContact()
