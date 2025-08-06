@@ -1,49 +1,43 @@
 #include "phonebook.hpp"
 
-void	PhoneBook::setCountContact(int nCountContact)
+PhoneBook::PhoneBook(void)
 {
-	countContact = nCountContact;
-}
-
-int	PhoneBook::getCountContact()
-{
-	return (countContact);
+	contactSize = 0;
 }
 
 void	PhoneBook::addContact()
 {
-	std::string	firstName;
-	std::string	lastName;
-	std::string	nickName;
-	std::string	phoneNumber;
-	std::string	darkestSecret;
+	Contact tmp;
 
+	// get infos from the user
 	std::cout << "Enter Your First Name: ";
-	getline(std::cin, firstName);
+	getline(std::cin, tmp.firstName);
 	std::cout << "Enter Your Last Name: ";
-	getline(std::cin, lastName);
+	getline(std::cin, tmp.lastName);
 	std::cout << "Enter Your Nick Name: ";
-	getline(std::cin, nickName);
+	getline(std::cin, tmp.nickName);
 	std::cout << "Enter Your Phone Number: ";
-	getline(std::cin, phoneNumber);
+	getline(std::cin, tmp.phoneNumber);
 	std::cout << "Enter Your Darkest Secret: ";
-	getline(std::cin, darkestSecret);
-	
-	if (firstName.empty() || lastName.empty() || nickName.empty() || phoneNumber.empty() || darkestSecret.empty())
+	getline(std::cin, tmp.darkestSecret);
+	// empty feilds: print error message
+	if (tmp.firstName.empty() || tmp.lastName.empty() 
+		|| tmp.nickName.empty() || tmp.phoneNumber.empty() 
+		|| tmp.darkestSecret.empty())
 	{
 		std::cout << "Oops!, Please fill out all the feilds!\n";
 		return ;
 	}
-	if (getCountContact() < 1)
+	if (contactSize < MAX_CONTACTS) // if phonebook contact is empty add the contact normally
 	{
-		contacts[getCountContact()].setContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
-		std::cout << "Contact N" << getCountContact() + 1 << " has been added successfully\n";
-		setCountContact(getCountContact() + 1);
+		
+		contacts[contactSize] = tmp;
+		contactSize ++;
 	}
-	else{
-		contacts[getCountContact() % 2].setContact(firstName, lastName, nickName, phoneNumber, darkestSecret);
-		setCountContact(getCountContact() + 1);
+	else // else start overwrite the oldest ones
+	{
+		contacts[contactSize % MAX_CONTACTS] = tmp;
+		contactSize ++;
 	}
-	// std::cout << "-----------------------displaying-----------------\n";
-	// std::cout << "" + contacts[0].displayContact();
 }
+

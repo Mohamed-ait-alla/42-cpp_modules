@@ -11,8 +11,6 @@ int main()
 	PhoneBook	phoneb;
 	std::string userInput;
 
-	phoneb.setCountContact(0);
-	std::cout << "count is "  << phoneb.getCountContact() << "\n";
 	do
 	{
 		std::cout << "------------ PhoneBook Menu ------------\n";
