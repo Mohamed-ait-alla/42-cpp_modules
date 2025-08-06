@@ -22,6 +22,8 @@ int main()
 		getline(std::cin, userInput);
 		if (userInput == "ADD")
 			phoneb.addContact();
+		else if (userInput == "SEARCH")
+			phoneb.searchContact();
 
 		
 	} while (userInput.compare("EXIT") != 0);

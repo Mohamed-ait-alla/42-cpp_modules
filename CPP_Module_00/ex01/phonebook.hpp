@@ -7,7 +7,7 @@
 
 
 # define MAX_CONTACTS 2
-// # define DIGITS "0123456789"
+# define DIGITS "0123456789"
 
 class Contact {
 	public:
@@ -26,6 +26,7 @@ class PhoneBook {
 	public:
 	PhoneBook(void);
 	void	addContact();
+	void	searchContact();
 
 
 };
