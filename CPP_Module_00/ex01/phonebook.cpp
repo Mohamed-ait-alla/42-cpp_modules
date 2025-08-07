@@ -72,25 +72,29 @@ void	PhoneBook::searchContact()
 		std::cout << "|" << std::setw(10) << formatFeild(contacts[i].nickName) << "|" << std::endl;
 	}
 	// Display contact information specified by the user
-	std::cout << "For details information, Enter the desired index? ";
-	getline(std::cin, userIndex);
-	// check if the index entred contains only digits
-	if (strspn(userIndex.c_str(), DIGITS) != userIndex.length())
+	while (1)
 	{
-		std::cout << "Error: Invalid index! (use digits only)\n";
-		return ;
+		std::cout << "For more detail informations, Enter the desired index? ";
+		getline(std::cin, userIndex);
+		// check if the index entred contains only digits
+		if (strspn(userIndex.c_str(), DIGITS) != userIndex.length())
+		{
+			std::cout << "Error: Invalid index! (use digits only)\n";
+			continue ;
+		}
+		index = atoi(userIndex.c_str());
+		if (index < 0 || index > contactSize)
+		{
+			/* Notes:
+				* Check if it is contactSize or MAX_CONTACTS 
+				* Overflow can occur here, so it can bypass this check
+			*/ 
+			std::cout << "Oops! Your Index is Out-Of-Range\n";
+			continue ;
+		}
+		break ;
 	}
-	index = atoi(userIndex.c_str());
-	if (index < 0 || index > contactSize)
-	{
-		/* Notes:
-			* Check if it is contactSize or MAX_CONTACTS 
-			* Overflow can occur here, so it can bypass this check
-		*/ 
-		std::cout << "Oops! Your Index is Out-Of-Range\n";
-		return ;
-	}
-	std::cout << "___________________Contact Details___________________\n";
+	std::cout << "_______________Contact Details________________\n";
 	std::cout << "First Name: " << contacts[index].firstName << std::endl;
 	std::cout << "Last Name: " << contacts[index].lastName << std::endl;
 	std::cout << "Nick Name: " << contacts[index].nickName << std::endl;
