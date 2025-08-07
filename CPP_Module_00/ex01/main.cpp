@@ -13,12 +13,12 @@ int main()
 
 	do
 	{
-		std::cout << "------------ PhoneBook Menu ------------\n";
-		std::cout << "- 1. Add a Contact\n";
-		std::cout << "- 2. Search for a Contact\n";
-		std::cout << "- 2. Exit\n";
-		std::cout << "-----------------------------------------\n";
-		std::cout << "Enter your choice (ADD, SEARCH, EXIT)\n";
+		std::cout << CYAN "------------ PhoneBook Menu ------------" RESET << std::endl;
+		std::cout << YELLOW "- 1. Add a Contact" << std::endl;
+		std::cout << YELLOW "- 2. Search for a Contact" << std::endl;
+		std::cout << YELLOW "- 3. Exit" << std::endl;
+		std::cout << CYAN "----------------------------------------" RESET << std::endl;
+		std::cout << GREEN "Enter Your Option: (ADD, SEARCH, EXIT)" RESET << std::endl;
 		getline(std::cin, userInput);
 		checkForEof();
 		if (userInput == "ADD")
