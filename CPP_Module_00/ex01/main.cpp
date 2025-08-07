@@ -20,6 +20,7 @@ int main()
 		std::cout << "-----------------------------------------\n";
 		std::cout << "Enter your choice (ADD, SEARCH, EXIT)\n";
 		getline(std::cin, userInput);
+		checkForEof();
 		if (userInput == "ADD")
 			phoneb.addContact();
 		else if (userInput == "SEARCH")

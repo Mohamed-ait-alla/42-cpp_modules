@@ -1,5 +1,11 @@
 #include "phonebook.hpp"
 
+void	checkForEof()
+{
+	if (std::cin.eof())
+		exit (0);
+}
+
 PhoneBook::PhoneBook(void)
 {
 	contactSize = 0;
@@ -13,14 +19,19 @@ void	PhoneBook::addContact()
 	// get infos from the user
 	std::cout << "Enter Your First Name: ";
 	getline(std::cin, tmp.firstName);
+	checkForEof();
 	std::cout << "Enter Your Last Name: ";
 	getline(std::cin, tmp.lastName);
+	checkForEof();
 	std::cout << "Enter Your Nick Name: ";
 	getline(std::cin, tmp.nickName);
+	checkForEof();
 	std::cout << "Enter Your Phone Number: ";
 	getline(std::cin, tmp.phoneNumber);
+	checkForEof();
 	std::cout << "Enter Your Darkest Secret: ";
 	getline(std::cin, tmp.darkestSecret);
+	checkForEof();
 	// empty feilds: print error message
 	if (tmp.firstName.empty() || tmp.lastName.empty() 
 		|| tmp.nickName.empty() || tmp.phoneNumber.empty() 
@@ -54,7 +65,7 @@ void	PhoneBook::searchContact()
 	std::string userIndex;
 	int			index;
 
-	std::cout << "____________________Search For a Contact____________________\n";
+	std::cout << "----------------- Search For a Contact -----------------\n";
 	// if phonebook is empty print error msg
 	if (contactSize == 0)
 	{
@@ -76,6 +87,7 @@ void	PhoneBook::searchContact()
 	{
 		std::cout << "For more detail informations, Enter the desired index? ";
 		getline(std::cin, userIndex);
+		checkForEof();
 		// check if the index entred contains only digits
 		if (strspn(userIndex.c_str(), DIGITS) != userIndex.length())
 		{
@@ -86,7 +98,6 @@ void	PhoneBook::searchContact()
 		if (index < 0 || index > contactSize)
 		{
 			/* Notes:
-				* Check if it is contactSize or MAX_CONTACTS 
 				* Overflow can occur here, so it can bypass this check
 			*/ 
 			std::cout << "Oops! Your Index is Out-Of-Range\n";
@@ -94,7 +105,7 @@ void	PhoneBook::searchContact()
 		}
 		break ;
 	}
-	std::cout << "_______________Contact Details________________\n";
+	std::cout << "---------------- Contact Details ----------------\n";
 	std::cout << "First Name: " << contacts[index].firstName << std::endl;
 	std::cout << "Last Name: " << contacts[index].lastName << std::endl;
 	std::cout << "Nick Name: " << contacts[index].nickName << std::endl;

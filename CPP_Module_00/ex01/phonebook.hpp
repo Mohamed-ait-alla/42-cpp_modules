@@ -5,10 +5,11 @@
 # include <cstdlib>
 # include <cstring>
 
-
+// needed constents
 # define MAX_CONTACTS 2
 # define DIGITS "0123456789"
 
+// Contact class declaration
 class Contact {
 	public:
 		std::string firstName;
@@ -18,6 +19,7 @@ class Contact {
 		std::string darkestSecret;
 };
 
+// Phonebook class declaration
 class PhoneBook {
 	private:
 	Contact contacts[MAX_CONTACTS];
@@ -27,9 +29,10 @@ class PhoneBook {
 	PhoneBook(void);
 	void	addContact();
 	void	searchContact();
-
-
+	
+	
 };
 
-
+// utility
+void	checkForEof();
 #endif
