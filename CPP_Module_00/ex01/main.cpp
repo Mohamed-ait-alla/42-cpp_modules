@@ -1,7 +1,14 @@
 /*
- * Author: ToDo... 
- * Description:  ToDo..
- * Usage: ToDo...
+ * @Author:
+ *          Mohamed Ait Alla
+ *
+ * @Description:
+ *               A simple command-line phonebook application that can store up to 8 contacts.
+ *               Each contact has a first name, last name, nick name, phone number, and a darkest secret.
+ *               The user can add a new contact, search and view stored contacts, or exit the program.
+ * 
+ * @Usage:
+ *          ./phonebook
 */
 
 #include "phonebook.hpp"
