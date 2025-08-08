@@ -21,25 +21,23 @@
 // Contact class declaration
 class Contact {
 	public:
-		std::string firstName;
-		std::string lastName;
-		std::string nickName;
-		std::string phoneNumber;
-		std::string darkestSecret;
+		std::string	firstName;
+		std::string	lastName;
+		std::string	nickName;
+		std::string	phoneNumber;
+		std::string	darkestSecret;
 };
 
 // Phonebook class declaration
 class PhoneBook {
 	private:
-	Contact contacts[MAX_CONTACTS];
+	Contact	contacts[MAX_CONTACTS];
 	int		contactSize;
-	
+
 	public:
 	PhoneBook(void);
 	void	addContact();
 	void	searchContact();
-	
-	
 };
 
 // utility

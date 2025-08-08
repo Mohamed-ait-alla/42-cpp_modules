@@ -96,11 +96,9 @@ void	PhoneBook::searchContact()
 			continue ;
 		}
 		index = atoi(userIndex.c_str());
-		if (index < 0 || index > contactSize)
+		// check if index is not out-of-range
+		if (index < 0 || index > contactSize || userIndex.length() >= 2)
 		{
-			/* Notes:
-				* Overflow can occur here, so it can bypass this check
-			*/ 
 			std::cout << RED "Oops! Your Index is Out-Of-Range" RESET << std::endl;
 			continue ;
 		}
