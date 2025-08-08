@@ -1,8 +1,9 @@
 CPPC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = phonebook
+CPPFLAGS = #-Wall -Wextra -Werror -std=c++98
+NAME = lostfile
 
-SRCS = tests.cpp
+SRCS = Account.cpp \
+		tests.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
