@@ -33,6 +33,29 @@ Account::~Account( void )
 			  << ";closed" << std::endl;
 }
 
+// print summary of all accounts
+void	Account::displayAccountsInfos( void )
+{
+	_displayTimestamp();
+	std::cout << "accounts:" << _nbAccounts
+			  << ";total:" << _totalAmount
+			  << ";deposits:" << _totalNbDeposits
+			  << ";withdrawals:" << _totalNbWithdrawals
+			  << std::endl;
+}
+
+// print account status
+void	Account::displayStatus( void ) const
+{
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex
+			  << ";amount:" << _amount
+			  << ";deposits:" << _nbDeposits
+			  << ";withdrawals:" << _nbWithdrawals
+			  << std::endl;
+}
+
+
 std::string getCurrentTime()
 {
 	char	formattedDateTime[80];

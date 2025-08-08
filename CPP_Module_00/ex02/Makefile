@@ -1,5 +1,5 @@
 CPPC = c++
-CPPFLAGS = #-Wall -Wextra -Werror -std=c++98
+CPPFLAGS = -std=c++98 #-Wall -Wextra -Werror -std=c++98
 NAME = lostfile
 
 SRCS = Account.cpp \
