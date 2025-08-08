@@ -55,6 +55,25 @@ void	Account::displayStatus( void ) const
 			  << std::endl;
 }
 
+// function that makes a deposit to each account
+void	Account::makeDeposit( int deposit )
+{
+	int	p_amount;
+
+	p_amount = _amount;
+	_amount += deposit;
+	_totalAmount += deposit;
+	_nbDeposits++;
+	_totalNbDeposits++;
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex
+			  << ";p_amount:" << p_amount
+			  << ";deposit:" << deposit
+			  << ";amount:" << _amount
+			  << ";nb_deposits:" << _nbDeposits
+			  << std::endl;
+}
+
 
 std::string getCurrentTime()
 {
