@@ -33,6 +33,29 @@ Account::~Account( void )
 			  << ";closed" << std::endl;
 }
 
+// ----------- static methods ------------
+
+// getters
+int	Account::getNbAccounts( void )
+{
+	return (_nbAccounts);
+}
+
+int	Account::getTotalAmount( void )
+{
+	return (_totalAmount);
+}
+
+int	Account::getNbDeposits( void )
+{
+	return (_totalNbDeposits);
+}
+
+int	Account::getNbWithdrawals( void )
+{
+	return (_totalNbWithdrawals);
+}
+
 // print summary of all accounts
 void	Account::displayAccountsInfos( void )
 {
@@ -44,6 +67,13 @@ void	Account::displayAccountsInfos( void )
 			  << std::endl;
 }
 
+
+// -------- Instance methods ---------
+
+int	Account::checkAmount( void ) const 
+{
+	return (_amount);
+}
 // print account status
 void	Account::displayStatus( void ) const
 {
@@ -58,16 +88,17 @@ void	Account::displayStatus( void ) const
 // function that makes a deposit operation on each account
 void	Account::makeDeposit( int deposit )
 {
-	int	p_amount;
+	int	prevAmount;
 
-	p_amount = _amount;
+	prevAmount = _amount;
 	_amount += deposit;
 	_totalAmount += deposit;
 	_nbDeposits++;
 	_totalNbDeposits++;
+
 	_displayTimestamp();
 	std::cout << "index:" << _accountIndex
-			  << ";p_amount:" << p_amount
+			  << ";p_amount:" << prevAmount	
 			  << ";deposit:" << deposit
 			  << ";amount:" << _amount
 			  << ";nb_deposits:" << _nbDeposits
@@ -77,34 +108,32 @@ void	Account::makeDeposit( int deposit )
 // function that makes a withdrawal operation on each account
 bool	Account::makeWithdrawal( int withdrawal )
 {
-	int	p_amount;
+	int	prevAmount;
 
 	if (withdrawal  <= _amount)
 	{
-		p_amount = _amount;
+		prevAmount = _amount;
 		_amount -= withdrawal;
+		_totalAmount -= withdrawal;
 		_nbWithdrawals++;
 		_totalNbWithdrawals++;
-		_totalAmount -= withdrawal;
+
 		_displayTimestamp();
 		std::cout << "index:" << _accountIndex
-				  << ";p_amount:" << p_amount
+				  << ";p_amount:" << prevAmount
 				  << ";withdrawal:" << withdrawal
 				  << ";amount:" << _amount
 				  << ";nb_withdrawals:" << _nbWithdrawals
 				  << std::endl;
 				  return (true);
 	}
-	else
-	{
-		_displayTimestamp();
-		std::cout << "index:" << _accountIndex
-				  << ";p_amount:" << _amount
-				  << ";withdrawal:refused" 
-				  << std::endl;
-				  return (false);
-	}
-	
+
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex
+			  << ";p_amount:" << _amount
+			  << ";withdrawal:refused" 
+			  << std::endl;
+	return (false);
 }
 
 std::string getCurrentTime()
