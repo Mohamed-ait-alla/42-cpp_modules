@@ -1,6 +1,6 @@
 CPPC = c++
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
-NAME = lostfile
+NAME = bank_system
 
 SRCS = Account.cpp \
 		tests.cpp
