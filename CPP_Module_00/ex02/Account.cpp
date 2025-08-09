@@ -55,7 +55,7 @@ void	Account::displayStatus( void ) const
 			  << std::endl;
 }
 
-// function that makes a deposit to each account
+// function that makes a deposit operation on each account
 void	Account::makeDeposit( int deposit )
 {
 	int	p_amount;
@@ -74,6 +74,38 @@ void	Account::makeDeposit( int deposit )
 			  << std::endl;
 }
 
+// function that makes a withdrawal operation on each account
+bool	Account::makeWithdrawal( int withdrawal )
+{
+	int	p_amount;
+
+	if (withdrawal  <= _amount)
+	{
+		p_amount = _amount;
+		_amount -= withdrawal;
+		_nbWithdrawals++;
+		_totalNbWithdrawals++;
+		_totalAmount -= withdrawal;
+		_displayTimestamp();
+		std::cout << "index:" << _accountIndex
+				  << ";p_amount:" << p_amount
+				  << ";withdrawal:" << withdrawal
+				  << ";amount:" << _amount
+				  << ";nb_withdrawals:" << _nbWithdrawals
+				  << std::endl;
+				  return (true);
+	}
+	else
+	{
+		_displayTimestamp();
+		std::cout << "index:" << _accountIndex
+				  << ";p_amount:" << _amount
+				  << ";withdrawal:refused" 
+				  << std::endl;
+				  return (false);
+	}
+	
+}
 
 std::string getCurrentTime()
 {
