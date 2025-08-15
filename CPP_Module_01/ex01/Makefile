@@ -1,6 +1,6 @@
 CPPC = c++
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
-NAME = bank_system
+NAME = Horde
 
 SRCS = main.cpp \
 		Zombie.cpp \
