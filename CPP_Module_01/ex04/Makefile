@@ -2,7 +2,8 @@ CPPC = c++
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
 NAME = dealWithFiles
 
-SRCS = main.cpp
+SRCS = main.cpp \
+		utils.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

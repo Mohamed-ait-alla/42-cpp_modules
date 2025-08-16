@@ -11,55 +11,39 @@
  * 			TODO:...
 */
 
-#include <iostream>
-#include <fstream>
+#include "utils.hpp"
 
 int	main(int ac, char **av)
 {
-	std::ifstream	inFile;
-	std::ofstream	outFile;
-	std::string		line;
-	std::string		newLine;
-	std::string		target;
-	
 	// Check for invalid args
-	if (!av || ac < 4)
+	if (ac != 4)
 	{
 		std::cerr << "Usage: ./program <filename> <string1> <string2>" << std::endl;
 		return (1);
 	}
-	inFile.open(av[1], std::ios::in);
-	if (!inFile.is_open())
-	{
-		std::cerr << "Error: failed to open the file!" << std::endl;
-		return (1);
-	}
-	outFile.open("result.replace", std::ios::out);
-	if (!outFile.is_open())
-	{
-		std::cerr << "Error: failed to open the result file!" << std::endl;
-		return  (1);
-	}
-	target = av[2];
+
+	// Declaration and initialization of variables
+	std::string		line;
+	std::string		fileName = av[1];
+	std::string		resultFileName = fileName + ".replace";
+	std::string		s1 = av[2];
+	std::string		s2 = av[3];
+
+	// Open files
+	std::ifstream	inFile(fileName.c_str());
+	if (!inFile)
+		return (std::cerr << "Error: failed to open " << fileName << std::endl, -1);
+	std::ofstream outFile(resultFileName.c_str());
+	if (!outFile)
+		return (std::cerr << "Error: failed to open " << resultFileName << std::endl, -1);
+
+	// Proccessing fileName and replacing found occurrences
 	while (std::getline(inFile, line))
 	{
-		std::cout << "line is: " << line << std::endl;
-		size_t i = 0;
-		newLine = "";
-		while(i < line.size())
-		{
-			if (line.substr(i, target.size()) == target)
-			{
-				newLine += av[3];
-				i += target.size();
-			}
-			else
-			{
-				newLine += line[i];
-				i++;
-			}
-		}
-		outFile << newLine << '\n';
+		outFile << replaceOccurrences(line, s1, s2);
 	}
+
+	inFile.close();
+	outFile.close();
 	return (0);
 }
