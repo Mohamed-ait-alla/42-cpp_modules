@@ -1,6 +1,6 @@
 CPPC = c++
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
-NAME = dealWithFiles
+NAME = sed_is_for_losers
 
 SRCS = main.cpp \
 		utils.cpp

@@ -1,14 +1,21 @@
 /*
  * @author:
- *			TODO:...
+ * 			Mohamed Ait Alla
  * 
  * @description:
- * 				TODO:...
- * 
- * 
+ * 				This exercise focuses on file manipulation in c++.
+ * 				The program takes three arguments:
+ * 					1. The name of the input file
+ * 					2. The string to search for (s1)
+ * 					3. The string to replace it with (s2)
+ * 				It creates a new file with the same name as the input file, suffixed
+ * 				with ".replace", where every occurrence of s1 is replaced by s2.
  * 
  * @usage:
- * 			TODO:...
+ * 			1. Compile:		make
+ * 			2. Run:			./sed_is_for_losers <filename> <s1> <s2>
+ * 			3. Clean up:	make clean
+ * 			4. Full clean:	make fclean
 */
 
 #include "utils.hpp"
