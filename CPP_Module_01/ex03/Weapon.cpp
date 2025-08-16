@@ -1,4 +1,4 @@
-#include <Weapon.hpp>
+#include "Weapon.hpp"
 
 // Constructor
 Weapon::Weapon(std::string t)
@@ -7,7 +7,7 @@ Weapon::Weapon(std::string t)
 }
 
 // getter
-const std::string& Weapon::getType()
+const std::string& Weapon::getType(void)
 {
 	return (type);
 }

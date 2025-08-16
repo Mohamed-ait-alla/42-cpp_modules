@@ -1,6 +1,7 @@
+#pragma once
+
 #include <iostream>
 
-#pragma once
 
 class Weapon {
 	private:
@@ -8,6 +9,6 @@ class Weapon {
 
 	public:
 		Weapon(std::string t);
-		const std::string& getType();
+		const std::string& getType(void);
 		void	setType(std::string newType);
 };

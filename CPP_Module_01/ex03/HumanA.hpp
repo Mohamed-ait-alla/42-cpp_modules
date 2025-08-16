@@ -1,6 +1,7 @@
+#pragma once
+
 #include "Weapon.hpp"
 
-#pragma once
 
 class HumanA {
 	private:
@@ -8,6 +9,6 @@ class HumanA {
 		std::string	name;
 	
 	public:
-		HumanA(std::string name, Weapon& weapon);
+		HumanA(std::string manName, Weapon& weapon);
 		void	attack(void);
 };
