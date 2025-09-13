@@ -15,12 +15,14 @@ Fixed::Fixed( const Fixed &obj )
 
 // Parametrized constructor
 Fixed::Fixed( int const intValue ) {
+	std::cout << "Int constructor called" << std::endl;
 	_fixedPointValue = intValue << _fractionalBits;
 }
 
 // Parametrized constructor
-Fixed::Fixed( float const flaotValue ) {
-	_fixedPointValue = roundf(flaotValue * (1 << _fractionalBits));
+Fixed::Fixed( float const floatValue ) {
+	std::cout << "Float constructor called" << std::endl;
+	_fixedPointValue = roundf(floatValue * (1 << _fractionalBits));
 }
 
 // Copy assignment operator
@@ -61,6 +63,7 @@ int	Fixed::toInt( void ) const {
 	return (_fixedPointValue >> _fractionalBits);
 }
 
+// (<<) insertion operator
 std::ostream&	operator<<(std::ostream& cout, const Fixed& fixedObj) {
 	return (cout << fixedObj.toFloat());
 }
