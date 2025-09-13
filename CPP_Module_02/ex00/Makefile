@@ -1,6 +1,6 @@
 CPPC = c++
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
-NAME = fixed
+NAME = fixedPoint
 
 SRCS = main.cpp \
 		Fixed.cpp
