@@ -50,3 +50,17 @@ void	Fixed::setRawBits( int const raw ) {
 	std::cout << "setRawBits member function called" << std::endl;
 	this->_fixedPointValue = raw;
 }
+
+// converting fixed points to floating point
+float	Fixed::toFloat( void ) const {
+	return ((float)_fixedPointValue / (float)(1 << _fractionalBits));
+}
+
+// converting fixed points to integers
+int	Fixed::toInt( void ) const {
+	return (_fixedPointValue >> _fractionalBits);
+}
+
+std::ostream&	operator<<(std::ostream& cout, const Fixed& fixedObj) {
+	return (cout << fixedObj.toFloat());
+}
