@@ -7,8 +7,7 @@ Fixed::Fixed() {
 }
 
 // Copy constructor
-Fixed::Fixed( const Fixed &obj )
-{
+Fixed::Fixed( const Fixed &obj ) {
 	std::cout << "Copy constructor called" << std::endl;
 	_fixedPointValue = obj._fixedPointValue;
 }
@@ -26,8 +25,7 @@ Fixed::Fixed( float const floatValue ) {
 }
 
 // Copy assignment operator
-Fixed& Fixed::operator=( const Fixed &obj )
-{
+Fixed& Fixed::operator=( const Fixed &obj ) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	this->_fixedPointValue = obj._fixedPointValue;
 	return (*this);
@@ -36,6 +34,33 @@ Fixed& Fixed::operator=( const Fixed &obj )
 // Destructor
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
+}
+
+// ---- Ex02 ----
+
+// Comparison operator overloading definitions
+bool	Fixed::operator>( const Fixed& obj ) const {
+	return (_fixedPointValue > obj._fixedPointValue);
+}
+
+bool	Fixed::operator>=( const Fixed& obj ) const {
+	return (_fixedPointValue >= obj._fixedPointValue);
+}
+
+bool	Fixed::operator<( const Fixed& obj ) const {
+	return (_fixedPointValue < obj._fixedPointValue);
+}
+
+bool	Fixed::operator<=( const Fixed& obj ) const {
+	return (_fixedPointValue <= obj._fixedPointValue);
+}
+
+bool	Fixed::operator==( const Fixed& obj ) const {
+	return (_fixedPointValue == obj._fixedPointValue);
+}
+
+bool	Fixed::operator!=( const Fixed& obj ) const {
+	return (_fixedPointValue != obj._fixedPointValue);
 }
 
 

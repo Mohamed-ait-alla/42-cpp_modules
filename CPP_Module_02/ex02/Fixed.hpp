@@ -18,12 +18,12 @@ class Fixed {
 		Fixed&				operator=( const Fixed &obj );
 
 		// Comparison operator overloading declarations
-		bool				operator>( const Fixed& obj );
-		bool				operator<( const Fixed& obj );
-		bool				operator>=( const Fixed& obj );
-		bool				operator<=( const Fixed& obj );
-		bool				operator==( const Fixed& obj );
-		bool				operator!=( const Fixed& obj );
+		bool				operator>( const Fixed& obj ) const;
+		bool				operator<( const Fixed& obj ) const;
+		bool				operator>=( const Fixed& obj ) const;
+		bool				operator<=( const Fixed& obj ) const;
+		bool				operator==( const Fixed& obj ) const;
+		bool				operator!=( const Fixed& obj ) const;
 
 		// Arithmetic operator overloading declarations
 		Fixed				operator+( const Fixed& obj );
