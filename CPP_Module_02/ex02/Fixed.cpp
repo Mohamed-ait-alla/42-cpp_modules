@@ -80,6 +80,30 @@ Fixed	Fixed::operator/( const Fixed& obj) const {
 	return Fixed(toFloat() / obj.toFloat());
 }
 
+// Increment/Decrement operator overloading definitions
+Fixed&	Fixed::operator++() {
+	this->_fixedPointValue++;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int) {
+	Fixed	tmp = *this;
+	this->_fixedPointValue++;
+	return (tmp);
+}
+
+Fixed&	Fixed::operator--() {
+	this->_fixedPointValue--;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int) {
+	Fixed	tmp = *this;
+	this->_fixedPointValue--;
+	return (tmp);
+}
+
+
 // member functions
 
 // getter
