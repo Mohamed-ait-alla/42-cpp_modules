@@ -63,6 +63,22 @@ bool	Fixed::operator!=( const Fixed& obj ) const {
 	return (_fixedPointValue != obj._fixedPointValue);
 }
 
+// Arithmetic operator overloading definitions
+Fixed	Fixed::operator+( const Fixed& obj ) const {
+	return Fixed(toFloat() + obj.toFloat());
+}
+
+Fixed	Fixed::operator-( const Fixed& obj ) const {
+	return Fixed(toFloat() - obj.toFloat());
+}
+
+Fixed	Fixed::operator*( const Fixed& obj ) const {
+	return Fixed(toFloat() * obj.toFloat());
+}
+
+Fixed	Fixed::operator/( const Fixed& obj) const {
+	return Fixed(toFloat() / obj.toFloat());
+}
 
 // member functions
 

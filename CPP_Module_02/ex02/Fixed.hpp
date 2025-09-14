@@ -26,10 +26,10 @@ class Fixed {
 		bool				operator!=( const Fixed& obj ) const;
 
 		// Arithmetic operator overloading declarations
-		Fixed				operator+( const Fixed& obj );
-		Fixed				operator-( const Fixed& obj );
-		Fixed				operator*( const Fixed& obj );
-		Fixed				operator/( const Fixed& obj );
+		Fixed				operator+( const Fixed& obj ) const;
+		Fixed				operator-( const Fixed& obj ) const;
+		Fixed				operator*( const Fixed& obj ) const;
+		Fixed				operator/( const Fixed& obj ) const;
 
 		// Increment/Decrement operator overloading declarations
 		Fixed&				operator++();
