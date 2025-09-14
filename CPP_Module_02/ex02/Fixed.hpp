@@ -34,8 +34,8 @@ class Fixed {
 		// Increment/Decrement operator overloading declarations
 		Fixed&				operator++();
 		Fixed&				operator--();
-		Fixed&				operator++(int);
-		Fixed&				operator--(int);
+		Fixed				operator++(int);
+		Fixed				operator--(int);
 
 		// Static function overloading declarations
 		static Fixed&		min(Fixed& a, Fixed& b);
