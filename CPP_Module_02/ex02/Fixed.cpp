@@ -106,6 +106,23 @@ Fixed	Fixed::operator--(int) {
 
 // member functions
 
+// static function overloading definitions
+Fixed&	Fixed::min(Fixed& a, Fixed& b) {
+	return ((a < b) ? a : b);
+}
+
+Fixed&	Fixed::max(Fixed& a, Fixed& b) {
+	return ((a > b) ? a : b);
+}
+
+const Fixed&	Fixed::min(const Fixed& a, const Fixed& b) {
+	return (((Fixed)a < b) ? a : b);
+}
+
+const Fixed&	Fixed::max(const Fixed& a, const Fixed& b) {
+	return (((Fixed)a > b) ? a : b);
+}
+
 // getter
 int	Fixed::getRawBits( void ) const {
 	std::cout << "getRawBits member function called" << std::endl;
