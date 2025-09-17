@@ -6,8 +6,8 @@
 # include <cstring>
 
 // needed constents
-# define MAX_CONTACTS 2
 # define DIGITS "0123456789"
+
 // ANSI colors
 # define RED		"\033[31m"
 # define GREEN		"\033[32m"
@@ -20,19 +20,34 @@
 
 // Contact class declaration
 class Contact {
+	private:
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickName;
+		std::string	_phoneNumber;
+		std::string	_darkestSecret;
+
 	public:
-		std::string	firstName;
-		std::string	lastName;
-		std::string	nickName;
-		std::string	phoneNumber;
-		std::string	darkestSecret;
+		std::string	getFName();
+		std::string	getLName();
+		std::string	getNkName();
+		std::string	getPNumber();
+		std::string	getDSecret();
+
+		void		setFName( std::string fName );
+		void		setLName( std::string lName );
+		void		setNkName( std::string nkName );
+		void		setPNumber( std::string pNumber );
+		void		setDSecret( std::string dSecret );
+		
 };
 
 // Phonebook class declaration
 class PhoneBook {
 	private:
-	Contact	contacts[MAX_CONTACTS];
-	int		contactSize;
+		static const int	MAX_CONTACTS = 8;
+		Contact				contacts[MAX_CONTACTS];
+		int					contactSize;
 
 	public:
 	PhoneBook(void);
@@ -42,4 +57,5 @@ class PhoneBook {
 
 // utility
 void	checkForEof();
+
 #endif

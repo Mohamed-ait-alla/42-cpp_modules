@@ -32,6 +32,8 @@ int main()
 			phoneb.addContact();
 		else if (userInput == "SEARCH")
 			phoneb.searchContact();
+		else if (userInput != "EXIT")
+			std::cout << RED << "Oops! Invalid Command. Try again" << RESET << std::endl;
 
 		
 	} while (userInput.compare("EXIT") != 0);
