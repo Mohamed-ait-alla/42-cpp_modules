@@ -16,7 +16,7 @@ bool	isOnlySpaces( std::string feild )
 
 	for(int i = 0; feild[i]; i++)
 	{
-		if (feild[i] == ' ')
+		if (feild[i] <= (char)ASCII_SPACE)
 			count++;
 	}
 	return ((count == feild.length()) ? 1 : 0);
@@ -43,7 +43,7 @@ std::string	checkUserInput( std::string feild )
 // constructor
 PhoneBook::PhoneBook(void)
 {
-	contactSize = 0;
+	_contactSize = 0;
 }
 
 // add a new contact
@@ -71,17 +71,17 @@ void	PhoneBook::addContact()
 	input = checkUserInput("Darkest Secret");
 	tmp.setDSecret(input);
 
-	if (contactSize < MAX_CONTACTS)
+	if (_contactSize < _MAX_CONTACTS)
 	{
 		// add contact normally
-		contacts[contactSize] = tmp;
-		std::cout << CYAN BOLD "Contact N" << contactSize + 1 << " added successfully!" RESET << std::endl;
-		contactSize ++;
+		_contacts[_contactSize] = tmp;
+		std::cout << CYAN BOLD "Contact N" << _contactSize + 1 << " added successfully!" RESET << std::endl;
+		_contactSize ++;
 	}
 	else
 	{
 		// if phoneBook is full start overwrite oldest contacts
-		contacts[(contactSize + stmp) % MAX_CONTACTS] = tmp;
+		_contacts[(_contactSize + stmp) % _MAX_CONTACTS] = tmp;
 		std::cout << YELLOW BOLD "Phonebook full. Oldest contact overwritten!" RESET << std::endl;
 		stmp++;
 	}
@@ -98,25 +98,25 @@ std::string formatFeild(std::string arg)
 // search for a contact
 void	PhoneBook::searchContact()
 {
-	std::string userIndex;
+	std::string	userIndex;
 	int			index;
 
 	std::cout << CYAN BOLD "\n========== SEARCH CONTACT ==========\n" RESET;
 	// if phonebook is empty print error msg
-	if (contactSize == 0)
+	if (_contactSize == 0)
 	{
 		std::cout << "PhoneBook is empty!!\n";
 		return ;
 	}
 	// Display available contacts
 	std::cout << YELLOW BOLD "|     Index| FirstName|  LastName|  NickName|" RESET << std::endl;
-	for (int i = 0; i < contactSize; i++)
+	for (int i = 0; i < _contactSize; i++)
 	{
 		std::cout << std::right;
 		std::cout << BLUE "|" << std::setw(10) << i;
-		std::cout << BLUE "|" << std::setw(10) << formatFeild(contacts[i].getFName());
-		std::cout << BLUE "|" << std::setw(10) << formatFeild(contacts[i].getLName());
-		std::cout << BLUE "|" << std::setw(10) << formatFeild(contacts[i].getNkName()) << "|" RESET << std::endl;
+		std::cout << BLUE "|" << std::setw(10) << formatFeild(_contacts[i].getFName());
+		std::cout << BLUE "|" << std::setw(10) << formatFeild(_contacts[i].getLName());
+		std::cout << BLUE "|" << std::setw(10) << formatFeild(_contacts[i].getNkName()) << "|" RESET << std::endl;
 	}
 	// Display contact information specified by the user
 	while (1)
@@ -124,6 +124,12 @@ void	PhoneBook::searchContact()
 		std::cout << GREEN BOLD "For more detail informations, Enter the desired index? " RESET;
 		getline(std::cin, userIndex);
 		checkForEof();
+		// if index is empty
+		if (userIndex.empty())
+		{
+			std::cout << RED "Error: Invalid index! (can not be empty)" RESET << std::endl;
+			continue;
+		}
 		// check if the index entred contains only digits
 		if (strspn(userIndex.c_str(), DIGITS) != userIndex.length())
 		{
@@ -131,8 +137,8 @@ void	PhoneBook::searchContact()
 			continue ;
 		}
 		index = atoi(userIndex.c_str());
-		// check if index is not out-of-range
-		if (index < 0 || index > contactSize || userIndex.length() >= 2)
+		// check if index is out-of-range => repeat process
+		if (index < 0 || index >= _contactSize || userIndex.length() >= 2)
 		{
 			std::cout << RED "Oops! Your Index is Out-Of-Range" RESET << std::endl;
 			continue ;
@@ -140,11 +146,11 @@ void	PhoneBook::searchContact()
 		break ;
 	}
 	std::cout << MAGENTA BOLD "\n--- Contact Details ---\n" RESET;
-	std::cout << BOLD "First Name: " RESET << contacts[index].getFName() << std::endl;
-	std::cout << BOLD "Last Name: " RESET << contacts[index].getLName() << std::endl;
-	std::cout << BOLD "Nick Name: " RESET << contacts[index].getNkName() << std::endl;
-	std::cout << BOLD "Phone Number: " RESET << contacts[index].getPNumber() << std::endl;
-	std::cout << BOLD "Darkest Secret: " RESET << contacts[index].getDSecret() << std::endl;
+	std::cout << BOLD "First Name: " RESET << _contacts[index].getFName() << std::endl;
+	std::cout << BOLD "Last Name: " RESET << _contacts[index].getLName() << std::endl;
+	std::cout << BOLD "Nick Name: " RESET << _contacts[index].getNkName() << std::endl;
+	std::cout << BOLD "Phone Number: " RESET << _contacts[index].getPNumber() << std::endl;
+	std::cout << BOLD "Darkest Secret: " RESET << _contacts[index].getDSecret() << std::endl;
 }
 
 //		#____Contact class member implementations____#

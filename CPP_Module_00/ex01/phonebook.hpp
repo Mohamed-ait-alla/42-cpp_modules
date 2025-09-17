@@ -7,6 +7,7 @@
 
 // needed constents
 # define DIGITS "0123456789"
+# define ASCII_SPACE 32
 
 // ANSI colors
 # define RED		"\033[31m"
@@ -45,14 +46,14 @@ class Contact {
 // Phonebook class declaration
 class PhoneBook {
 	private:
-		static const int	MAX_CONTACTS = 8;
-		Contact				contacts[MAX_CONTACTS];
-		int					contactSize;
+		static const int	_MAX_CONTACTS = 8;
+		Contact				_contacts[_MAX_CONTACTS];
+		int					_contactSize;
 
 	public:
-	PhoneBook(void);
-	void	addContact();
-	void	searchContact();
+		PhoneBook(void);
+		void	addContact();
+		void	searchContact();
 };
 
 // utility
