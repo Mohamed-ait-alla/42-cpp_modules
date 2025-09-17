@@ -1,12 +1,28 @@
 #include "phonebook.hpp"
 
-// utilities
+//		#____utilities____#
+
+// Handle end-of-file in getline()
 void	checkForEof()
 {
 	if (std::cin.eof())
 		exit (0);
 }
 
+// check if a feild has only spaces
+bool	isOnlySpaces( std::string feild )
+{
+	size_t	count = 0;
+
+	for(int i = 0; feild[i]; i++)
+	{
+		if (feild[i] == ' ')
+			count++;
+	}
+	return ((count == feild.length()) ? 1 : 0);
+}
+
+// getting and checking user input for empty feilds
 std::string	checkUserInput( std::string feild )
 {
 	std::string	userInput;
@@ -16,9 +32,9 @@ std::string	checkUserInput( std::string feild )
 		std::cout << GREEN BOLD "Enter Your " << feild << ": " RESET;
 		getline(std::cin, userInput);
 		checkForEof();
-		if (userInput.empty())
+		if (userInput.empty() || isOnlySpaces(userInput))
 			std::cout << RED << "Oops! The feild can not be empty" << RESET << std::endl;
-	} while (userInput.empty());
+	} while (userInput.empty() || isOnlySpaces(userInput));
 	return (userInput);
 }
 
