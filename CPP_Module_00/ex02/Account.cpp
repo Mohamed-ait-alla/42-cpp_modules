@@ -151,10 +151,10 @@ bool	Account::makeWithdrawal( int withdrawal )
 
 std::string getCurrentTime()
 {
-	char	formattedDateTime[80];
-	time_t	timestamp;
+	char		formattedDateTime[80];
+	time_t		timestamp;
 	struct tm	*dateTime;
-	
+
 	time(&timestamp);
 	dateTime = localtime(&timestamp);
 	strftime(formattedDateTime, sizeof(formattedDateTime), "[%Y%m%d_%H%M%S] ", dateTime);

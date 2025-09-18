@@ -26,15 +26,28 @@ bool	isOnlySpaces( std::string feild )
 std::string	checkUserInput( std::string feild )
 {
 	std::string	userInput;
+	bool		pNumberCheck;
 
 	do
 	{
+		pNumberCheck = false;
 		std::cout << GREEN BOLD "Enter Your " << feild << ": " RESET;
 		getline(std::cin, userInput);
 		checkForEof();
 		if (userInput.empty() || isOnlySpaces(userInput))
+		{
 			std::cout << RED << "Oops! The feild can not be empty" << RESET << std::endl;
-	} while (userInput.empty() || isOnlySpaces(userInput));
+			continue;
+		}
+		if (feild == "Phone Number")
+		{
+			if (strspn(userInput.c_str(), DIGITS) != userInput.length())
+			{
+				std::cout << RED "Oops! Invalid Phone Number (use only digits)" RESET << std::endl;
+				pNumberCheck = true;
+			}
+		}
+	} while (userInput.empty() || isOnlySpaces(userInput) || pNumberCheck);
 	return (userInput);
 }
 
