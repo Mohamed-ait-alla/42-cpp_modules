@@ -29,11 +29,11 @@ class Contact {
 		std::string	_darkestSecret;
 
 	public:
-		std::string	getFName();
-		std::string	getLName();
-		std::string	getNkName();
-		std::string	getPNumber();
-		std::string	getDSecret();
+		std::string	getFName() const;
+		std::string	getLName() const;
+		std::string	getNkName() const;
+		std::string	getPNumber() const;
+		std::string	getDSecret() const;
 
 		void		setFName( std::string fName );
 		void		setLName( std::string lName );

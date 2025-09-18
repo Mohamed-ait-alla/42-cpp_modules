@@ -169,27 +169,27 @@ void	PhoneBook::searchContact()
 //		#____Contact class member implementations____#
 
 // getters
-std::string	Contact::getFName()
+std::string	Contact::getFName() const
 {
 	return (_firstName);
 }
 
-std::string Contact::getLName()
+std::string Contact::getLName() const
 {
 	return (_lastName);
 }
 
-std::string Contact::getNkName()
+std::string Contact::getNkName() const
 {
 	return (_nickName);
 }
 
-std::string	Contact::getPNumber()
+std::string	Contact::getPNumber() const
 {
 	return (_phoneNumber);
 }
 
-std::string	Contact::getDSecret()
+std::string	Contact::getDSecret() const
 {
 	return (_darkestSecret);
 }
