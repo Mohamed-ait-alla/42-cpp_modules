@@ -1,13 +1,13 @@
 /*
- * @Author:
+ * @author:
  *          Mohamed Ait Alla
- *
- * @Description:
+ * 
+ * @description:
  *               A simple command-line phonebook application that can store up to 8 contacts.
  *               Each contact has a first name, last name, nick name, phone number, and a darkest secret.
  *               The user can add a new contact, search and view stored contacts, or exit the program.
  * 
- * @Usage:
+ * @usage:
  *          ./phonebook
 */
 
