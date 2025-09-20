@@ -3,17 +3,17 @@
 // Constructor
 Zombie::Zombie(std::string zombieName)
 {
-	name = zombieName;
+	_name = zombieName;
 }
 
 // Destructor
 Zombie::~Zombie()
 {
-	std::cout << name << ": Has Been Destroyed!\n";
+	std::cout << _name << ": Has Been Destroyed!\n";
 }
 
 // member functions
 void	Zombie::announce(void)
 {
-	std::cout << name << ": BraiiiiiiinnnzzzZ...\n";
+	std::cout << _name << ": BraiiiiiiinnnzzzZ...\n";
 }
