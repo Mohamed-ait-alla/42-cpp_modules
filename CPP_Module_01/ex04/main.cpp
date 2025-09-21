@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 
-	// Declaration and initialization of variables
+	// Declaration & initialization of variables
 	std::string		line;
 	std::string		fileName = av[1];
 	std::string		resultFileName = fileName + ".replace";
@@ -39,10 +39,10 @@ int	main(int ac, char **av)
 	// Open files
 	std::ifstream	inFile(fileName.c_str());
 	if (!inFile)
-		return (std::cerr << "Error: failed to open " << fileName << std::endl, -1);
+		return (std::cerr << "Error: failed to open \"" << fileName << "\" file" << std::endl, -1);
 	std::ofstream outFile(resultFileName.c_str());
 	if (!outFile)
-		return (std::cerr << "Error: failed to open " << resultFileName << std::endl, -1);
+		return (std::cerr << "Error: failed to open \"" << resultFileName << "\" file" << std::endl, -1);
 
 	// Proccessing fileName and replacing found occurrences
 	while (std::getline(inFile, line))

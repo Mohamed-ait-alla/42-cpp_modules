@@ -1,6 +1,6 @@
 CPPC = c++
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
-NAME = Horde
+NAME = zombieHorde
 
 SRCS = main.cpp \
 		Zombie.cpp \

@@ -3,17 +3,17 @@
 // Constructor
 Weapon::Weapon(std::string t)
 {
-	type = t;
+	_type = t;
 }
 
 // getter
 const std::string& Weapon::getType(void)
 {
-	return (type);
+	return (_type);
 }
 
 // setter
 void	Weapon::setType(std::string newType)
 {
-	type = newType;
+	_type = newType;
 }

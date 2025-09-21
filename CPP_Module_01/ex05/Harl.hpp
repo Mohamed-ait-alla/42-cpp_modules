@@ -1,4 +1,5 @@
-#pragma once
+#ifndef HARL_HPP
+# define HARL_HPP
 
 // Headers
 #include <iostream>
@@ -25,3 +26,5 @@ class Harl {
 	public:
 		void	complain( std::string level );
 };
+
+#endif

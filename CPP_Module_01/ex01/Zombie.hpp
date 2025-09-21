@@ -1,11 +1,13 @@
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+
 # include <iostream>
 
-#pragma once
 
 // Zombie class definition
 class Zombie {
 	private:
-	std::string	name;
+		std::string	_name;
 
 	public:
 		~Zombie();
@@ -14,3 +16,5 @@ class Zombie {
 };
 
 Zombie*	zombieHorde(int N, std::string name);
+
+#endif
