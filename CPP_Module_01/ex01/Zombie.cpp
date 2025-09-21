@@ -1,5 +1,8 @@
 #include "Zombie.hpp"
 
+// Default constructor
+Zombie::Zombie() {}
+
 // Destructor
 Zombie::~Zombie()
 {
