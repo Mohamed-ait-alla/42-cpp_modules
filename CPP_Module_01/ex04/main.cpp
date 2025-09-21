@@ -30,11 +30,12 @@ int	main(int ac, char **av)
 	}
 
 	// Declaration & initialization of variables
-	std::string		line;
-	std::string		fileName = av[1];
-	std::string		resultFileName = fileName + ".replace";
-	std::string		s1 = av[2];
-	std::string		s2 = av[3];
+	std::string			content;
+	std::string			fileName = av[1];
+	std::string			resultFileName = fileName + ".replace";
+	std::string			s1 = av[2];
+	std::string			s2 = av[3];
+	std::ostringstream	buffer;
 
 	// Open files
 	std::ifstream	inFile(fileName.c_str());
@@ -45,10 +46,9 @@ int	main(int ac, char **av)
 		return (std::cerr << "Error: failed to open \"" << resultFileName << "\" file" << std::endl, -1);
 
 	// Proccessing fileName and replacing found occurrences
-	while (std::getline(inFile, line))
-	{
-		outFile << replaceOccurrences(line, s1, s2);
-	}
+	buffer << inFile.rdbuf();
+	content = buffer.str();
+	outFile << replaceOccurrences(content, s1, s2);
 
 	inFile.close();
 	outFile.close();

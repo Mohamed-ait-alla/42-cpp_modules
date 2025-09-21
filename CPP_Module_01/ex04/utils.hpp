@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
-std::string replaceOccurrences(std::string& line, std::string& s1, std::string& s2);
+std::string replaceOccurrences(std::string line, const std::string& s1, const std::string& s2);
 
 #endif

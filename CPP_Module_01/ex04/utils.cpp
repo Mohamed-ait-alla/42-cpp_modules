@@ -1,24 +1,17 @@
 #include "utils.hpp"
 
-std::string replaceOccurrences(std::string& line, std::string& s1, std::string& s2)
+std::string replaceOccurrences(std::string fileContent, const std::string& s1, const std::string& s2)
 {
-	std::string	newLine = "";
-	size_t		i = 0;
+    if (fileContent.empty() || s1.empty())
+        return "";
 
-	if (line.empty() || s1.empty() || s2.empty())
-		return ("");
-	while (i < line.size())
-	{
-		if (line.substr(i, s1.size()) == s1)
-		{
-			newLine += s2;
-			i += s1.size();
-		}
-		else
-		{
-			newLine += line[i];
-			i++;
-		}
-	}
-	return (newLine + '\n');
+    size_t pos = 0;
+    while ((pos = fileContent.find(s1, pos)) != std::string::npos)
+    {
+        fileContent.erase(pos, s1.length());
+        fileContent.insert(pos, s2);
+        pos += s2.length();
+    }
+    return fileContent;
 }
+
