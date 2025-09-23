@@ -1,7 +1,7 @@
 /*
  * @author:
  * 			Mohamed ait alla
- *
+ * 
  * @description:
  * 				This exercice introduces the basics of dynamic and static memory allocation, by
  * 				understanding the difference between creating objects on the stack and on the heap.

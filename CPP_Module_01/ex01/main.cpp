@@ -8,7 +8,7 @@
  * 				The goal of this exercice focuses on allocating arrays of objects on
  * 				the heap, initializing them, and managing them to avoid memory leaks.
  * 
- *  @usage:
+ * @usage:
  * 			1. Compile source files:	make
  * 			2. Clean up:				make clean
  * 			3. Run the program:			./Horde

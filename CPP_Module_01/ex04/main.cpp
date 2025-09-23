@@ -45,7 +45,7 @@ int	main(int ac, char **av)
 	if (!outFile)
 		return (std::cerr << "Error: failed to open \"" << resultFileName << "\" file" << std::endl, -1);
 
-	// Proccessing fileName and replacing found occurrences
+	// Proccessing fileName and replacing founded occurrences
 	buffer << inFile.rdbuf();
 	content = buffer.str();
 	outFile << replaceOccurrences(content, s1, s2);
