@@ -1,10 +1,13 @@
 /*
 * @author:
-* 			Mohamed Ait Alla
+* 			mait-all
+* 
+* @github:
+* 			https://github.com/Mohamed-ait-alla
 * 
 * @description:
-* 				This program takes command line arguments and converts them to uppercase.
-* 				If no arguments are specified, it shows a default message.
+* 			This program takes command line arguments and converts them to uppercase.
+* 			If no arguments are specified, it shows a default message.
 * 
 * @usage:
 * 			./megaphone [arg1] [arg2] [...] [argn]

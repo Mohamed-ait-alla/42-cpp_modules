@@ -1,3 +1,10 @@
+// ****************************************************************************************** //
+//                               file: phonebook.hpp                                          //
+//                               by: mait-all <mait-all@student.1337.ma>                      //
+//                                                                                            //
+//                               Created: 2025/08/01 10:03 by mait-all                        //
+// ****************************************************************************************** //
+
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 # include <iostream>
@@ -19,7 +26,10 @@
 # define RESET		"\033[0m"
 # define BOLD		"\033[1m"
 
-// Contact class declaration
+// ************************************************************************** //
+//                               Contact Class                                //
+// ************************************************************************** //
+
 class Contact {
 	private:
 		std::string	_firstName;
@@ -43,7 +53,10 @@ class Contact {
 		
 };
 
-// Phonebook class declaration
+// ************************************************************************** //
+//                               PhoneBook Class                              //
+// ************************************************************************** //
+
 class PhoneBook {
 	private:
 		static const int	_MAX_CONTACTS = 8;
@@ -59,4 +72,5 @@ class PhoneBook {
 // utility
 void	checkForEof();
 
-#endif
+
+#endif /* __PHONEBOOK_HPP__ */

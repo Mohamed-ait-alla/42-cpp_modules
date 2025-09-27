@@ -1,11 +1,14 @@
 /*
  * @author:
- *			Mohamed Ait Alla
+ *			mait-all
+ * 
+ * @github:
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				This exercice consists of recreating the missing implementation file (Account.cpp)
- * 				from a given header (Account.hpp) and a test file (tests.cpp). So you need to implement
- * 				all the class member and static funcions to make it work.
+ * 			This exercice consists of recreating the missing implementation file (Account.cpp)
+ * 			from a given header (Account.hpp) and a test file (tests.cpp). So you need to implement
+ * 			all the class member and static funcions to make it work.
  * 
  *  @usage:
  * 			./bank_system
