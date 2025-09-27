@@ -1,21 +1,34 @@
+// ****************************************************************************************** //
+//                               file: Fixed.hpp                                              //
+//                               by: mait-all <mait-all@student.1337.ma>                      //
+//                                                                                            //
+//                               Created: 2025/09/13 18:15 by mait-all                        //
+// ****************************************************************************************** //
+
 #pragma once
 
 #include <iostream>
 #include <ostream>
 #include <cmath>
 
+
+// ************************************************************************** //
+//                                Fixed Class                                 //
+// ************************************************************************** //
+
 class Fixed {
 	private:
 		int					_fixedPointValue;
 		static const int	_nbFractionalBits = 8;
+
 	public:
+		// OCF
 		Fixed();
 		Fixed( int const intValue );
 		Fixed( float const floatValue );
 		Fixed( const Fixed &obj );
+		Fixed&	operator=( const Fixed &obj );
 		~Fixed();
-
-		Fixed&				operator=( const Fixed &obj );
 
 		// Comparison operator overloading declarations
 		bool				operator>( const Fixed& obj ) const;

@@ -1,16 +1,19 @@
 /*
  * @author:
- * 			Mohamed Ait Alla
+ * 			mait-all
+ * 
+ * @github:
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				This exercise extends the ex00 Fixed class by adding two parameterized constructors:
- * 				one that takes an integer and one that takes a floating number. These constructors are
- * 				responsible for converting the input value into the internal fixed-point representation.
- * 				Two member functions are also introduced:
- * 					- toFloat(): converts the fixed-point value back into a float.
- * 					- toInt(): converts the fixed-point value back into a int.
- * 				The main goal of this exercise is to understand how constructors can provide multiple ways to
- * 				initialize objects (a first glimpse of polymorphism in c++), and how fixed-point numbers works.
+ * 			This exercise extends the ex00 Fixed class by adding two parameterized constructors:
+ * 			one that takes an integer and one that takes a floating number. These constructors are
+ * 			responsible for converting the input value into the internal fixed-point representation.
+ * 			Two member functions are also introduced:
+ * 				- toFloat(): converts the fixed-point value back into a float.
+ * 				- toInt(): converts the fixed-point value back into a int.
+ * 			The main goal of this exercise is to understand how constructors can provide multiple ways to
+ * 			initialize objects (a first glimpse of polymorphism in c++), and how fixed-point numbers works.
  * 
  * @usage:
  * 			1.Compile:	make
