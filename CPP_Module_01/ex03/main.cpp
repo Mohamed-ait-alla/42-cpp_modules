@@ -1,13 +1,16 @@
 /*
  * @author:
- *			Mohamed Ait Alla
+ *			mait-all
+ * 
+ * @github:
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				The goal is to implement two classes (HumanA and HumanB) that both use a Weapon class,
- * 				but with different behaviors:
- * 				  - HumanA is always armed and takes its Weapon by reference in the constructor.
- * 				  - HumanB may start unarmed and can be assigned a Weapon later via a setter.
- * 				This exercise focuses on references vs pointers, and illustrates when each should be used.
+ * 			The goal is to implement two classes (HumanA and HumanB) that both use a Weapon class,
+ * 			but with different behaviors:
+ * 			  - HumanA is always armed and takes its Weapon by reference in the constructor.
+ * 			  - HumanB may start unarmed and can be assigned a Weapon later via a setter.
+ * 			This exercise focuses on references vs pointers, and illustrates when each should be used.
  * 
  * @usage:
  * 			1. Compile:		make

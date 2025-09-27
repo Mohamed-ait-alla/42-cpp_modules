@@ -1,12 +1,15 @@
 /*
  * @author:
- *			Mohamed Ait Alla
+ *			mait-all
+ * 
+ * @github:
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				This program extends the ex00 concept, It's about creating a horde of
- * 				zombies dynamically.
- * 				The goal of this exercice focuses on allocating arrays of objects on
- * 				the heap, initializing them, and managing them to avoid memory leaks.
+ * 			This program extends the ex00 concept, It's about creating a horde of
+ * 			zombies dynamically.
+ * 			The goal of this exercice focuses on allocating arrays of objects on
+ * 			the heap, initializing them, and managing them to avoid memory leaks.
  * 
  * @usage:
  * 			1. Compile source files:	make

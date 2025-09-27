@@ -1,15 +1,18 @@
 /*
  * @author:
- * 			Mohamed Ait Alla
+ * 			mait-all
+ * 
+ * @github:
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				This exercise focuses on file manipulation in c++.
- * 				The program takes three arguments:
- * 					1. The name of the input file
- * 					2. The string to search for (s1)
- * 					3. The string to replace it with (s2)
- * 				It creates a new file with the same name as the input file, suffixed
- * 				with ".replace", where every occurrence of s1 is replaced by s2.
+ * 			This exercise focuses on file manipulation in c++.
+ * 			The program takes three arguments:
+ * 				1. The name of the input file
+ * 				2. The string to search for (s1)
+ * 				3. The string to replace it with (s2)
+ * 			It creates a new file with the same name as the input file, suffixed
+ * 			with ".replace", where every occurrence of s1 is replaced by s2.
  * 
  * @usage:
  * 			1. Compile:		make

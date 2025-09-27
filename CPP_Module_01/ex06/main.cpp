@@ -1,15 +1,18 @@
 /*
  * @author:
- *			Mohamed Ait Alla
+ *			mait-all
+ * 
+ * @github:
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				This exercise extends the previous Harl class by implementing a complaint
- * 				filtering system. The program receives a complaint level and executes only
- * 				the complaints that are equal to or above that level.
- * 				The available levels are: "DEBUG", "INFO", "WARNING", "ERROR"
+ * 			This exercise extends the previous Harl class by implementing a complaint
+ * 			filtering system. The program receives a complaint level and executes only
+ * 			the complaints that are equal to or above that level.
+ * 			The available levels are: "DEBUG", "INFO", "WARNING", "ERROR"
  * 
- * 				This exercise focuses on practicing switch-case statements with fall-through
- * 				behavior.
+ * 			This exercise focuses on practicing switch-case statements with fall-through
+ * 			behavior.
  * 
  * @usage:
  * 			1. Compile:		make

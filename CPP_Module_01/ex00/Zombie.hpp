@@ -1,8 +1,18 @@
+// ****************************************************************************************** //
+//                               file: Zombie.hpp                                             //
+//                               by: mait-all <mait-all@student.1337.ma>                      //
+//                                                                                            //
+//                               Created: 2025/08/10 18:53 by mait-all                        //
+// ****************************************************************************************** //
+
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
 # include <iostream>
 
+// ************************************************************************** //
+//                               Zombie Class                                 //
+// ************************************************************************** //
 
 class Zombie {
 	private:
@@ -18,4 +28,4 @@ class Zombie {
 Zombie*	newZombie( std::string name );
 void	randomChump( std::string name);
 
-#endif
+#endif /* __ZOMBIE_HPP__ */

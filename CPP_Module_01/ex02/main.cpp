@@ -1,10 +1,13 @@
 /*
  * @author:
- *			Mohamed Ait Alla
+ *			mait-all
+ *
+ * @github:
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				The main goal of this exercise is to understand References, how they work,
- * 				and how they differ from pointers.	
+ * 			The main goal of this exercise is to understand References, how they work,
+ * 			and how they differ from pointers.	
  * 
  * @usage:
  * 			1. Compile:	make

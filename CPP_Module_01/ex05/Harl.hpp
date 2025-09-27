@@ -1,7 +1,13 @@
+// ****************************************************************************************** //
+//                               file: Harl.hpp                                               //
+//                               by: mait-all <mait-all@student.1337.ma>                      //
+//                                                                                            //
+//                               Created: 2025/08/17 08:42 by mait-all                        //
+// ****************************************************************************************** //
+
 #ifndef HARL_HPP
 # define HARL_HPP
 
-// Headers
 #include <iostream>
 
 
@@ -15,7 +21,10 @@
 #define BOLD		"\033[1m"
 
 
-// Harl class declaration
+// ************************************************************************** //
+//                                  Harl Class                                //
+// ************************************************************************** //
+
 class Harl {
 	private:
 		void	debug( void );
@@ -27,4 +36,4 @@ class Harl {
 		void	complain( std::string level );
 };
 
-#endif
+#endif /* __HARL_HPP__*/

@@ -1,11 +1,14 @@
 /*
  * @author:
- * 			Mohamed ait alla
+ * 			mait-all
+ * 
+ * @github:
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				This exercice introduces the basics of dynamic and static memory allocation, by
- * 				understanding the difference between creating objects on the stack and on the heap.
- * 				The functions newZombie(zombieName) and randomChump(zombieName) demonstrate this concept.
+ * 			This exercice introduces the basics of dynamic and static memory allocation, by
+ * 			understanding the difference between creating objects on the stack and on the heap.
+ * 			The functions newZombie(zombieName) and randomChump(zombieName) demonstrate this concept.
  * 
  * @usage:
  * 			1. Compile source files:	make
