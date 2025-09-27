@@ -3,6 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/09/27 10:30 by mait-all                        //
+//                               Updated: 2025/09/27 18:12 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -23,8 +24,8 @@ class ClapTrap {
 		ClapTrap&	operator=(const ClapTrap& other);
 		~ClapTrap();
 
-		// Extra constructor
-		ClapTrap(std::string name);
+		// Parametrised constructor
+		ClapTrap(std::string newName);
 
 		// Member functions
 		void	attack(const std::string& target);
