@@ -1,13 +1,24 @@
 /*
  * @author:
- *				TODO...
- * 
+ * 			Mohamed Ait Alla
  * 
  * @description:
- * 				TODO...
+ * 				In this exercise we extend the Fixed class with operator overloading and additional utility
+ * 				functions. This makes the class behave more naturally in arithmetic and comparison contexts,
+ * 				similar to built-in numeric types.
+ * 				Implementations include:
+ * 					- The 6 comparison operators (>, <, >=, <=, ==, !=).
+ * 					- The 4 arithmetic operators (+, -, *, /).
+ * 					- The 4 increment/decrement operators, both prefix and postfix.
+ * 					- Some overloaded static functions, min() and max(), that return the smallest or largest of
+ * 					  two Fixed objects.
+ * 				This exercise illustrates how operator overloading provides intuitive syntax for user-defined
+ * 				types, and how they work.
  * 
  * @usage:
- * 				TODO...
+ * 			1.Compile:	make
+ * 			2.Run:		./fixedPoint
+ * 			3.Clean Up:	make fclean
 */
 
 #include "Fixed.hpp"

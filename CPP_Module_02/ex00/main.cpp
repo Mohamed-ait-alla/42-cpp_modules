@@ -1,13 +1,17 @@
 /*
  * @author:
- *				TODO...
- * 
+ * 			Mohamed Ait Alla
  * 
  * @description:
- * 				TODO...
+ * 				This exercise introduces the Orthodox Canonical Form and the concept of fixed-point numbers.
+ * 				The Fixed class implemented with the 4 canonical form functions (constructor, copy constructor,
+ * 				copy assignment operator, destructor). At this stage, the class can only represent the constant
+ * 				value 0.0 in fixed-point form.
  * 
  * @usage:
- * 				TODO...
+ * 			1.Compile:	make
+ * 			2.Run:		./fixedPoint
+ * 			3.Clean Up:	make fclean
 */
 
 #include "Fixed.hpp"
