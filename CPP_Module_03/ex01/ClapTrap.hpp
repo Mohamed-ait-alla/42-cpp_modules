@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/09/28 17:55 by mait-all                        //
-//                               Updated: 2025/09/28 17:57 by mait-all                        //
+//                               Updated: 2025/09/28 21:39 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -33,7 +33,7 @@ class ClapTrap {
 		void	beRepaired(unsigned int amount);
 
 
-	private:
+	protected:
 		std::string		_name;
 		unsigned int	_hitPoints;
 		unsigned int	_energyPoints;
