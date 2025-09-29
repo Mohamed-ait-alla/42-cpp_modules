@@ -16,8 +16,13 @@
 
 int main( void )
 {
-	ScavTrap a;
+	ScavTrap	a;
+	ScavTrap	b(a);
+	ScavTrap	c;
 
-	a.attack("enmy");
+	c = b;
+	a.attack("enemy");
+	b.attack("enemy");
+	c.attack("enemy");
 	return (0);
 }
