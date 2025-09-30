@@ -12,10 +12,13 @@
  * 			ToDo...
 */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main( void )
 {
 
+	DiamondTrap a;
+
+	// a.attack("one");
 	return (0);
 }
