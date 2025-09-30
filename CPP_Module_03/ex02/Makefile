@@ -1,6 +1,6 @@
 CPPC = c++
 CPPFLAGS =  -Wall -Wextra -Werror -std=c++98
-NAME = scavTrap
+NAME = fragTrap
 
 SRCS = main.cpp \
 		ClapTrap.cpp \
