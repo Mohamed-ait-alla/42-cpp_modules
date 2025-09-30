@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/09/28 17:55 by mait-all                        //
-//                               Updated: 2025/09/30 09:59 by mait-all                        //
+//                               Updated: 2025/09/30 14:56 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -15,7 +15,7 @@
 //                               ScavTrap Class                               //
 // ************************************************************************** //
 
-class ScavTrap : public ClapTrap {
+class ScavTrap : virtual public ClapTrap {
 
 	public:
 		// ocf
