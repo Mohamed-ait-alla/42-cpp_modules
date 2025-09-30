@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/09/30 10:44 by mait-all                        //
-//                               Updated: 2025/09/30 10:58 by mait-all                        //
+//                               Updated: 2025/09/30 18:15 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -29,6 +29,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		DiamondTrap(std::string newName);
 
 		// member functions
+		void	attack(const std::string& target);
 		void	whoAmI();
 
 	private:
