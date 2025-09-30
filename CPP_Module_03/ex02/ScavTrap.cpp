@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/09/28 17:55 by mait-all                        //
-//                               Updated: 2025/09/30 08:51 by mait-all                        //
+//                               Updated: 2025/09/30 09:59 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "ScavTrap.hpp"
@@ -59,7 +59,7 @@ void	ScavTrap::attack(const std::string& target) {
 	std::cout << "ScavTrap: " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << std::endl;
 }
 
-void	ScavTrap::guardGate() {
+void	ScavTrap::guardGate(void) {
 	if (_hitPoints <= 0 || _energyPoints <= 0)
 	{
 		std::cout << "ScavTrap: " << _name << " is dead and cannot enter Gate keeper mode!" << std::endl;

@@ -29,7 +29,7 @@ class ScavTrap : public ClapTrap {
 
 		// member functions
 		void	attack(const std::string& target);
-		void	guardGate();
+		void	guardGate(void);
 		
 };
 
