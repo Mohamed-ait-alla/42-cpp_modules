@@ -16,13 +16,16 @@
 
 int main( void )
 {
-	ScavTrap	a;
+	ScavTrap	a("Teo");
 	ScavTrap	b(a);
 	ScavTrap	c;
 
 	c = b;
-	a.attack("enemy");
 	b.attack("enemy");
-	c.attack("enemy");
+	b.takeDamage(99);
+	// b.beRepaired(12);
+	b.attack("enemy");
+	b.guardGate();
+
 	return (0);
 }
