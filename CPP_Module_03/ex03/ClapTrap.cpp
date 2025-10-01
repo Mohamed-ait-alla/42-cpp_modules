@@ -11,7 +11,7 @@
 // Default constructor
 ClapTrap::ClapTrap()
 {
-	_name = "unknown";
+	_name = "unknown_clap_name";
 	_hitPoints = 10;
 	_energyPoints = 10;
 	_attackDamage = 0;

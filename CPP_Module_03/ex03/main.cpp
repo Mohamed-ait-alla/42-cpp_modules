@@ -17,10 +17,11 @@
 int main( void )
 {
 
-	DiamondTrap a("Teo");
+    DiamondTrap diamond("DiamondBot");
+	DiamondTrap diamond1(diamond);
 
-	a.attack("one");
-	a.whoAmI();
+	diamond1.whoAmI();
+
 	
 	return (0);
 }
