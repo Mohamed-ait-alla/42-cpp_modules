@@ -1,16 +1,29 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				ToDo...
+ * 			This program demonstrates inheritance in C++ using the ScavTrap class,
+ * 			which publicly inherits from ClapTrap.
+ * 
+ * 			ScavTrap extends the behavior of ClapTrap by:
+ * 				- Redefining the attack(const std::string& target) method
+ * 				  with a custom attack message.
+ * 				- Adding a new member function guardGate(), which enables
+ * 				  Gate Keeper mode.
+ *
+ * 			The program showcases how derived classes can reuse and customize
+ * 			base class functionality.
  * 
  * @usage:
- * 			ToDo...
+ * 			1. Compile:	make
+ * 			2. Run:		./scavTrap
+ * 			3. CleanUp:	make fclean
 */
+
 
 #include "ScavTrap.hpp"
 

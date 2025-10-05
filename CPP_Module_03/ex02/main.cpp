@@ -1,16 +1,28 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				ToDo...
+ * 			This program demonstrates inheritance in C++ using the FragTrap class,
+ * 			which publicly inherits from ClapTrap.
+ * 
+ * 			FragTrap extends ClapTrap by:
+ * 				- Redefining the attack(const std::string& target) method
+ * 				  with its own behavior and message.
+ * 				- Adding a new member function highFivesGuys(), which
+ * 				  requests a positive high five interaction.
+ * 
+ * 			This exercice is actually a repetitive work of previous exercice (ex01).
  * 
  * @usage:
- * 			ToDo...
+ * 			1. Compile:	make
+ * 			2. Run:		./fragTrap
+ * 			3. CleanUp:	make fclean
 */
+
 
 #include "FragTrap.hpp"
 
@@ -50,7 +62,7 @@ int main( void )
 	frag5.takeDamage(5);   // Should die
 	frag5.attack("Enemy"); // Should fail - dead
 	frag5.beRepaired(10);  // Should fail - dead
-	frag5.highFivesGuys();
+	frag5.highFivesGuys(); // Should fail - dead
 
 	std::cout << std::endl;
 	return (0);

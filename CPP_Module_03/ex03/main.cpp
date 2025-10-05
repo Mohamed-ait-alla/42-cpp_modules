@@ -1,15 +1,31 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 				ToDo...
+ * 			This program demonstrates multiple inheritance and the diamond problem
+ * 			in C++ through the DiamondTrap class.
+ *
+ * 			DiamondTrap inherits publicly from both ScavTrap and FragTrap, which
+ * 			themselves derive from ClapTrap. This creates a diamond-shaped inheritance
+ * 			structure that requires careful management using virtual inheritance.
+ * 
+ * 			DiamondTrap extends the behavior of its parents by:
+ * 				- Combining functionality from ScavTrap and FragTrap.
+ * 				- Redefining attack() to clarify which parent’s version is used.
+ * 				- Introducing whoAmI(), which displays both its own name and
+ * 				  its ClapTrap base name.
+ *
+ * 			The exercise illustrates how to handle ambiguity and resource sharing
+ * 			in multiple inheritance scenarios.			
  * 
  * @usage:
- * 			ToDo...
+ * 			1. Compile:	make
+ * 			2. Run:		./diamondTrap
+ * 			3. CleanUp:	make fclean
 */
 
 #include "DiamondTrap.hpp"
