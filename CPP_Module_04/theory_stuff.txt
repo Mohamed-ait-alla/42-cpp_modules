@@ -1,0 +1,22 @@
+================ ex00 ================
+=> subType poloymorphism: allows objects of different derived types (cat, dog) to be tread uniformly as if they were objects
+of the base class (animal) as long as the base class defines the interface as virtual. this type of polymorphism is runtime poly, and we acheive by
+doing method overredding (like makeSound() in this exercise), means the program will decide which function to call at runtime, and to achieve that you
+need to specify the members as virtual, and this is the core of dynamic dispach.
+=> dynamic dispaching: is the process of selecting which implementation of a method or function to call at runtime.
+
+====== how run time polymorphism works ======
+=> virtual table and virtual table pointer: when you using virtual keyword on class's method, a vtable is created and holding pointers to these methods.
+every class will have a separate vtable and every class will have vfptr that points to that vtable (class' virtual table). 
+overall, the vtable for each class will store pointers to method definitions based on class's definitions, means overridding methods will point to their subclass
+corresponding definition, and non-overridden will points to the super class definition.
+when you do a->makeSound() it's actually a->vptr->makesound().
+============
+
+=> const: means the functions dosn't modify the object in it's body, without const it can work on const objects (const Animal * i = new Dog();).
+=> why destructor and makesound members or Animal class declared as virtual? : the virtual keyword is what enables the runtime polymorphism, without virtual the call of the members
+will be statically bound, means the base class version will called even if the object is a drived one (like new Dog/or Cat).
+if you didn't make Destructors as virtual in base, it won't be full cleanup of objects, because it will call only the base one and it won't cleans up the drived parts.
+
+=> the WrongAnimal and WrongCat classes demonstrates lack of polymorphism when you create a base object based on drived class, so when you try to call makeSound it will always call
+the WrongAnimal version because the compiler dosn't which one to call, and this the runtime polymorphism, to solve that you can use virtual keyword and make makeSound method as virtual.
