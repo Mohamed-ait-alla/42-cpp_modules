@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/08 08:51 by mait-all                        //
-//                               Updated: 2025/10/11 13:13 by mait-all                        //
+//                               Updated: 2025/10/11 13:33 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Animal.hpp"
@@ -35,7 +35,7 @@ Animal::~Animal() {
 
 // --- Member functions ---
 void	Animal::makeSound(void) const {
-	std::cout << "You need to specify an animal" << std::endl;
+	std::cout << "!! No default animal sound !!" << std::endl;
 }
 
 std::string	Animal::getType(void) const {

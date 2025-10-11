@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/08 09:08 by mait-all                        //
-//                               Updated: 2025/10/11 13:16 by mait-all                        //
+//                               Updated: 2025/10/11 13:33 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Dog.hpp"
@@ -34,5 +34,5 @@ Dog::~Dog() {
 
 // --- Member functions ---
 void	Dog::makeSound(void) const {
-	std::cout << "Dogs are barking" << std::endl;
+	std::cout << "!! bark bark !!" << std::endl;
 }
