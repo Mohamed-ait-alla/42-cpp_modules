@@ -3,12 +3,13 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/11 20:04 by mait-all                        //
-//                               Updated: 2025/10/11 20:04 by mait-all                        //
+//                               Updated: 2025/10/11 21:53 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 
 // ************************************************************************** //
@@ -26,5 +27,8 @@ class Cat : public Animal {
 
 		// Member funtions
 		void	makeSound(void) const;
+
+	private:
+		Brain*	brain;
 
 };
