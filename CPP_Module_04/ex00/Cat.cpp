@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/08 09:08 by mait-all                        //
-//                               Updated: 2025/10/08 09:38 by mait-all                        //
+//                               Updated: 2025/10/11 13:15 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Cat.hpp"
@@ -28,5 +28,10 @@ Cat&	Cat::operator=(const Cat& other) {
 
 // Destructor
 Cat::~Cat() {
-	std::cout << "Destructor" << std::endl;
+	std::cout << "Cat: Destructor called" << std::endl;
+}
+
+// --- Member functions ---
+void	Cat::makeSound(void) const {
+	std::cout << "Cats are meowing" << std::endl;
 }

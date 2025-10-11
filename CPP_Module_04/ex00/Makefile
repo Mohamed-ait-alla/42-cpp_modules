@@ -2,7 +2,10 @@ CXX = c++
 CXXFLAGS =  -Wall -Wextra -Werror -std=c++98
 NAME = polymorphism
 
-SRCS = main.cpp 
+SRCS = main.cpp \
+		Animal.cpp \
+		Dog.cpp \
+		Cat.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
