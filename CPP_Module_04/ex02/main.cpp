@@ -20,6 +20,12 @@
 
 int main(void)
 {
+	// abstract class testing
+	// Animal* meta = new Animal(); // should fail because it must not be instanciated
+
+	// meta->makeSound();
+	// delete meta;
+
 	std::cout << "==== creating array of Animals ====" << std::endl;
 
 	Animal*	animals[6];
