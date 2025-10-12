@@ -33,11 +33,8 @@ Animal::~Animal() {
 	std::cout << "Animal: Destructor called" << std::endl;
 }
 
-// --- Member functions ---
-void	Animal::makeSound(void) const {
-	std::cout << "!! No default animal sound !!" << std::endl;
-}
 
+// getter
 std::string	Animal::getType(void) const {
 	return (type);
 }
