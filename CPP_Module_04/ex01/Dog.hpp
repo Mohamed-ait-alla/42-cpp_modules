@@ -27,6 +27,7 @@ class Dog : public Animal {
 
 		// member functions
 		void	makeSound(void) const;
+		Brain*	getBrain() const;
 	
 	private:
 		Brain*	brain;

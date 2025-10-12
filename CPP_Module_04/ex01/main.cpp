@@ -20,41 +20,14 @@
 
 int main(void)
 {
-	const Animal* meta = new Animal();
-	const Animal* i = new Dog();
-	const Animal* j = new Cat();
-	
-	std::cout << std::endl;
-	std::cout << std::endl;
+	Dog	dog1;
 
-	std::cout << "Type of this Animal is: " << i->getType() << " " << std::endl;
-	std::cout << "Type of this Animal is: " << j->getType() << " " << std::endl;
-	i->makeSound();
-	j->makeSound();
-	meta->makeSound();
+	dog1.getBrain()->setIdea(0, "hh hh hh");
 
-	std::cout << std::endl;
-	std::cout << std::endl;
+	Dog dog2 = dog1;
+	dog2.getBrain()->setIdea(0, "jj jj jj");
 
-	delete meta; delete i; delete j;
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	// === lack of polymorphism tests ===
-	const	WrongAnimal* wrongMeta = new WrongAnimal();
-	const	WrongAnimal* wrongA = new WrongCat();
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-
-	std::cout << "Type of this Wrong Animal is: " << wrongA->getType() << " " << std::endl;
-	wrongA->makeSound();
-	wrongMeta->makeSound();
-
-	std::cout << std::endl;
-	std::cout << std::endl;
-	 
-	delete wrongMeta; delete wrongA;
+	std::cout << "dog1 idea is: " << dog1.getBrain()->getIdea(0) << std::endl;
+	std::cout << "dog2 idea is: " << dog2.getBrain()->getIdea(0) << std::endl;
 	return (0);
 }

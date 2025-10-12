@@ -20,3 +20,17 @@ if you didn't make Destructors as virtual in base, it won't be full cleanup of o
 
 => the WrongAnimal and WrongCat classes demonstrates lack of polymorphism when you create a base object based on drived class, so when you try to call makeSound it will always call
 the WrongAnimal version because the compiler dosn't which one to call, and this the runtime polymorphism, to solve that you can use virtual keyword and make makeSound method as virtual.
+
+
+============================ Ex01 ==============================
+=== shallow copy Vs deep copy ===
+in general, creating a copy of an objects means to create an exact replica of the object having the same literal value, data type and resources, and we can achieve that object copying 
+using two ways: copy constructor, copy assignement operator.
+
+=> what is shallow copy:  this type of copy, the object is created by simply copying the data of all variables of the original object. this will work fine if no variables are allocateed 
+dynamically, if some variables allocated dynamically, then the copied object variable will also referene the same memory allocation, and this will create an ambeguity and runn-time errors
+since both objects are refering to the same memory location, and for example if i try to  delete one of object, the other object will be affected and if i try to access to the dynamic allocated variable
+i will get a segfault because the first object has destroyed the memory location. so this purpose will not be filled by shallow copy.
+=> what is deep copy: an object is also created by copying data of all variables, and it also allocates similar memory resources with the same value to the object. in order to perfom deep copy
+we need to explicitly define the copy constructor and assign dynamic memory as well.
+=> in our exercise we must apply deep copy on (Brain* ) private attributes of cat and Dog classes and must not be shallow.

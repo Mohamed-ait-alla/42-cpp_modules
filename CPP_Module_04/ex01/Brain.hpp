@@ -24,6 +24,10 @@ class Brain {
         Brain&  operator=(const Brain& other);
         ~Brain();
 
+        // member functions
+        std::string getIdea(int index) const;
+        void        setIdea(int index, std::string idea);
+
     private:
         std::string ideas[100];
 

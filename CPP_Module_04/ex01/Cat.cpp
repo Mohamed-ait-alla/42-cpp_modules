@@ -17,16 +17,15 @@ Cat::Cat() {
 
 // Copy constructor
 Cat::Cat(const Cat& other) : Animal(other) {
-	this->brain = new Brain();
-	*this.brain = *other.brain;
+	this->brain = new Brain(*other.brain);
 	std::cout << "Cat: Copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
 Cat&	Cat::operator=(const Cat& other) {
 	Animal::operator=(other);
-	if (this != other)
-		*this.brain = *other.brain;
+	if (this != &other)
+		*this->brain = *other.brain;
 	std::cout << "Cat: Copy assignment operator called" << std::endl;
 	return (*this);
 }
@@ -37,7 +36,12 @@ Cat::~Cat() {
 	std::cout << "Cat: Destructor called" << std::endl;
 }
 
+
 // --- Member functions ---
 void	Cat::makeSound(void) const {
 	std::cout << "!! meow meow !!" << std::endl;
+}
+
+Brain*	Cat::getBrain() const {
+	return (brain);
 }
