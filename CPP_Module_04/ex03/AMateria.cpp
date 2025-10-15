@@ -39,8 +39,8 @@ AMateria::~AMateria() {
 }
 
 // --- Member functions ---
-void    AMateria::use(Icharacter& target) {
-    // todo...
+void    AMateria::use(ICharacter& target) {
+    (void)target;
 }
 
 std::string const & AMateria::getType() const {
