@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/15 10:38 by mait-all                        //
-//                               Updated: 2025/10/15 11:22 by mait-all                        //
+//                               Updated: 2025/10/15 21:15 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -35,4 +35,5 @@ class Character : public ICharacter {
     private:
         std::string     _name;
         AMateria*       _inventory[4];
+        AMateria*       _inventoryCopy[4];
 };

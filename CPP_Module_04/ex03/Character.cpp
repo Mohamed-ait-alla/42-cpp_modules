@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/15 10:38 by mait-all                        //
-//                               Updated: 2025/10/15 11:47 by mait-all                        //
+//                               Updated: 2025/10/15 21:21 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Character.hpp"
@@ -11,16 +11,20 @@
 // Default constructor
 Character::Character() {
     this->_name = "unknown";
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < 4; i++) {
         this->_inventory[i] = NULL;
+        this->_inventoryCopy[i] = NULL;
+    }
     std::cout << "Character: Default constructor called" << std::endl;
 }
 
 // Parametrised constructor
 Character::Character(std::string name) {
     this->_name = name;
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < 4; i++) {
         this->_inventory[i] = NULL;
+        this->_inventoryCopy[i] = NULL;
+    }
     std::cout << "Character: Parametrised constructor called" << std::endl;
 }
 
@@ -54,10 +58,42 @@ Character&  Character::operator=(const Character& other) {
 
 // Destructor
 Character::~Character() {
-    for (int i = 0; i < 4; i++)
-        delete this->_inventory[i];
+    for (int i = 0; i < 4; i++) {
+        if (_inventory[i])
+            delete _inventory[i];
+        if (_inventoryCopy[i])
+            delete _inventoryCopy[i];
+    }
     std::cout << "Character: Destructor called" << std::endl;
 }
 
-// --- Member functions ---
 
+// --- Member functions ---
+std::string const & Character::getName() const {
+    return (_name);
+}
+
+void    Character::equipe(AMateria* m) {
+    if (!m)
+        return ;
+    for (int i = 0; i < 4; i++)
+    {
+        if (this->_inventory[i] == NULL)
+        {
+            this->_inventory[i] = m;
+            return ;
+        }
+    }
+}
+
+void    Character::unequipe(int idx) {
+    if (idx < 0 || idx >= 4 || !_inventory[idx])
+        return ;
+    _inventoryCopy[idx] = _inventory[idx];
+    _inventory[idx] = NULL;
+}
+
+void    Character::use(int idx, ICharacter& target) {
+    if (idx >= 0 && idx < 4 && _inventory[idx])
+        _inventory[idx]->use(target);
+}
