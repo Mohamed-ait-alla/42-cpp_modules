@@ -1,5 +1,5 @@
 // ****************************************************************************************** //
-//                               file: MateriaSouce.hpp                                       //
+//                               file: MateriaSource.hpp                                      //
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/17 10:57 by mait-all                        //
@@ -29,6 +29,6 @@ class MateriaSource : public IMateriaSource {
         AMateria*   createMateria(std::string const & type);
 
     private:
-        AMateria*   materias[4];
+        AMateria*   _materias[4];
 
 };
