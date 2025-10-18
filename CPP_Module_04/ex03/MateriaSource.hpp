@@ -16,7 +16,7 @@
 // ************************************************************************** //
 
 class MateriaSource : public IMateriaSource {
-    
+
     public:
         // ocf
         MateriaSource();

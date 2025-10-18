@@ -10,6 +10,8 @@
 
 #include "AMateria.hpp"
 
+class AMateria;
+
 
 // ************************************************************************** //
 //                              ICharacter Interface                          //
