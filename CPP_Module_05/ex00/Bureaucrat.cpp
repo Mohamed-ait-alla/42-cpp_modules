@@ -3,5 +3,60 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/19 10:59 by mait-all                        //
-//                               Updated: 2025/10/19 10:59 by mait-all                        //
+//                               Updated: 2025/10/19 21:30 by mait-all                        //
 // ****************************************************************************************** //
+
+#include "Bureaucrat.hpp"
+
+
+// -------------------------------
+// Orthodox Canonical Form
+// -------------------------------
+
+// Default constructor
+Bureaucrat::Bureaucrat() : _name("unknown") {
+    _grade = 150;
+}
+
+// Parametrised constructor
+Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
+    if (grade < 1)
+        throw GradeTooHighException();
+    if (grade > 150)
+        throw GradeTooLowException();
+    _grade = grade;
+}
+
+// Copy constructor
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name) {
+    _grade = other._grade;
+}
+
+// Copy assignment operator
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
+    if (this != &other)
+        *this = Bureaucrat(other.getName(), other.getGrade());
+    return (*this);
+}
+
+// Destructor
+Bureaucrat::~Bureaucrat() {}
+
+
+// -------------------------------
+// Member functions
+// -------------------------------
+
+
+
+// -------------------------------
+// Exception Implementations
+// -------------------------------
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+    return ("Grade is too high!");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+    return ("Grade is too low!");
+}
