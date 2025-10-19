@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/19 10:59 by mait-all                        //
-//                               Updated: 2025/10/19 21:51 by mait-all                        //
+//                               Updated: 2025/10/19 22:38 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Bureaucrat.hpp"
@@ -84,4 +84,14 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() {
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return ("Grade is too low!");
+}
+
+
+// ------------------------------------
+// Insertion Operator implementation
+// ------------------------------------
+
+std::ostream&   operator<<(std::ostream& output, const Bureaucrat& obj) {
+    output << obj.getName() << ", bureaucrat grade " << obj.getGrade();
+    return (output);
 }
