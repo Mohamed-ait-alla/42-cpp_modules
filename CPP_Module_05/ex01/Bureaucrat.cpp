@@ -3,10 +3,11 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/20 11:29 by mait-all                        //
-//                               Updated: 2025/10/20 11:29 by mait-all                        //
+//                               Updated: 2025/10/20 19:52 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 
 // -------------------------------
@@ -71,6 +72,19 @@ void    Bureaucrat::decrementGrade() {
         throw GradeTooLowException();
     else
         _grade++;
+}
+
+// print a msg if the bureaucrat signed the form
+void    Bureaucrat::signForm(Form& form) {
+    try
+    {
+        form.beSigned(*this);
+        std::cout << _name << " signed " << form.getName() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
 }
 
 

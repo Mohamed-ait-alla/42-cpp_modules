@@ -3,12 +3,14 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/20 11:29 by mait-all                        //
-//                               Updated: 2025/10/20 14:05 by mait-all                        //
+//                               Updated: 2025/10/20 18:57 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
 
 #include <iostream>
+
+class Form;
 
 
 // ************************************************************************** //
@@ -30,6 +32,7 @@ class Bureaucrat {
         int           getGrade() const;
         void          incrementGrade();
         void          decrementGrade();
+        void          signForm(Form& form);
 
         // exceptions
         class GradeTooHighException : public std::exception {

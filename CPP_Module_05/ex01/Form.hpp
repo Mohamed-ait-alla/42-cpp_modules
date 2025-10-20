@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/20 11:31 by mait-all                        //
-//                               Updated: 2025/10/20 14:05 by mait-all                        //
+//                               Updated: 2025/10/20 20:02 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -51,4 +51,4 @@ class Form {
 };
 
 // insertion operator (<<) overloading
-std::ostream&	operator<<(std::ostream& output, const Form& Obj);
+std::ostream&	operator<<(std::ostream& output, const Form& formObj);

@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/20 11:31 by mait-all                        //
-//                               Updated: 2025/10/20 18:51 by mait-all                        //
+//                               Updated: 2025/10/20 20:01 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Form.hpp"
@@ -96,4 +96,17 @@ const char* Bureaucrat::GradeTooHighException::what() const throw() {
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return ("Grade is too low!");
+}
+
+
+// ------------------------------------
+// Insertion Operator implementation
+// ------------------------------------
+
+std::ostream&   operator<<(std::ostream& output, const Form& formObj) {
+    output  << "Form name: " << formObj.getName() << std::endl
+            << "Form status: " << (formObj.getIsSigned() ? "signed" : "unsigned") << std::endl
+            << "Grade to be signed: " << formObj.getGradeToSign() << std::endl
+            << "Grade to be Executed: " << formObj.getGradeToExecute() << std::endl;
+    return (output);
 }
