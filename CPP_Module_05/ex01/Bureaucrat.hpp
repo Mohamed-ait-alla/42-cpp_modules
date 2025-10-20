@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/20 11:29 by mait-all                        //
-//                               Updated: 2025/10/20 11:29 by mait-all                        //
+//                               Updated: 2025/10/20 14:05 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -31,7 +31,7 @@ class Bureaucrat {
         void          incrementGrade();
         void          decrementGrade();
 
-        // Exceptions
+        // exceptions
         class GradeTooHighException : public std::exception {
             public:
                 const char* what() const throw();
