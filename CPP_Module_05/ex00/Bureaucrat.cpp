@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/19 10:59 by mait-all                        //
-//                               Updated: 2025/10/19 22:38 by mait-all                        //
+//                               Updated: 2025/10/20 11:21 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Bureaucrat.hpp"
@@ -35,7 +35,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name) {
 // Copy assignment operator
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
     if (this != &other)
-        *this = Bureaucrat(other.getName(), other.getGrade());
+        _grade = other._grade;
     return (*this);
 }
 
