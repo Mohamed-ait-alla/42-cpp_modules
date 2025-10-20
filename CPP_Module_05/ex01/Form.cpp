@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/20 11:31 by mait-all                        //
-//                               Updated: 2025/10/20 18:27 by mait-all                        //
+//                               Updated: 2025/10/20 18:51 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Form.hpp"
@@ -58,6 +58,32 @@ Form::~Form() {}
 // Member functions
 // -------------------------------
 
+// form name getter
+std::string Form::getName() const {
+    return _name;
+}
+
+// isSigned getter
+bool    Form::getIsSigned() const {
+    return _isSigned;
+}
+
+// grade to sign the from getter
+int Form::getGradeToSign() const {
+    return _gradeToSign;
+}
+
+// grade to execute the form getter
+int Form::getGradeToExecute() const {
+    return _gradeToExecute;
+}
+
+// attempt to sign the form depending on the bureaucrat's grade
+void    Form::beSigned(Bureaucrat& b) {
+    if (b.getGrade() > _gradeToSign)
+        throw GradeTooLowException();
+    _isSigned = true;
+}
 
 
 // -------------------------------
