@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/22 17:38 by mait-all                        //
+//                               Updated: 2025/10/22 21:13 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -26,11 +26,12 @@ class AForm {
         virtual ~AForm();
 
         // member functions
-        std::string getName() const;
-        bool        getIsSigned() const;
-        int         getGradeToSign() const;
-        int         getGradeToExecute() const;
-        void        beSigned(Bureaucrat& b);
+        std::string     getName() const;
+        bool            getIsSigned() const;
+        int             getGradeToSign() const;
+        int             getGradeToExecute() const;
+        void            beSigned(Bureaucrat& b);
+        virtual void    execute(const Bureaucrat& executor) const = 0;
 
         // exceptions
         class GradeTooHighException : public std::exception {
