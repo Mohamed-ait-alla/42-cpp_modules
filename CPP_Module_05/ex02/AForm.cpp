@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/22 18:54 by mait-all                        //
+//                               Updated: 2025/10/22 22:07 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "AForm.hpp"
@@ -15,6 +15,7 @@
 // Default constructor
 AForm::AForm()
     : _name("Default"),
+      _target("Default"),
       _gradeToSign(150),
       _gradeToExecute(150)
 {
@@ -22,8 +23,9 @@ AForm::AForm()
 }
 
 // Parametrised constructor
-AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute) 
+AForm::AForm(const std::string name, const std::string target, int gradeToSign, int gradeToExecute) 
     : _name(name),
+      _target(target),
       _gradeToSign(gradeToSign),
       _gradeToExecute(gradeToExecute)
 {
@@ -37,6 +39,7 @@ AForm::AForm(const std::string name, int gradeToSign, int gradeToExecute)
 // Copy constructor
 AForm::AForm(const AForm& other)
     : _name(other._name),
+      _target(other._target),
       _gradeToSign(other._gradeToSign),
       _gradeToExecute(other._gradeToExecute)
 {
@@ -46,7 +49,10 @@ AForm::AForm(const AForm& other)
 // Copy assignment operator
 AForm&   AForm::operator=(const AForm& other) {
     if (this != &other)
+    {
+        _target = other._target;
         _isSigned = other._isSigned;
+    }
     return (*this);
 }
 
@@ -61,6 +67,11 @@ AForm::~AForm() {}
 // form name getter
 std::string AForm::getName() const {
     return _name;
+}
+
+// target getter
+std::string AForm::getTarget() const {
+    return _target;
 }
 
 // isSigned getter
@@ -96,6 +107,10 @@ const char* AForm::GradeTooHighException::what() const throw() {
 
 const char* AForm::GradeTooLowException::what() const throw() {
     return ("Grade is too low!");
+}
+
+const char* AForm::FormNotSignedException::what() const throw() {
+    return ("Form not signed");
 }
 
 
