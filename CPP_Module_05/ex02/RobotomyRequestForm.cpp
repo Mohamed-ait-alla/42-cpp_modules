@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/23 10:39 by mait-all                        //
+//                               Updated: 2025/10/23 11:10 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "RobotomyRequestForm.hpp"
@@ -40,7 +40,7 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 // Member functions
 // -------------------------------
 
-void    RobotomyRequestForm::execute(const Bureaucrat& executor) {
+void    RobotomyRequestForm::execute(const Bureaucrat& executor) const {
     if (!this->getIsSigned())
         throw FormNotSignedException();
     if (executor.getGrade() > this->getGradeToExecute())
