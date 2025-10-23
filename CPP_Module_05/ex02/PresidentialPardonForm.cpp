@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/23 11:08 by mait-all                        //
+//                               Updated: 2025/10/23 18:42 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "PresidentialPardonForm.hpp"
@@ -30,6 +30,7 @@ PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& oth
 // Copy assignment operator
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other) {
     AForm::operator=(other);
+    return (*this);
 }
 
 // Destructor

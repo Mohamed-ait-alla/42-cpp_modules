@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/23 11:10 by mait-all                        //
+//                               Updated: 2025/10/23 18:44 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "RobotomyRequestForm.hpp"
@@ -30,6 +30,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
 // Copy assignment operator
 RobotomyRequestForm&    RobotomyRequestForm::operator=(const RobotomyRequestForm& other) {
     AForm::operator=(other);
+    return (*this);
 }
 
 // Destructor

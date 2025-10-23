@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/23 10:24 by mait-all                        //
+//                               Updated: 2025/10/23 18:44 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "ShrubberyCreationForm.hpp"
@@ -30,6 +30,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 // copy assignment operator
 ShrubberyCreationForm&  ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
     AForm::operator=(other);
+    return (*this);
 }
 
 // Destructor 
