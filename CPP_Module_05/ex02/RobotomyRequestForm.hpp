@@ -3,11 +3,12 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/23 10:07 by mait-all                        //
+//                               Updated: 2025/10/23 10:35 by mait-all                        //
 // ****************************************************************************************** //
 
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
+# include <stdlib.h>
 # include "AForm.hpp"
 
 

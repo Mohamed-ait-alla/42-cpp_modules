@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/22 22:16 by mait-all                        //
+//                               Updated: 2025/10/23 10:24 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "ShrubberyCreationForm.hpp"
@@ -13,7 +13,9 @@
 // -------------------------------
 
 // Default constructor
-ShrubberyCreationForm::ShrubberyCreationForm() {}
+ShrubberyCreationForm::ShrubberyCreationForm()
+    : AForm ("ShruberyCreationForm", "unknown", 145, 137)
+{}
 
 // Parametrised constructor
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) 
