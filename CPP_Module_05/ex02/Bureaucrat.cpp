@@ -3,11 +3,11 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/22 13:50 by mait-all                        //
-//                               Updated: 2025/10/22 18:37 by mait-all                        //
+//                               Updated: 2025/10/23 11:43 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // -------------------------------
 // Orthodox Canonical Form
@@ -73,8 +73,8 @@ void    Bureaucrat::decrementGrade() {
         _grade++;
 }
 
-// print a msg if the bureaucrat signed the form
-void    Bureaucrat::signForm(Form& form) {
+// attempt to sign a form
+void    Bureaucrat::signForm(AForm& form) {
     try
     {
         form.beSigned(*this);
@@ -83,6 +83,19 @@ void    Bureaucrat::signForm(Form& form) {
     catch(const std::exception& e)
     {
         std::cout << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+// attempt to execute a form
+void    Bureaucrat::executeForm(const AForm& form) {
+    try
+    {
+        form.execute(*this);
+        std::cout << this->_name << " executed " << form.getName() << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << this->_name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
     }
 }
 
