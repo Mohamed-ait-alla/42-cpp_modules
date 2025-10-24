@@ -1,13 +1,14 @@
 CXX = c++
 CXXFLAGS =  -Wall -Wextra -Werror -std=c++98
-NAME = advancedForm
+NAME = intern
 
 SRCS = main.cpp \
 		Bureaucrat.cpp \
 		AForm.cpp \
 		PresidentialPardonForm.cpp \
 		RobotomyRequestForm.cpp \
-		ShrubberyCreationForm.cpp
+		ShrubberyCreationForm.cpp \
+		Intern.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 

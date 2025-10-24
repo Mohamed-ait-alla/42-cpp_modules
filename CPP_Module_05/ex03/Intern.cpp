@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/23 19:38 by mait-all                        //
-//                               Updated: 2025/10/24 21:00 by mait-all                        //
+//                               Updated: 2025/10/24 22:10 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Intern.hpp"
@@ -38,13 +38,12 @@ Intern::~Intern() {}
 
 AForm*  Intern::makeForm(const std::string formName, const std::string formTarget) {
     std::string validForms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
-    int         index;
+    int         index = 0;
 
     for (index = 0; index < 3; index++)
     {
         if (formName == validForms[index])
             break;
-        index++;
     }
 
     switch(index)
@@ -56,7 +55,7 @@ AForm*  Intern::makeForm(const std::string formName, const std::string formTarge
         case 2:
                 return (new PresidentialPardonForm(formTarget));
         default:
-                std::cout << "Oops! Invalid form name" << std::endl;
+                throw std::invalid_argument("Invalid form name");
                 return (NULL);
     }
 }
