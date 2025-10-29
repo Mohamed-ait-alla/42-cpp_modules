@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/26 19:49 by mait-all                        //
-//                               Updated: 2025/10/28 10:46 by mait-all                        //
+//                               Updated: 2025/10/28 22:33 by mait-all                        //
 // ****************************************************************************************** //
 
 #ifndef SCALARCONVERTER_HPP
@@ -17,6 +17,7 @@ enum    ScalarTypes {
     INT,
     FLOAT,
     DOUBLE,
+    NAN_INF,
     INVALID
 };
 

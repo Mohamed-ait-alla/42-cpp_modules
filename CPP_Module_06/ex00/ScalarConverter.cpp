@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/26 19:49 by mait-all                        //
-//                               Updated: 2025/10/28 21:25 by mait-all                        //
+//                               Updated: 2025/10/29 13:20 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "ScalarConverter.hpp"
@@ -41,6 +41,10 @@ ScalarTypes ScalarConverter::detectType(std::string& value) {
     // char
     if (value.length() == 1 && !isdigit(value[0]))
         return (CHAR);
+    // special float/double values
+    if (value == "+inff" || value == "-inff" || "nanf"
+        || value == "+inf" || "-inf" || value == "nan")
+        return (NAN_INF);
     // invalid
     else if (value.find_first_not_of("-+") == std::string::npos)
         return (INVALID);
@@ -131,6 +135,32 @@ void    ScalarConverter::convert(std::string& input) {
             std::cout << "double: " << static_cast<double>(strtod(input.c_str(), 0));
             if (atof(input.c_str()) == static_cast<int>(strtod(input.c_str(), 0)))
                 std::cout << ".0";
+            std::cout << std::endl;
+            break;
+        }
+    case NAN_INF:
+        {
+            // scalar type: char
+            std::cout << "char: impossible" << std::endl;
+            // scalar type: int
+            std::cout << "char: impossible" << std::endl;
+            // scalar type: float
+            std::cout << "float: ";
+            if (input == "+inf" || input == "+inff")
+                std::cout << "+inff";
+            else if (input == "-inf" || input == "-inff")
+                std::cout << "-inff";
+            else
+                std::cout << "nanf";
+            std::cout << std::endl;
+            // scalary type: double
+            std::cout << "double: ";
+            if (input == "+inf" || input == "+inff")
+                std::cout  << "+inf";
+            else if (input == "-inf" || input == "-inff")
+                std::cout << "-inf";
+            else
+                std::cout << "nan";
             std::cout << std::endl;
             break;
         }
