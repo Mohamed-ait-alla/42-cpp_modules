@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/12 19:40 by mait-all                        //
-//                               Updated: 2025/11/07 11:27 by mait-all                        //
+//                               Updated: 2025/11/07 11:37 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Cat.hpp"
@@ -11,28 +11,30 @@
 // Default constructor
 Cat::Cat() {
 	this->type = "Cat";
-	this->brain = new Brain();
+	this->_brain = new Brain();
 	std::cout << "Cat: Default constructor called" << std::endl;
 }
 
 // Copy constructor
 Cat::Cat(const Cat& other) : AAnimal(other) {
-	this->brain = new Brain(*other.brain);
+	this->_brain = new Brain(*other._brain);
 	std::cout << "Cat: Copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
 Cat&	Cat::operator=(const Cat& other) {
+	if (this == &other)
+		return (*this);
+
 	AAnimal::operator=(other);
-	if (this != &other)
-		*this->brain = *other.brain;
+	*this->_brain = *other._brain;
 	std::cout << "Cat: Copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 // Destructor
 Cat::~Cat() {
-	delete this->brain;
+	delete this->_brain;
 	std::cout << "Cat: Destructor called" << std::endl;
 }
 
@@ -43,5 +45,5 @@ void	Cat::makeSound(void) const {
 }
 
 Brain*	Cat::getBrain() const {
-	return (brain);
+	return (_brain);
 }
