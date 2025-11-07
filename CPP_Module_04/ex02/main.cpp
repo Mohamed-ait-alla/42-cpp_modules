@@ -28,7 +28,7 @@ int main(void)
 
 	std::cout << "==== creating array of Animals ====" << std::endl;
 
-	Animal*	animals[6];
+	AAnimal*	animals[6];
 	for (int i = 0; i < 6; i++){
 		if (i < 3)
 			animals[i] = new Dog();

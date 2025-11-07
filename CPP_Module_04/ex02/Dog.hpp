@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/12 19:40 by mait-all                        //
-//                               Updated: 2025/10/12 19:40 by mait-all                        //
+//                               Updated: 2025/11/07 11:29 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -16,7 +16,7 @@
 //                                   Dog Class                                //
 // ************************************************************************** //
 
-class Dog : public Animal {
+class Dog : public AAnimal {
 
 	public:
 		// ocf

@@ -3,38 +3,38 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/12 19:40 by mait-all                        //
-//                               Updated: 2025/10/12 19:40 by mait-all                        //
+//                               Updated: 2025/11/07 11:24 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Animal.hpp"
 
 
 // Default constructor
-Animal::Animal() {
+AAnimal::AAnimal() {
 	this->type = "unkown";
 	std::cout << "Animal: Default constructor called" << std::endl;
 }
 
 // Copy constructor
-Animal::Animal(const Animal& other) {
+AAnimal::AAnimal(const AAnimal& other) {
 	this->type = other.type;
 	std::cout << "Animal: Copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
-Animal&	Animal::operator=(const Animal& other) {
+AAnimal&	AAnimal::operator=(const AAnimal& other) {
 	this->type = other.type;
 	std::cout << "Animal: Copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 // Destructor
-Animal::~Animal() {
+AAnimal::~AAnimal() {
 	std::cout << "Animal: Destructor called" << std::endl;
 }
 
 
 // getter
-std::string	Animal::getType(void) const {
+std::string	AAnimal::getType(void) const {
 	return (type);
 }

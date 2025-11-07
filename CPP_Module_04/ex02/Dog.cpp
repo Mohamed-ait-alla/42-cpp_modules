@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/12 19:40 by mait-all                        //
-//                               Updated: 2025/10/12 19:40 by mait-all                        //
+//                               Updated: 2025/11/07 11:28 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Dog.hpp"
@@ -17,14 +17,14 @@ Dog::Dog() {
 }
 
 // Copy constructor
-Dog::Dog(const Dog& other) : Animal(other) {
+Dog::Dog(const Dog& other) : AAnimal(other) {
 	this->brain = new Brain(*other.brain);
 	std::cout << "Dog: Copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
 Dog&	Dog::operator=(const Dog& other) {
-	Animal::operator=(other);
+	AAnimal::operator=(other);
 	if (this != &other)
 		*this->brain = *other.brain;
 	std::cout << "Dog: Copy assignment operator called" << std::endl;
