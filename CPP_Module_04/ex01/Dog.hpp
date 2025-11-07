@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/11 20:04 by mait-all                        //
-//                               Updated: 2025/10/11 21:53 by mait-all                        //
+//                               Updated: 2025/11/06 15:25 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -30,5 +30,5 @@ class Dog : public Animal {
 		Brain*	getBrain() const;
 	
 	private:
-		Brain*	brain;
+		Brain*	_brain;
 };

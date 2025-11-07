@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/11 20:15 by mait-all                        //
-//                               Updated: 2025/10/11 20:22 by mait-all                        //
+//                               Updated: 2025/11/06 15:21 by mait-all                        //
 // ****************************************************************************************** //
 
 #pragma once
@@ -29,6 +29,6 @@ class Brain {
         void        setIdea(int index, std::string idea);
 
     private:
-        std::string ideas[100];
+        std::string _ideas[100];
 
 };

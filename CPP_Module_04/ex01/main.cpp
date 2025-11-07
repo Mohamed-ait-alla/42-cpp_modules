@@ -33,7 +33,7 @@ int main(void)
 	std::cout << "\n==== Printing Animals types and sounds ====" << std::endl;
 	for (int i = 0; i < 6; i++)
 	{
-		std::cout << "Animal " << i << "is a " << animals[i]->getType() << " and it says: ";
+		std::cout << "Animal " << i << " is a " << animals[i]->getType() << " and it says: ";
 		animals[i]->makeSound();
 	}
 

@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/11 20:04 by mait-all                        //
-//                               Updated: 2025/10/11 22:10 by mait-all                        //
+//                               Updated: 2025/11/06 16:06 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Dog.hpp"
@@ -12,28 +12,30 @@
 // Default constructor
 Dog::Dog() {
 	this->type = "Dog";
-	this->brain = new Brain();
+	this->_brain = new Brain();
 	std::cout << "Dog: Default constructor called" << std::endl;
 }
 
 // Copy constructor
 Dog::Dog(const Dog& other) : Animal(other) {
-	this->brain = new Brain(*other.brain);
+	this->_brain = new Brain(*other._brain);
 	std::cout << "Dog: Copy constructor called" << std::endl;
 }
 
 // Copy assignment operator
 Dog&	Dog::operator=(const Dog& other) {
+	if (this == &other)
+		return (*this);
+
 	Animal::operator=(other);
-	if (this != &other)
-		*this->brain = *other.brain;
+	*this->_brain = *other._brain;
 	std::cout << "Dog: Copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 // Destructor
 Dog::~Dog() {
-	delete this->brain;
+	delete this->_brain;
 	std::cout << "Dog: Destructor called" << std::endl;
 }
 
@@ -44,5 +46,5 @@ void	Dog::makeSound(void) const {
 }
 
 Brain*	Dog::getBrain() const {
-	return (brain);
+	return (_brain);
 }

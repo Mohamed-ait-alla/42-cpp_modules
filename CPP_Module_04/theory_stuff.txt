@@ -21,6 +21,25 @@ if you didn't make Destructors as virtual in base, it won't be full cleanup of o
 => the WrongAnimal and WrongCat classes demonstrates lack of polymorphism when you create a base object based on drived class, so when you try to call makeSound it will always call
 the WrongAnimal version because the compiler dosn't which one to call, and this the runtime polymorphism, to solve that you can use virtual keyword and make makeSound method as virtual.
 
+===============
+
+=========== difference between static and dynamic binding ========
+=> what is binding: is a crucial connection linking a function call to its matching function definition. When a function is called in your code, program control is bound to the memory location where the bind was defined.
+as we know we have two main parts of a function Function Definition and Function call.
+Different memory locations are used to store these definitions and calls. We need a way to correctly match each call to each function’s definition because programs often require many functions to run smoothly.
+If the binding were not present, then both functions would have mixed up, creating confusion and undesired result.
+Connecting a specific function call to its right function definition is called binding. But why is this so important? The advantages of binding are big, and they come in two main types: static and dynamic.
+=> static binding (or compile time binding):  Static binding occurs when the connection between a function call and its definition is set when your program is being prepared for running, called Compile Time. 
+Some of the advantages of using the Static Binding are as follows:
+- Static binding is faster than dynamic binding. The program runs faster because the computer is already aware of all the methods in a class. 
+- Programs run more quickly and efficiently because they are faster.
+Examples of static binding are: Function overloading and operator overloading.
+
+=> dynamic binding (or run-time binding): is When the connection between a function call and its definition happens while the program is running (after compiling).
+Some of the advantages of using dynamic binding are given here:
+- The fact that the same function can handle a variety of objects gives it a lot of flexibility.
+- It can help make programs smaller and easier to understand.
+Examples of dynamic binding is: virtual functions.
 
 ============================ Ex01 ==============================
 === shallow copy Vs deep copy ===
