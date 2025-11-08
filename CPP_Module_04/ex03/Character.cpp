@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/15 10:38 by mait-all                        //
-//                               Updated: 2025/11/08 11:17 by mait-all                        //
+//                               Updated: 2025/11/08 16:04 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Character.hpp"
@@ -79,6 +79,8 @@ void    Character::equipe(AMateria* m) {
         return ;
     for (int i = 0; i < 4; i++)
     {
+		if (_inventory[i] == m)
+			return ;
         if (this->_inventory[i] == NULL)
         {
             this->_inventory[i] = m;

@@ -32,11 +32,21 @@ int main (void)
     me->equipe(tmp);
     tmp = src->createMateria("cure");
     me->equipe(tmp);
+    me->equipe(tmp);
+    me->equipe(tmp);
+    me->equipe(tmp);
 
     ICharacter* bob = new Character("bob");
 
+	std::cout << std::endl;
+	std::cout << std::endl;
+
     me->use(0, *bob);
     me->use(1, *bob);
+	me->use(2, *bob);
+	// _inventuaryCopy needs more size: !memory leak
+	std::cout << std::endl;
+	std::cout << std::endl;
 
     delete bob;
     delete me;
