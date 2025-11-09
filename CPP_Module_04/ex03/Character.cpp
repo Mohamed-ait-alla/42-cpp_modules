@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/15 10:38 by mait-all                        //
-//                               Updated: 2025/11/09 10:00 by mait-all                        //
+//                               Updated: 2025/11/09 12:49 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Character.hpp"
@@ -36,7 +36,9 @@ Character::Character(const Character& other) {
             this->_inventory[i] = other._inventory[i]->clone();
         else
             this->_inventory[i] = NULL;
+		_inventoryCopy[i] = NULL;
     }
+
     std::cout << "Character: Copy constructor called" << std::endl;
 }
 
