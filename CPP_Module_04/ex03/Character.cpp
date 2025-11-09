@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/15 10:38 by mait-all                        //
-//                               Updated: 2025/11/08 16:04 by mait-all                        //
+//                               Updated: 2025/11/09 09:27 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Character.hpp"
@@ -75,12 +75,26 @@ std::string const & Character::getName() const {
 }
 
 void    Character::equipe(AMateria* m) {
-    if (!m)
+    if (!m) {
         return ;
+	}
+
+	// check if this materia already equiped
+	for (int i = 0; i < 4; i++) {
+		if (_inventory[i] == m) {
+			return ;
+		}
+	}
+
+	// check if this materia already unequiped and its address saved in copy inventory
+	for (int i = 0; i < 4; i++) {
+		if (_inventoryCopy[i] == m)
+			_inventoryCopy[i] = NULL;
+	}
+
+	// find an empty slot and equipe the materia normally
     for (int i = 0; i < 4; i++)
     {
-		if (_inventory[i] == m)
-			return ;
         if (this->_inventory[i] == NULL)
         {
             this->_inventory[i] = m;
