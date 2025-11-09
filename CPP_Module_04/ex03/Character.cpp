@@ -3,7 +3,7 @@
 //                               by: mait-all <mait-all@student.1337.ma>                      //
 //                                                                                            //
 //                               Created: 2025/10/15 10:38 by mait-all                        //
-//                               Updated: 2025/11/09 09:27 by mait-all                        //
+//                               Updated: 2025/11/09 10:00 by mait-all                        //
 // ****************************************************************************************** //
 
 #include "Character.hpp"
@@ -104,8 +104,16 @@ void    Character::equipe(AMateria* m) {
 }
 
 void    Character::unequipe(int idx) {
-    if (idx < 0 || idx >= 4 || !_inventory[idx])
+	// index safety check
+    if (idx < 0 || idx >= 4 || !_inventory[idx]) {
         return ;
+	}
+
+	// check if a materia already saved in that index free it before overitten it
+	if (_inventoryCopy[idx])
+		delete _inventoryCopy[idx];
+
+	// backup the materia
     _inventoryCopy[idx] = _inventory[idx];
     _inventory[idx] = NULL;
 }

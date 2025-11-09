@@ -36,18 +36,31 @@ int main (void)
     me->equipe(tmp);
 	tmp = src->createMateria("cure");
     me->equipe(tmp);// _inventory = [0x100, NULL, NULL, NULL]
-    me->equipe(tmp);// _inventory = [0x100, NULL, NULL, NULL]
 	me->unequipe(0);// _inventory = [NULL, NULL, NULL, NULL] // _inventoryCopy = [0x100, NULL, NULL, NULL]
 	// me->equipe(tmp);
 	me->unequipe(1);
 	me->unequipe(2);
 	me->unequipe(3);
+	// tmp = src->createMateria("ice");
+	// // me->equipe(tmp); // _inventory = [NULL, NULL, NULL, NULL] // _inventoryCopy = [0x100, 0x200, 0x300, 0x400]
+	// me->equipe(tmp); // _inventory = [0x200, NULL, NULL, NULL] // _inventoryCopy = [0x100, 0x200, 0x300, 0x400]
+	// me->unequipe(0);
+	// me->unequipe(0);
+	// me->equipe(tmp);
+	// me->equipe(tmp);
 	tmp = src->createMateria("ice");
-	// me->equipe(tmp); // _inventory = [NULL, NULL, NULL, NULL] // _inventoryCopy = [0x100, 0x200, 0x300, 0x400]
+    me->equipe(tmp);
+    tmp = src->createMateria("cure");
+    me->equipe(tmp);
+	tmp = src->createMateria("ice");
+    me->equipe(tmp);
+	tmp = src->createMateria("cure");
 	me->equipe(tmp);
-	me->unequipe(0);
-	// me->equipe(tmp);
-	// me->equipe(tmp);
+	// me->unequipe(0);
+	// me->unequipe(1);
+	// me->unequipe(2);
+	// me->unequipe(3);
+	
     ICharacter* bob = new Character("bob");
 
 	std::cout << std::endl;
@@ -64,6 +77,7 @@ int main (void)
     delete bob;
     delete me;
     delete src;
+	delete tmp;
 
 	// AMateria*	test;
 	// IMateriaSource*	m = new MateriaSource();
