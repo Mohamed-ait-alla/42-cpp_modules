@@ -1,16 +1,29 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This program builds on the previous exercise by introducing the Brain class
+ * 			and demonstrating the difference between shallow and deep copies in C++.
  * 
+ * 			Each Dog and Cat now contains a Brain* member that must be deeply copied.
+ * 			When a Dog or Cat is copied:
+ * 				- A new Brain object is allocated and initialized with the original's data.
+ * 				- This ensures that each animal has its own independent Brain.
+ * 
+ * 			The main point of this exercise is to understand the risks of shallow copies and
+ * 			how to properly manage dynamic memory, especially in these methods:
+ * 				- Copy constructor
+ * 				- Copy assignment operator
+ * 				- Destructor
  * 
  * @usage:
- * 			ToDo...
+ * 			1. Compile:	make
+ * 			2. Run:		./deepCopy
+ * 			3. CleanUp:	make fclean
  *
 */
 

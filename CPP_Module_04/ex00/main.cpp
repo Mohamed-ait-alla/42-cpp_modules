@@ -1,16 +1,30 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This program demonstrates the concept of runtime polymorphism in C++.
  * 
+ * 			The Animal base class defines a virtual makeSound() function that is
+ * 			overridden by its derived classes Dog and Cat. When called through
+ * 			a base pointer or reference, the correct derived version is invoked
+ * 			thanks to dynamic dispatch (or dynamic binding).
+ * 
+ * 			To contrast this behavior, the program also defines WrongAnimal and
+ * 			WrongCat classes without virtual functions. Calling makeSound() through
+ * 			a WrongAnimal pointer will result in static dispatch, showing that
+ * 			the derived version is not called.
+ * 
+ * 			This exercise highlights the importance of virtual functions in achieving
+ * 			polymorphic behavior.
  * 
  * @usage:
- * 			ToDo...
+ * 			1. Compile:	make
+ * 			2. Run:		./polymorphism
+ * 			3. CleanUp:	make fclean
  *
 */
 

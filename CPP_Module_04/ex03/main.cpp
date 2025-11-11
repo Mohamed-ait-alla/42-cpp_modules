@@ -1,16 +1,31 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This program demonstrates the concept of interfaces in C++ using pure abstract classes.
  * 
+ * 			It defines a complete Materia system inspired by RPG mechanics, consisting of:
+ * 				- AMateria (abstract base class)
+ * 				- Ice and Cure (concrete derived classes)
+ * 				- ICharacter and IMateriaSource (interfaces)
+ * 				- Character and MateriaSource (implementations)
+ * 
+ * 			The goal is to understand how interfaces are represented in C++, by defining
+ * 			pure abstract classes with no member data and only pure virtual functions.
+ * 
+ * 			This exercise also serves as a recap of key concepts from previous exercises:
+ * 				- Runtime polymorphism
+ * 				- Dynamic allocation and deep copy
+ * 				- Abstract classes
  * 
  * @usage:
- * 			ToDo...
+ * 			1. Compile:	make
+ * 			2. Run:		./interfaces
+ * 			3. CleanUp:	make fclean
  *
 */
 

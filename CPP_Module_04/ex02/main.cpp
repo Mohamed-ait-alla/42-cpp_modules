@@ -1,16 +1,26 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This program introduces abstract classes and pure virtual functions in C++.
  * 
+ * 			The Animal base class is now abstract and cannot be instantiated directly,
+ * 			because its makeSound() method is declared as pure virtual.
+ * 
+ * 			The goal of this exercise is to understand that abstract classes define a
+ * 			common interface but leave the specific behavior to derived classes.
+ * 
+ *			Attempting to instantiate an Animal will result in a compilation error, 
+ * 			reinforcing the concept of abstraction and runtime polymorphism.
  * 
  * @usage:
- * 			ToDo...
+ * 			1. Compile:	make
+ * 			2. Run:		./Abstract
+ * 			3. CleanUp:	make fclean
  *
 */
 
@@ -21,7 +31,7 @@
 int main(void)
 {
 	// abstract class testing
-	// Animal* meta = new Animal(); // should fail because it must not be instanciated
+	// AAnimal* meta = new AAnimal(); // should fail because it must not be instanciated
 
 	// meta->makeSound();
 	// delete meta;
