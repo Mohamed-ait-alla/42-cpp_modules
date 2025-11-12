@@ -1,0 +1,36 @@
+================== Exceptions =================
+=> what is an exception: is a mechanism to detect and manage runtime errors (errors that occurs during program execution)
+						in a structured way.
+=> how they work: instead of terminating the program abruptly when an error occurs, c++ allows you to throw an exception and catch
+				 it for graceful handling. When an error occurs the program uses the throw keyword to signal and exception, the program looks
+				 for a matching catch block to intercept and handle the thrown exception, this catch block contains the logic to respond to the 
+				 intercepted error.
+				 There are three types of values that can be thrown as an exception:
+				 	- Built-in types
+					- Standard Exceptions
+					- Custom Exceptions
+				
+=> Built-in types Exceptions: throwing Built-in types is very simple but it doesn't provide any useful infos. like an throwing an integer and catch it.
+=> Standard Exceptions: are a set of classes that represent different types of common exceptions. all these classes are defined in <stdexcept> header file
+						and they derived from std::exception which is the base class for inbuilt exceptions.
+						some of classes that inherit from std::exception are: invalid_argument, out-of-range, overflow_error, bad_alloc, bad_cast, bad_function_call...
+						These exceptions are thrown by c++ library components so we should know how to handle them. the what () method is present in every standard exception
+						to provide infos about the exception itself. For example .at() built-in string method throws an out_of_range exception when an index doesn't exist, then
+						you can catch out_of_range and call e.what() to see the info error.
+=> Custom Exceptions: when the standard exceptions cannot satisfy our requirements, we can create a custom exception class that inherits from std::exception and then override the what()
+					method in created class. then in your try catch block you can throw that class as an exception.
+
+=> There is two ways of catching exceptions: catch by value and catch by reference.
+
+=> Exception Propagation: tells us how the exception travels in the call stack.
+							when an exception is thrown, execution of the current block is immediately terminated and all the resources allocated are automattically deallocated except dynamic allocations.
+							the stack unwinding occurs as the thrown exception propagates through the call stack to look for the matching catch block.
+							when catch block is found, exception is caught and handled, if not caught the program terminates.
+				=> stack unwinding: is the process of removing function call frames from function call stack at run time. it's the process that occurs when a function returns a value, and this occurs too due to exception
+									handling in c++ the local objects are destroyed in reverse order in which they were constructed.
+				=> when stack unwinding occurs in exceptions: when an exception occurs in a function but is not handled immediately in that function. the program control goes back through each function step by step, cleaning up
+				any temporary resources used by each function. during this process, c++ also looks for a way to handle the exception by searching fo a catch block, if catch block found it handles the exception there. if no the program reaches
+				the beginning and stops execution.
+				note: if the function throws an exception and dosesn't have it's catch block, the lines after that throw keyword doesn't execute at all.
+				=> dynamic resources and stack unwinding: stack unwinding cleans up all the local objects by calling their destructor, by dynamic resources are not cleared automattically, so they should cleaned up manually, because they will
+					cause memory leak.

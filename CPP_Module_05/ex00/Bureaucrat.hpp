@@ -1,19 +1,20 @@
-// ****************************************************************************************** //
-//                               file: Bureaucrat.hpp                                         //
-//                               by: mait-all <mait-all@student.1337.ma>                      //
-//                                                                                            //
-//                               Created: 2025/10/19 10:59 by mait-all                        //
-//                               Updated: 2025/10/19 21:33 by mait-all                        //
-// ****************************************************************************************** //
+// ****************************************************************************** //
+//                        file: Bureaucrat.hpp                                    //
+//                        by: mait-all <mait-all@student.1337.ma>                 //
+//                                                                                //
+//                        Created: 2025/10/19 10:59 by mait-all                   //
+//                        Updated: 2025/11/12 11:46 by mait-all                   //
+// ****************************************************************************** //
 
-#pragma once
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 #include <iostream>
 
 
-// ************************************************************************** //
-//                               Bureaucrat Class                             //
-// ************************************************************************** //
+// ****************************************************************************** //
+//                               Bureaucrat Class                                 //
+// ****************************************************************************** //
 
 class Bureaucrat {
 
@@ -31,7 +32,7 @@ class Bureaucrat {
         void          incrementGrade();
         void          decrementGrade();
 
-        // Exceptions
+        // Custom exception nested classes
         class GradeTooHighException : public std::exception {
             public:
                 const char* what() const throw();
@@ -49,3 +50,6 @@ class Bureaucrat {
 
 // insertion operator (<<) overloading
 std::ostream&	operator<<(std::ostream& output, const Bureaucrat& Obj);
+
+
+#endif /* __BUREAUCRAT_HPP__ */
