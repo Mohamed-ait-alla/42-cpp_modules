@@ -15,15 +15,16 @@
 // Default constructor
 Form::Form()
     : _name("Default"),
+	  _isSigned(false),
       _gradeToSign(150),
       _gradeToExecute(150)
 {
-    _isSigned = false;
 }
 
 // Parametrised constructor
 Form::Form(const std::string name, int gradeToSign, int gradeToExecute) 
     : _name(name),
+	  _isSigned(false),
       _gradeToSign(gradeToSign),
       _gradeToExecute(gradeToExecute)
 {
@@ -31,16 +32,15 @@ Form::Form(const std::string name, int gradeToSign, int gradeToExecute)
         throw GradeTooHighException();
     if (gradeToSign > 150 || gradeToExecute > 150)
         throw GradeTooLowException();
-    _isSigned = false;
 }
 
 // Copy constructor
 Form::Form(const Form& other)
     : _name(other._name),
+	  _isSigned(other._isSigned),
       _gradeToSign(other._gradeToSign),
       _gradeToExecute(other._gradeToExecute)
 {
-    _isSigned = other._isSigned;
 }
 
 // Copy assignment operator
