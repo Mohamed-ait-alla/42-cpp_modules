@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/10/22 13:50 by mait-all                   //
-//                        Updated: 2025/11/13 08:44 by mait-all                   //
+//                        Updated: 2025/11/13 11:02 by mait-all                   //
 // ****************************************************************************** //
 
 #include "AForm.hpp"
@@ -16,16 +16,17 @@
 AForm::AForm()
     : _name("Default"),
       _target("Default"),
+	  _isSigned(false),
       _gradeToSign(150),
       _gradeToExecute(150)
 {
-    _isSigned = false;
 }
 
 // Parametrised constructor
 AForm::AForm(const std::string name, const std::string target, int gradeToSign, int gradeToExecute) 
     : _name(name),
       _target(target),
+	  _isSigned(false),
       _gradeToSign(gradeToSign),
       _gradeToExecute(gradeToExecute)
 {
@@ -33,17 +34,16 @@ AForm::AForm(const std::string name, const std::string target, int gradeToSign, 
         throw GradeTooHighException();
     if (gradeToSign > 150 || gradeToExecute > 150)
         throw GradeTooLowException();
-    _isSigned = false;
 }
 
 // Copy constructor
 AForm::AForm(const AForm& other)
     : _name(other._name),
       _target(other._target),
+	  _isSigned(other._isSigned),
       _gradeToSign(other._gradeToSign),
       _gradeToExecute(other._gradeToExecute)
 {
-    _isSigned = other._isSigned;
 }
 
 // Copy assignment operator

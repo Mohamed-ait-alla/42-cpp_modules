@@ -3,11 +3,11 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/10/22 13:50 by mait-all                   //
-//                        Updated: 2025/11/13 08:44 by mait-all                   //
+//                        Updated: 2025/11/13 11:22 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef AFORM_HPP
-# define AFROM_HPP
+# define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 

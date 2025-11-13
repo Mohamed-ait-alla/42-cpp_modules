@@ -14,8 +14,7 @@
 // -------------------------------
 
 // Default constructor
-Bureaucrat::Bureaucrat() : _name("unknown") {
-    _grade = 150;
+Bureaucrat::Bureaucrat() : _name("unknown"), _grade(150) {
 }
 
 // Parametrised constructor
@@ -28,8 +27,7 @@ Bureaucrat::Bureaucrat(const std::string name, int grade) : _name(name) {
 }
 
 // Copy constructor
-Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name) {
-    _grade = other._grade;
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : _name(other._name), _grade(other._grade) {
 }
 
 // Copy assignment operator
