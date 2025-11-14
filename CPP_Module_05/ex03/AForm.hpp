@@ -7,7 +7,7 @@
 // ****************************************************************************** //
 
 #ifndef AFORM_HPP
-# define AFROM_HPP
+# define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 

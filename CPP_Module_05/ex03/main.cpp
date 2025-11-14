@@ -26,9 +26,9 @@ int main(void)
         Intern      intern;
 
         // testing valid forms
-        AForm*  sC = intern.makeForm("shrubbery creation", "home");
-        AForm*  rR = intern.makeForm("robotomy request", "bender");
-        AForm*  pP = intern.makeForm("presidential pardon", "marvin");
+        AForm*  sC = intern.makeForm("ShrubberyCreationForm", "home");
+        AForm*  rR = intern.makeForm("RobotomyRequestForm", "bender");
+        AForm*  pP = intern.makeForm("PresidentialPardonForm", "marvin");
 
         std::cout << *sC << std::endl;
         std::cout << *rR << std::endl;

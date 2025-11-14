@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/10/23 19:38 by mait-all                   //
-//                        Updated: 2025/11/13 09:06 by mait-all                   //
+//                        Updated: 2025/11/13 13:18 by mait-all                   //
 // ****************************************************************************** //
 
 #include "Intern.hpp"
@@ -37,7 +37,7 @@ Intern::~Intern() {}
 // -------------------------------
 
 AForm*  Intern::makeForm(const std::string formName, const std::string formTarget) {
-    std::string validForms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+    std::string validForms[3] = {"ShrubberyCreationForm", "RobotomyRequestForm", "PresidentialPardonForm"};
     int         index = 0;
 
     for (index = 0; index < 3; index++)
