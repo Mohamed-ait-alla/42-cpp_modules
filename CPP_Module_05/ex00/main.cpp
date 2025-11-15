@@ -1,17 +1,32 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This exercise introduces exception handling in C++ through the implementation
+ * 			of a Bureaucrat class. A Bureaucrat has two attributes:
+ * 				- A constant name
+ * 				- A grade ranging from 1 (highest) to 150 (lowest)
+ * 			
+ * 			When constructing a Bureaucrat with an invalid grade, the class must throw
+ * 			an appropriate exception. Two custom exception types are implemented:
+ * 				- GradeTooHighException
+ * 				- GradeTooLowException
  * 
+ * 			The class also provides the member functions incrementGrade() and decrementGrade()
+ * 			which they must check whether the resulting grade remains within
+ * 			the valid range. If not, the corresponding exception is thrown.
+ * 
+ * 			The purpose of this exercice is to understand how c++ exceptions work,
+ * 			how to define custom exception classes, and how to work with them.
  * 
  * @usage:
- * 			ToDo...
- *
+ * 			1. Compile:	make
+ * 			2. Run:		./bureaucrat
+ * 			3. CleanUp:	make fclean
 */
 
 #include "Bureaucrat.hpp"

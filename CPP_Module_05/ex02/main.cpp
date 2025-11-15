@@ -1,17 +1,34 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This exercise builds on the previous interaction between Bureaucrat and Form by
+ * 			making the Form class as an abstract class called AForm. The AForm class defines
+ * 			a common interface for all forms and includes a pure virtual method:
  * 
+ * 				- execute(Bureaucrat const & executor)
+ * 
+ * 			This method must be implemented by each concrete form class:
+ * 				- ShrubberyCreationForm
+ * 				- RobotomyRequestForm
+ * 				- PresidentialPardonForm
+ * 
+ * 			A form can only be executed if:
+ * 				1. It has already been signed.
+ * 				2. The executing Bureaucrat has a grade high enough to execute it.
+ * 
+ * 			If either condition is not met, the appropriate exception is thrown. Each concrete
+ * 			form implements its own action logic inside the execute() method, demonstrating
+ * 			how abstract classes provide structure while allowing specialized behavior.
  * 
  * @usage:
- * 			ToDo...
- *
+ * 			1. Compile:	make
+ * 			2. Run:		./advancedForm
+ * 			3. CleanUp:	make fclean
 */
 
 #include "Bureaucrat.hpp"

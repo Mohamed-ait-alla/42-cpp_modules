@@ -1,17 +1,32 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This exercise introduces the Intern class, which is responsible for creating
+ * 			concrete AForm objects based on a form name requested at runtime.
  * 
+ * 			The Intern provides a member function:
+ * 				- makeForm(const std::string &formName, const std::string &target)
+ * 
+ * 			This function acts as a simple factory: it returns a new form object based
+ * 			on the formName passed as parameter.
+ * 
+ * 			Valid forms are:
+ * 				→ ShrubberyCreationForm
+ * 				→ RobotomyRequestForm
+ * 				→ PresidentialPardonForm
+ * 
+ * 			If the requested form name does not match any known type, the Intern throws
+ * 			an appropriate exception, indicating that the form cannot be created.
  * 
  * @usage:
- * 			ToDo...
- *
+ * 			1. Compile:	make
+ * 			2. Run:		./intern
+ * 			3. CleanUp:	make fclean
 */
 
 #include "AForm.hpp"

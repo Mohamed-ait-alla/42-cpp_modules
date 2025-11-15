@@ -1,17 +1,29 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This exercise expands the exception-handling system by introducing the Form class.
+ * 			Each Form has the following attributes:
+ * 				- A constant name
+ * 				- A boolean indicating whether the form is signed (during construction each Form should be unsigned)
+ * 				- A required grade to sign the form
+ * 				- A required grade to execute the form
  * 
+ * 			The beSigned() member function allows a Bureaucrat to attempt to sign the form.
+ * 			If the Bureaucrat's grade is higher than the required grade (numerically larger),
+ * 			a GradeTooLowException is thrown. Otherwise, the form becomes signed.
+ * 
+ * 			The Bureaucrat class is extended with the signForm() method, which calls
+ * 			form.beSigned(*this) and reports whether the signing attempt succeeded or failed.
  * 
  * @usage:
- * 			ToDo...
- *
+ * 			1. Compile:	make
+ * 			2. Run:		./form
+ * 			3. CleanUp:	make fclean
 */
 
 #include "Form.hpp"
