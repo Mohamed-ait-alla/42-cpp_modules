@@ -1,10 +1,10 @@
-// ****************************************************************************************** //
-//                               file: ScalarConverter.cpp                                    //
-//                               by: mait-all <mait-all@student.1337.ma>                      //
-//                                                                                            //
-//                               Created: 2025/10/26 19:49 by mait-all                        //
-//                               Updated: 2025/10/29 13:20 by mait-all                        //
-// ****************************************************************************************** //
+// ****************************************************************************** //
+//                        file: ScalarConverter.cpp                               //
+//                        by: mait-all <mait-all@student.1337.ma>                 //
+//                                                                                //
+//                        Created: 2025/11/06 09:27 by mait-all                   //
+//                        Updated: 2025/11/16 18:23 by mait-all                   //
+// ****************************************************************************** //
 
 #include "ScalarConverter.hpp"
 
@@ -14,36 +14,71 @@
 // -------------------------------
 
 // Default constructor
-ScalarConverter::ScalarConverter() {}
+ScalarConverter::ScalarConverter()
+{
+}
 
 // Copy constructor
-ScalarConverter::ScalarConverter(const ScalarConverter& other) {
+ScalarConverter::ScalarConverter(const ScalarConverter& other)
+{
     *this = other;
 }
 
 // Copy assignment operator
-ScalarConverter&    ScalarConverter::operator=(const ScalarConverter& other) {
+ScalarConverter&    ScalarConverter::operator=(const ScalarConverter& other)
+{
     if (this != &other)
         *this = other;
     return (*this);
 }
 
 // Destructor
-ScalarConverter::~ScalarConverter() {}
+ScalarConverter::~ScalarConverter()
+{
+}
 
 
 // -------------------------------
 // Member functions
 // -------------------------------
 
+// ---- checks ----
+// 42. / 42f
+// --- --- --- ----
+
+
+// check if the argument has one f and in the correct position
+bool	ScalarConverter::isValidFPosition(std::string& input)
+{
+	size_t len = input.length();
+	if (input[len - 1] != 'f')
+		return (false);
+	return (true);
+}
+
+
+// check if the argument has more than one dots
+bool	ScalarConverter::hasMultipleSameChars(std::string& input, char c)
+{
+	int	count = 0;
+
+	for (unsigned long i = 0; i < input.length(); i++)
+	{
+		if (input[i] == c)
+			count++;
+	}
+	return (count > 1 ? true : false);
+}
+
 // Detect the type of the content inside the string parameter
-ScalarTypes ScalarConverter::detectType(std::string& value) {
-    // char
+ScalarTypes ScalarConverter::detectType(std::string& value)
+{
+    // char 
     if (value.length() == 1 && !isdigit(value[0]))
         return (CHAR);
     // special float/double values
-    if (value == "+inff" || value == "-inff" || "nanf"
-        || value == "+inf" || "-inf" || value == "nan")
+    else if (value == "+inff" || value == "-inff" || value == "nanf"
+        || value == "+inf" || value == "-inf" || value == "nan")
         return (NAN_INF);
     // invalid
     else if (value.find_first_not_of("-+") == std::string::npos)
@@ -53,16 +88,31 @@ ScalarTypes ScalarConverter::detectType(std::string& value) {
         return (INT);
     // double
     else if (value.find_first_not_of("-+0123456789.") == std::string::npos)
+	{
+		if (hasMultipleSameChars(value, '.'))
+			return (INVALID);
         return (DOUBLE);
-    // float
+	}
+    // float: 42..0f, multiple dots: 42.42.42, f in rong pos: 42f42, multiple signs: --42, char overlows: 300
     else if (value.find_first_not_of("-+0123456789.f") == std::string::npos)
+	{
+		if (hasMultipleSameChars(value, '.')) // edge case: 42..42f
+			return (INVALID);
+		if (hasMultipleSameChars(value, 'f')) // edge case: 42.42fff
+			return (INVALID);
+		if (!isValidFPosition(value)) // edge case: 42f42
+			return (INVALID);
+		if (value.find(".") == std::string::npos) // edge case: 42f
+			return (INVALID);
         return (FLOAT);
+	}
     else
         return (INVALID);
 }
 
 // convert the detected type to scalar types (Char, Int, Float, Double)
-void    ScalarConverter::convert(std::string& input) {
+void    ScalarConverter::convert(std::string& input)
+{
     switch (detectType(input))
     {
     case CHAR:
@@ -99,8 +149,9 @@ void    ScalarConverter::convert(std::string& input) {
     case FLOAT:
         {
             // scalar type: char
-            if (isprint(static_cast<char>(atoi(input.c_str()))))
-                std::cout << "char: '" << static_cast<char>(atoi(input.c_str())) << "'" << std::endl;
+			char	castedChar = static_cast<char>(atoi(input.c_str()));
+            if (isprint(castedChar))
+                std::cout << "char: '" << castedChar << "'" << std::endl;
             else
                 std::cout << "char: Non Displayable" << std::endl;
             // scalar type: int
