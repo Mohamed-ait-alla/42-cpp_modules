@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/06 09:27 by mait-all                   //
-//                        Updated: 2025/11/16 18:23 by mait-all                   //
+//                        Updated: 2025/11/17 09:22 by mait-all                   //
 // ****************************************************************************** //
 
 #include "ScalarConverter.hpp"
@@ -133,17 +133,23 @@ void    ScalarConverter::convert(std::string& input)
     case INT:
         {
             // scalar type: char
-            char    castedChar = static_cast<char>(atoi(input.c_str()));
-            if (isprint(castedChar))
-                std::cout << "char: '" << castedChar << "'" << std::endl;
-            else
-                std::cout << "char: Non Displayable" << std::endl;
+			int	convertedInt = atoi(input.c_str());
+			if (convertedInt >= 0 && convertedInt <= 255)
+			{
+				char    castedChar = static_cast<char>(convertedInt);
+				if (isprint(castedChar))
+					std::cout << "char: '" << castedChar << "'" << std::endl;
+				else
+					std::cout << "char: Non Displayable" << std::endl;
+			}
+			else
+				std::cout << "char: impossible" << std::endl;
             // scalar type: int
-            std::cout << "int: " << atoi(input.c_str()) << std::endl;
+            std::cout << "int: " << convertedInt << std::endl;
             // scalar type: float
-            std::cout << "float: " << static_cast<float>(atoi(input.c_str())) << ".0f" << std::endl;
+            std::cout << "float: " << static_cast<float>(convertedInt) << ".0f" << std::endl;
             // scalar type: double
-            std::cout << "double: " << static_cast<double>(atoi(input.c_str())) << ".0" << std::endl;
+            std::cout << "double: " << static_cast<double>(convertedInt) << ".0" << std::endl;
             break;
         }
     case FLOAT:
