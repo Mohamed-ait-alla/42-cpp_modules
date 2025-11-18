@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/10/26 19:49 by mait-all                   //
-//                        Updated: 2025/11/18 09:30 by mait-all                   //
+//                        Updated: 2025/11/18 19:52 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef SCALARCONVERTER_HPP
@@ -43,9 +43,10 @@ class ScalarConverter {
         ScalarConverter&    operator=(const ScalarConverter& other);
         ~ScalarConverter();
 
-		// private member functions
-		// static bool	hasMultipleSameChars(std::string& input, char c);
-		// static bool	isValidFPosition(std::string& input);
+		// private helper member functions
+		static bool		hasMultipleSameChars(std::string& input, char c);
+		static bool		isValidFPosition(std::string& input);
+		static bool		isValidArg(std::string& input);
 		static	void	convertToChar(double nb);
 		static	void	convertToInt(double nb);
 		static	void	convertToFloat(double nb);

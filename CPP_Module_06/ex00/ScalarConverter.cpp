@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/06 09:27 by mait-all                   //
-//                        Updated: 2025/11/18 18:24 by mait-all                   //
+//                        Updated: 2025/11/18 20:41 by mait-all                   //
 // ****************************************************************************** //
 
 #include "ScalarConverter.hpp"
@@ -47,28 +47,35 @@ ScalarConverter::~ScalarConverter()
 // --- --- --- ----
 
 
-// check if the argument has one f and in the correct position
-// bool	ScalarConverter::isValidFPosition(std::string& input)
-// {
-// 	size_t len = input.length();
-// 	if (input[len - 1] != 'f')
-// 		return (false);
-// 	return (true);
-// }
+// function used to check the position of 'f' in floating numbers
+bool	ScalarConverter::isValidFPosition(std::string& input)
+{
+	// check if it's a float data type
+	if (input.find("f") != std::string::npos)
+	{
+		// check if 'f' is at the end of entred argument
+		size_t len = input.length();
+		if (input[len - 1] != 'f')
+			return (false);
+		return (true);
+	}
+	// non floating data types
+	return (true);
+}
 
 
-// check if the argument has more than one dots
-// bool	ScalarConverter::hasMultipleSameChars(std::string& input, char c)
-// {
-// 	int	count = 0;
+// function used to check for multiple 'f' or '.'
+bool	ScalarConverter::hasMultipleSameChars(std::string& input, char c)
+{
+	int	count = 0;
 
-// 	for (unsigned long i = 0; i < input.length(); i++)
-// 	{
-// 		if (input[i] == c)
-// 			count++;
-// 	}
-// 	return (count > 1 ? true : false);
-// }
+	for (unsigned long i = 0; i < input.length(); i++)
+	{
+		if (input[i] == c)
+			count++;
+	}
+	return (count > 1 ? true : false);
+}
 
 // Detect the type of the content inside the string parameter
 // ScalarTypes ScalarConverter::detectType(std::string& value)
@@ -110,7 +117,7 @@ ScalarConverter::~ScalarConverter()
 //         return (INVALID);
 // }
 
-// convert to scalar type: char
+// function used to convert to scalar type: char
 void	ScalarConverter::convertToChar(double nb)
 {
 	// std::cout << "nb is : " << nb << std::endl;
@@ -129,7 +136,7 @@ void	ScalarConverter::convertToChar(double nb)
 	}
 }
 
-// convert to scalar type: int
+// function used to convert to scalar type: int
 void	ScalarConverter::convertToInt(double nb)
 {
 	// check for overflow/underflow
@@ -140,7 +147,7 @@ void	ScalarConverter::convertToInt(double nb)
 		std::cout << "int: " << static_cast<int>(nb) << std::endl;
 }
 
-// convert to scalar type: float
+// function used to convert to scalar type: float
 void	ScalarConverter::convertToFloat(double nb)
 {
 	if (nb > std::numeric_limits<float>::max()
@@ -152,7 +159,7 @@ void	ScalarConverter::convertToFloat(double nb)
 				  << "f" << std::endl;
 }
 
-// convert to scalar type: double
+// function used to convert to scalar type: double
 void	ScalarConverter::convertToDouble(double nb)
 {
 	if (nb > std::numeric_limits<double>::max()
@@ -160,6 +167,18 @@ void	ScalarConverter::convertToDouble(double nb)
 		std::cout << "double: impossible" << std::endl;
 	else
 		std::cout << "double: " << static_cast<double>(nb) << std::endl;
+}
+
+// does an argument valid
+bool	ScalarConverter::isValidArg(std::string& input)
+{
+	if (input.find_first_not_of("-+0123456789.f") != std::string::npos)
+		return (false);
+	if (hasMultipleSameChars(input, 'f') || hasMultipleSameChars(input, '.'))
+		return (false);
+	if (!isValidFPosition(input))
+		return (false);
+	return (true);
 }
 
 // convert the detected type to scalar types (Char, Int, Float, Double)
@@ -170,7 +189,7 @@ void    ScalarConverter::convert(std::string& input)
 	int		convertedInt;
 
 	// check for empty string
-	if (input.empty())
+	if (input.empty() || !isValidArg(input))
 		throw std::invalid_argument("Oops! Invalid argument");
 
 	nb = strtod(input.c_str(), 0);
