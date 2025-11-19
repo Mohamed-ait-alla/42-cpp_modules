@@ -42,9 +42,14 @@ ScalarConverter::~ScalarConverter()
 // Member functions
 // -------------------------------
 
-// ---- checks ----
-// --42 / ++42 / int overflow ; char overlows in float double
-// --- --- --- ----
+// function used to check for special literals (+inf, +inff ...)
+bool	ScalarConverter::isSpecialLiteral(std::string& input)
+{
+	if (input == "-inff" || input == "+inff" || input == "nanf"
+		|| input == "-inf" || input == "+inf" || input == "nan")
+		return (true);
+	return (false);
+}
 
 // function used to check '-' and '+' signs
 bool	ScalarConverter::isValidSignPosition(std::string& input)
@@ -85,7 +90,6 @@ bool	ScalarConverter::isValidFPosition(std::string& input)
 	return (true);
 }
 
-
 // function used to check for multiple 'f' or '.'
 bool	ScalarConverter::hasMultipleSameChars(std::string& input, char c)
 {
@@ -99,45 +103,13 @@ bool	ScalarConverter::hasMultipleSameChars(std::string& input, char c)
 	return (count > 1 ? true : false);
 }
 
-// Detect the type of the content inside the string parameter
-// ScalarTypes ScalarConverter::detectType(std::string& value)
-// {
-//     // char 
-//     if (value.length() == 1 && !isdigit(value[0]))
-//         return (CHAR);
-//     // special float/double values
-//     else if (value == "+inff" || value == "-inff" || value == "nanf"
-//         || value == "+inf" || value == "-inf" || value == "nan")
-//         return (NAN_INF);
-//     // invalid
-//     else if (value.find_first_not_of("-+") == std::string::npos)
-//         return (INVALID);
-//     // int
-//     else if (value.find_first_not_of("-+0123456789") == std::string::npos)
-//         return (INT);
-//     // double
-//     else if (value.find_first_not_of("-+0123456789.") == std::string::npos)
-// 	{
-// 		if (hasMultipleSameChars(value, '.'))
-// 			return (INVALID);
-//         return (DOUBLE);
-// 	}
-//     // float: 42..0f, multiple dots: 42.42.42, f in rong pos: 42f42, multiple signs: --42, char overlows: 300
-//     else if (value.find_first_not_of("-+0123456789.f") == std::string::npos)
-// 	{
-// 		if (hasMultipleSameChars(value, '.')) // edge case: 42..42f
-// 			return (INVALID);
-// 		if (hasMultipleSameChars(value, 'f')) // edge case: 42.42fff
-// 			return (INVALID);
-// 		if (!isValidFPosition(value)) // edge case: 42f42
-// 			return (INVALID);
-// 		if (value.find(".") == std::string::npos) // edge case: 42f
-// 			return (INVALID);
-//         return (FLOAT);
-// 	}
-//     else
-//         return (INVALID);
-// }
+// function used to check if the input is a char
+bool	ScalarConverter::isChar(std::string& input)
+{
+	if (input.length() == 1 && !isdigit(input[0]))
+		return (true);
+	return (false);
+}
 
 // function used to convert to scalar type: char
 void	ScalarConverter::convertToChar(double nb)
@@ -191,11 +163,33 @@ void	ScalarConverter::convertToDouble(double nb)
 		std::cout << "double: " << static_cast<double>(nb) << std::endl;
 }
 
+// function used to handle special literals
+void	ScalarConverter::handleSpecialLiterals(std::string& input)
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	if (input == "-inff" || input == "+inff" || input == "nanf")
+	{
+		std::cout << "float: " << input << std::endl;
+		std::cout << "double: " << input.substr(0, input.length() - 1) << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << input << "f" << std::endl;
+		std::cout << "double: " << input << std::endl;
+	}
+}
+
 // does an argument valid
 bool	ScalarConverter::isValidArg(std::string& input)
 {
 	if (input.find_first_not_of("-+0123456789.f") != std::string::npos)
+	{
+		// check for special literals
+		if (isSpecialLiteral(input))
+			return (true);
 		return (false);
+	}
 	if (hasMultipleSameChars(input, 'f') || hasMultipleSameChars(input, '.'))
 		return (false);
 	if (!isValidFPosition(input))
@@ -209,26 +203,31 @@ bool	ScalarConverter::isValidArg(std::string& input)
 void    ScalarConverter::convert(std::string& input)
 {
 	double	nb;
-	bool	isChar = false;
+	// bool	isChar = false;
 	int		convertedInt;
 
-	// check for empty string
-	if (input.empty() || !isValidArg(input))
+	// check for invalid argument
+	if (input.empty() || (!isValidArg(input) && !isChar(input)))
 		throw std::invalid_argument("Oops! Invalid argument");
-
-	nb = strtod(input.c_str(), 0);
-	// check for char data type
-	if (input.length() == 1 && !isdigit(input[0]))
+	// if input is a special literal
+	if (isSpecialLiteral(input))
+		handleSpecialLiterals(input);
+	// other data types
+	else
 	{
-		isChar = true;
-		convertedInt = static_cast<int>(input[0]);
-		convertToChar(convertedInt);
-		nb = convertedInt;
+		nb = strtod(input.c_str(), 0);
+		// if input is a char
+		if (isChar(input))
+		{
+			// isChar = true;
+			convertedInt = static_cast<int>(input[0]);
+			convertToChar(convertedInt);
+			nb = convertedInt;
+		}
+		if (!isChar(input))
+			convertToChar(nb);
+		convertToInt(nb);
+		convertToFloat(nb);
+		convertToDouble(nb);
 	}
-
-	if (!isChar)
-		convertToChar(nb);
-	convertToInt(nb);
-	convertToFloat(nb);
-	convertToDouble(nb);
 }

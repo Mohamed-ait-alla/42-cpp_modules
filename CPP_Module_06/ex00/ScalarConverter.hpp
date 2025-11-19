@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/10/26 19:49 by mait-all                   //
-//                        Updated: 2025/11/19 08:51 by mait-all                   //
+//                        Updated: 2025/11/19 11:47 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef SCALARCONVERTER_HPP
@@ -33,7 +33,6 @@ class ScalarConverter {
     public:
 		// public member functions
         static void         convert(std::string& input);
-        // static ScalarTypes  detectType(std::string& value);
 
     private:
         // ocf
@@ -48,10 +47,13 @@ class ScalarConverter {
 		static bool		isValidFPosition(std::string& input);
 		static bool		isValidArg(std::string& input);
 		static bool		isValidSignPosition(std::string& input);
-		static	void	convertToChar(double nb);
-		static	void	convertToInt(double nb);
-		static	void	convertToFloat(double nb);
-		static	void	convertToDouble(double nb);
+		static bool		isSpecialLiteral(std::string& input);
+		static bool		isChar(std::string& input);
+		static void		handleSpecialLiterals(std::string& input);
+		static void		convertToChar(double nb);
+		static void		convertToInt(double nb);
+		static void		convertToFloat(double nb);
+		static void		convertToDouble(double nb);
 
 };
 
