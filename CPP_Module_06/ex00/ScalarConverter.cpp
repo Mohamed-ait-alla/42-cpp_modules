@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/06 09:27 by mait-all                   //
-//                        Updated: 2025/11/18 20:41 by mait-all                   //
+//                        Updated: 2025/11/19 09:15 by mait-all                   //
 // ****************************************************************************** //
 
 #include "ScalarConverter.hpp"
@@ -46,6 +46,25 @@ ScalarConverter::~ScalarConverter()
 // --42 / ++42 / int overflow ; char overlows in float double
 // --- --- --- ----
 
+// function used to check '-' and '+' signs
+bool	ScalarConverter::isValidSignPosition(std::string& input)
+{
+	// check if it has as sign
+	if (input.find_first_of("-+") != std::string::npos)
+	{
+		// check if no multiple signs
+		if (hasMultipleSameChars(input, '-') || hasMultipleSameChars(input, '+'))
+			return (false);
+		// check if sign in the correct position
+		if (input.find("-") != std::string::npos && input[0] != '-')
+			return (false);
+		if (input.find("+") != std::string::npos && input[0] != '+')
+			return (false);
+		return (true);
+	}
+	// no sign no check
+	return (true);
+}
 
 // function used to check the position of 'f' in floating numbers
 bool	ScalarConverter::isValidFPosition(std::string& input)
@@ -56,6 +75,9 @@ bool	ScalarConverter::isValidFPosition(std::string& input)
 		// check if 'f' is at the end of entred argument
 		size_t len = input.length();
 		if (input[len - 1] != 'f')
+			return (false);
+		// check if the entred arg has '.'
+		if (input.find(".") == std::string::npos)
 			return (false);
 		return (true);
 	}
@@ -177,6 +199,8 @@ bool	ScalarConverter::isValidArg(std::string& input)
 	if (hasMultipleSameChars(input, 'f') || hasMultipleSameChars(input, '.'))
 		return (false);
 	if (!isValidFPosition(input))
+		return (false);
+	if (!isValidSignPosition(input))
 		return (false);
 	return (true);
 }
