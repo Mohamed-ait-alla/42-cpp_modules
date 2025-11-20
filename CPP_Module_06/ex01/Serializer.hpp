@@ -9,8 +9,8 @@
 #ifndef	SERIALIZER_HPP
 # define SERIALIZER_HPP
 
-#include <iostream>
-#include <cstdint>
+# include <iostream>
+# include <stdint.h>
 
 // Data struct
 typedef struct t_Data {
