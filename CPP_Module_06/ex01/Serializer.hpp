@@ -12,7 +12,7 @@
 #include <iostream>
 #include <cstdint>
 
-// Data 
+// Data struct
 typedef struct t_Data {
 	int	x;
 } Data;
