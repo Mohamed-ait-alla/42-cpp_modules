@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/19 14:53 by mait-all                   //
-//                        Updated: 2025/11/20 09:07 by mait-all                   //
+//                        Updated: 2025/11/20 09:40 by mait-all                   //
 // ****************************************************************************** //
 
 #include "Serializer.hpp"
@@ -42,3 +42,12 @@ Serializer::~Serializer()
 // Member functions
 // -------------------------------
 
+uintptr_t	Serializer::serialize(Data* ptr)
+{
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
+
+Data*	Serializer::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
+}

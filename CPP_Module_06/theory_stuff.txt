@@ -17,3 +17,7 @@
 						same type or not.
 
 		note: const_cast and reinterpret_cast are not recommended as they vulnerable to different kinds of errors.
+
+============== Ex01 =============
+=> uintptr_t: is defined as unsigned long int, it used because it matches the size of pointers on most archs 32bits => 4bytes, 64bits => 8bytes, that makes it 
+			able to hold any pointer value, making it safer and portable across different architectures.
