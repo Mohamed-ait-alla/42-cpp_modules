@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/20 16:51 by mait-all                   //
-//                        Updated: 2025/11/20 18:00 by mait-all                   //
+//                        Updated: 2025/11/20 20:43 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef BASE_HPP
@@ -20,6 +20,7 @@ class Base {
 	
 	public:
 		virtual	~Base();
+
 };
 
 #endif /* __BASE_HPP__ */
