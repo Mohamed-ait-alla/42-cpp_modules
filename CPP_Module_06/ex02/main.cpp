@@ -18,8 +18,12 @@
 
 int main(void)
 {
-	Base* obj = generate();
 
-	delete obj;
+	Base* base = generate();
+	identify(base);
+	identify(*base);
+
+	delete base;
+
 	return (0);
 }

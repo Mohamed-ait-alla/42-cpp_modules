@@ -21,3 +21,7 @@
 ============== Ex01 =============
 => uintptr_t: is defined as unsigned long int, it used because it matches the size of pointers on most archs 32bits => 4bytes, 64bits => 8bytes, that makes it 
 			able to hold any pointer value, making it safer and portable across different architectures.
+
+
+=> dynamic_cast relys on RTTI (runtime type information) to do it's job, and this what makes it safe for type conversions, RTTI are a mechanism that exposes infos about
+		an object's data type at runtime and is available only for the classes which have at least one virtual function. It allows the type of an object to be determined during program execution.
