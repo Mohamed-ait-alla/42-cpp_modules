@@ -20,5 +20,10 @@
 int	main(void)
 {
 
+	std::string a = "hello";
+	std::string b = "world";
+	std::cout << "before => a: " << a << " b: " << b << std::endl;
+	::swap<std::string>(a, b);
+	std::cout << "after => a: " << a << " b: " << b << std::endl;
 	return (0);
 }
