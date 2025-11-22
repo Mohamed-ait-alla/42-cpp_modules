@@ -1,17 +1,28 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This exercise introduces scalar type conversion in C++ through the
+ * 			implementation of a ScalarConverter class. The class provides a single
+ * 			static member function:
+ * 				
+ * 				- static void	convert(std::string& input)
+ * 			
+ * 			The function is responsible for detecting the input's actual type
+ * 			(char, int, float, or double) and converting it into all corresponding
+ * 			scalar representations.
  * 
+ * 			The key objective of this exercise is to understand the use of static_cast
+ * 			type, how it works, and when to use it.
  * 
  * @usage:
- * 			ToDo...
- *
+ * 			1. Compile:	make
+ * 			2. Run:		./scalarConverter
+ * 			3. CleanUp:	make fclean
 */
 
 #include "ScalarConverter.hpp"

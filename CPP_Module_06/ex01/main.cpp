@@ -1,17 +1,30 @@
 /*
  * @author:
- * 			ToDo...
+ * 			mait-all
  * 
  * @github:
- * 			ToDo...
+ * 			https://github.com/Mohamed-ait-alla
  * 
  * @description:
- * 			ToDo...
+ * 			This exercise introduces low-level pointer manipulation in C++ through a simple
+ * 			serialization concept. The goal is to understand how reinterpret_cast works
+ * 			by converting raw pointers to integer representations and back.
  * 
+ * 			A Serialize class is implemented with two static member functions:
+ * 
+ * 				- serialize(Data* ptr)
+ * 					Converts a pointer to a uintptr_t integer representation.
+ * 
+ * 				- deserialize(uintptr_t raw)
+ * 					Converts the integer value back into the original Data* pointer.
+ * 
+ * 			The purpose of this exercise is to gain familiarity with pointer casting and
+ * 			understand when reinterpret_cast is appropriate and when it is dangerous.
  * 
  * @usage:
- * 			ToDo...
- *
+ * 			1. Compile:	make
+ * 			2. Run:		./serializer
+ * 			3. CleanUp:	make fclean
 */
 
 #include "Serializer.hpp"
