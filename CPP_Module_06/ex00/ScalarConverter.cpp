@@ -114,7 +114,6 @@ bool	ScalarConverter::isChar(std::string& input)
 // function used to convert to scalar type: char
 void	ScalarConverter::convertToChar(double nb)
 {
-	// std::cout << "nb is : " << nb << std::endl;
 	// check for overflow/underflow
 	if (nb > std::numeric_limits<int>::max()
 		|| nb < std::numeric_limits<int>::min()
@@ -203,7 +202,6 @@ bool	ScalarConverter::isValidArg(std::string& input)
 void    ScalarConverter::convert(std::string& input)
 {
 	double	nb;
-	// bool	isChar = false;
 	int		convertedInt;
 
 	// check for invalid argument
@@ -219,7 +217,6 @@ void    ScalarConverter::convert(std::string& input)
 		// if input is a char
 		if (isChar(input))
 		{
-			// isChar = true;
 			convertedInt = static_cast<int>(input[0]);
 			convertToChar(convertedInt);
 			nb = convertedInt;

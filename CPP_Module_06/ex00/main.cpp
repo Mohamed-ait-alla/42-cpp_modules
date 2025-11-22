@@ -20,9 +20,11 @@ int main(int ac, char **av)
 {
     try
     {
-        std::string input = av[1];
-        if (av && ac == 2)
+		if (av && ac == 2)
+		{
+			std::string input = av[1];
             ScalarConverter::convert(input);
+		}
 		else
 			throw std::invalid_argument("Too many arguments!");
     }
