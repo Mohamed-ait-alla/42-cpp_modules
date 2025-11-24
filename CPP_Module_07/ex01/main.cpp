@@ -28,6 +28,7 @@ void	printChar(const char& c) { std::cout << c << std::endl; }
 void	printFloat(const float& f) { std::cout << f << std::endl; }
 void	printString(const std::string& s) { std::cout << s << std::endl; }
 
+// main function
 int	main(void)
 {
 	// declaring arrays
