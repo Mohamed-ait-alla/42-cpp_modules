@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/24 09:54 by mait-all                   //
-//                        Updated: 2025/11/24 14:10 by mait-all                   //
+//                        Updated: 2025/11/24 18:27 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef ARRAY_HPP
@@ -38,6 +38,9 @@ template <typename T> class Array {
 		unsigned int	_len;
 
 };
+
+// template definitions
+# include "Array.tpp"
 
 
 #endif /* __ARRAY_HPP__ */
