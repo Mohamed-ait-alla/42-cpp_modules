@@ -1,14 +1,28 @@
 /*
  * @author:
  * 			mait-all
- * 
+ *
  * @github:
  * 			https://github.com/Mohamed-ait-alla
- * 
+ *
  * @description:
- * 			ToDo...
+ * 			This exercise introduces template functions that operate on arrays.
+ * 			The goal is to understand how templates can accept not only types,
+ * 			but also function parameters, enabling fully generic operations.
  * 
+ * 			You must implement the following template:
  * 
+ * 				- iter<T>(T* array, size_t length, Func func)
+ * 
+ * 			This template:
+ * 				- Takes a pointer to an array
+ * 				- Takes the number of elements inside that array
+ * 				- Takes a function (or function pointer) that will be applied
+ * 				  to each element
+ * 
+ * 			The iter() function simply loops over the array and calls the
+ * 			provided function on every element, regardless of the element type.
+ *
  * @usage:
  * 			1. Compile:	make
  * 			2. Run:		./iter

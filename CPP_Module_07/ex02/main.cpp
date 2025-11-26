@@ -1,14 +1,32 @@
 /*
  * @author:
  * 			mait-all
- * 
+ *
  * @github:
  * 			https://github.com/Mohamed-ait-alla
- * 
+ *
  * @description:
- * 			ToDo...
+ * 			This exercise introduces class templates in C++. Unlike function templates,
+ * 			class templates allow creating entire data structures that work with any
+ * 			data type while still behaving like normal classes.
  * 
- * 
+ * 			The task is to implement a generic Array<T> class that:
+ *
+ * 				- Stores elements of type T
+ * 				- Allocates and manages its own memory
+ * 				- Provides deep copy semantics (copy constructor & assignment operator)
+ * 				- Offers safe element access through operator[]
+ * 				- Provides a size() member function returning the number of elements
+ *
+ * 			Key required behaviors:
+ *
+ * 				- operator[] must throw an exception if the index is out of bounds,
+ * 				  ensuring safety access to elements.
+ * 				- The default constructor must create an empty array.
+ * 				- A constructor taking an unsigned int must allocate an array of that size.
+ * 				- Copies of Array<T> must be *deep copies*, each instance managing its
+ * 				  own storage.
+ *
  * @usage:
  * 			1. Compile:	make
  * 			2. Run:		./array
