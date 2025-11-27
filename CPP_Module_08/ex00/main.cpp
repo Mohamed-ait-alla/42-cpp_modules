@@ -18,22 +18,53 @@
 
 int	main(void)
 {
+	// Test 1: vector container
 	try
 	{
 		std::vector<int> v;
-		v.push_back(3);
-		v.push_back(4);
-		v.push_back(2);
-		v.push_back(7);
-		int	found = easyfind(v, 0);
-		std::cout << "Element " << found << " found in container" << std::endl;  
+		for (int i = 0; i < 100; i++)
+		{
+			v.push_back(i+1);
+		}
+		int	found = easyfind(v, 99);
+		std::cout << "Element " << found << " found in container" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
+	}
+
+	// Test 2: deque container
+	try
+	{
+		std::deque<int> d;
+		for (int i = 0; i < 10; i++)
+		{
+			d.push_back(i*2);
+		}
+		int found = easyfind(d, 19);
+		std::cout << "Element " << found << " found in container" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
 	}
 	
-
+	// Test 3: list container
+	try
+	{
+		std::list<int> l;
+		for(int i = 0; i < 20; i++)
+		{
+			l.push_back(i + 1);
+		}
+		int found = easyfind(l, 15);
+		std::cout << "Element " << found << " found in container" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 
 	return (0);
 }

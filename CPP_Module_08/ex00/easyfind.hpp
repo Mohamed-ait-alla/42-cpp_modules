@@ -3,15 +3,17 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/27 09:29 by mait-all                   //
-//                        Updated: 2025/11/27 10:44 by mait-all                   //
+//                        Updated: 2025/11/27 11:53 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef EASYFIND_HPP
 # define EASYFIND_HPP
 
 # include <iostream>
-# include <vector>
 # include <algorithm>
+# include <vector>
+# include <deque>
+# include <list>
 
 
 // === easyfind<T>() ========================================================== //
