@@ -10,7 +10,7 @@
  *
  * @usage:
  * 			1. Compile:	make
- * 			2. Run:		./array
+ * 			2. Run:		./easyFind
  * 			3. CleanUp:	make fclean
 */
 
