@@ -3,12 +3,49 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/28 08:57 by mait-all                   //
-//                        Updated: 2025/11/28 09:02 by mait-all                   //
+//                        Updated: 2025/11/28 10:06 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef SPAN_HPP
 # define SPAN_HPP
 
+# include <iostream>
+# include <vector>
 
+// ****************************************************************************** //
+//                                   Span Class                                   //
+// ****************************************************************************** //
+
+template <typename T>
+class Span {
+	
+	public:
+		// ocf
+		Span();
+		Span(unsigned int N);
+		Span(const Span& other);
+		Span&	operator=(const Span& other);
+		~Span();
+
+		// member functions
+		void	addNumber(int nb);
+		void	shortestSpan();
+		void	longestSpan();
+
+
+		// === addRangeOfNumbers<T>() ================================================= //
+		// add a range of numbers to the vector.
+		// ============================================================================ //
+		template <typename Iterator>
+		void	addRangeOfNumbers(Iterator begin, Iterator end)
+		{
+
+		}
+
+	private:
+		std::vector<int>	_vect;
+		unsigned int		_size;
+
+};
 
 #endif /* __SPAN_HPP__ */
