@@ -20,13 +20,14 @@ int	main(void)
 {
 	try
 	{
-		Span sp(3);
+		Span sp(10);
 		std::vector<int> v;
-		for (size_t i = 0; i < 20; i++)
+		for (size_t i = 0; i < 10; i++)
 		{
-			v.push_back(i);
+			v.push_back(i+1);
 		}
 		sp.addRangeOfNumbers(v.begin(), v.end());
+		sp.addNumber(3);
 	}
 	catch(const std::exception& e)
 	{

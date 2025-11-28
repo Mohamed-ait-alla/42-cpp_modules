@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/28 08:57 by mait-all                   //
-//                        Updated: 2025/11/28 16:02 by mait-all                   //
+//                        Updated: 2025/11/28 20:28 by mait-all                   //
 // ****************************************************************************** //
 
 #include "Span.hpp"
@@ -42,4 +42,17 @@ Span&	Span::operator=(const Span& other)
 // Destructor
 Span::~Span()
 {
+}
+
+
+// -------------------------------
+// Member functions
+// -------------------------------
+
+// add a number to the span
+void	Span::addNumber(int nb)
+{
+	if (_vect.size() >= _maxSize)
+		throw std::out_of_range("Error: No space left in span to add a new number!");
+	_vect.push_back(nb);
 }
