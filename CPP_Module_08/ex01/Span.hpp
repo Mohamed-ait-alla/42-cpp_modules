@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/28 08:57 by mait-all                   //
-//                        Updated: 2025/11/28 10:06 by mait-all                   //
+//                        Updated: 2025/11/28 16:10 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef SPAN_HPP
@@ -16,7 +16,6 @@
 //                                   Span Class                                   //
 // ****************************************************************************** //
 
-template <typename T>
 class Span {
 	
 	public:
@@ -39,7 +38,7 @@ class Span {
 		template <typename Iterator>
 		void	addRangeOfNumbers(Iterator begin, Iterator end)
 		{
-			if (std::distance(begin, end) > (_maxSize - _vect.size()))
+			if (std::distance(begin, end) > static_cast<unsigned int>(_maxSize - _vect.size()))
 				throw std::out_of_range("Error: No enough space in span to all numbers!");
 			_vect.insert(_vect.begin(), begin, end);
 		}
