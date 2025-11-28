@@ -39,12 +39,14 @@ class Span {
 		template <typename Iterator>
 		void	addRangeOfNumbers(Iterator begin, Iterator end)
 		{
-
+			if (std::distance(begin, end) > (_maxSize - _vect.size()))
+				throw std::out_of_range("Error: No enough space in span to all numbers!");
+			_vect.insert(_vect.begin(), begin, end);
 		}
 
 	private:
 		std::vector<int>	_vect;
-		unsigned int		_size;
+		unsigned int		_maxSize;
 
 };
 
