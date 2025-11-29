@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/28 08:57 by mait-all                   //
-//                        Updated: 2025/11/28 17:30 by mait-all                   //
+//                        Updated: 2025/11/29 08:59 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef SPAN_HPP
@@ -11,6 +11,7 @@
 
 # include <iostream>
 # include <vector>
+# include <algorithm>
 
 
 // ****************************************************************************** //
@@ -29,8 +30,8 @@ class Span {
 
 		// member functions
 		void	addNumber(int nb);
-		void	shortestSpan();
-		void	longestSpan();
+		int		shortestSpan(void);
+		int		longestSpan(void);
 
 
 		// === addRangeOfNumbers<T>() ================================================= //
