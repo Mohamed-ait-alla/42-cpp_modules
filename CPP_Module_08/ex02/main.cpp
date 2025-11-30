@@ -18,15 +18,15 @@
 
 int	main(void)
 {
-	MutantStack<int> mstack;
+	const MutantStack<int> mstack;
 
-	mstack.push(3);
-	mstack.push(4);
-	mstack.push(2);
-	mstack.push(1);
+	// mstack.push(3);
+	// mstack.push(4);
+	// mstack.push(2);
+	// mstack.push(1);
 
-	MutantStack<int>::iterator it;
-	MutantStack<int>::iterator ite = mstack.end();
+	MutantStack<int>::const_iterator it;
+	MutantStack<int>::const_iterator ite = mstack.end();
 
 	for (it = mstack.begin(); it != ite; it++)
 	{
