@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/11/29 12:00 by mait-all                   //
-//                        Updated: 2025/11/30 09:51 by mait-all                   //
+//                        Updated: 2025/11/01 11:28 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef MUTANTSTACK_HPP
@@ -12,6 +12,7 @@
 # include <iostream>
 # include <stack>
 # include <iterator>
+# include <list>
 
 // ****************************************************************************** //
 //                            MutantStack Class Template                          //
@@ -21,7 +22,7 @@ template <typename T, typename _Seq = std::deque<T> >
 class MutantStack : public std::stack<T, _Seq> {
 
 	public:
-		typedef typename _Seq::iterator	iterator;
+		typedef typename _Seq::iterator			iterator;
 		typedef typename _Seq::const_iterator	const_iterator;
 
 		/**
