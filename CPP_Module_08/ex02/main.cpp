@@ -6,7 +6,30 @@
  * 			https://github.com/Mohamed-ait-alla
  *
  * @description:
- * 			ToDo...
+ * 			This exercise introduces an iterable version of the standard
+ * 			std::stack container. Since std::stack does not provide iterator
+ * 			support, the goal is to create a class template called MutantStack
+ * 			that behaves exactly like a stack but exposes iterators to allow
+ * 			traversal of its underlying container.
+ *
+ * 			Key characteristics:
+ *
+ * 				- MutantStack<T> inherits from std::stack<T>
+ * 				- Provides iterator access through:
+ * 					-> begin()
+ * 					-> end()
+ * 					-> begin() const
+ * 					-> end() const
+ *
+ * 				- The underlying container of std::stack
+ * 				  (std::deque by default) already supports iterators, but they
+ * 				  are not exposed. MutantStack makes them accessible by
+ * 				  returning iterators from the protected member c.
+ * 
+ * 			This exercise focuses on:
+ * 				- Understanding container adaptors like std::stack
+ * 				- How inheritance can expose otherwise hidden features
+ * 				- Working with iterator typedefs from the underlying container
  *
  * @usage:
  * 			1. Compile:	make

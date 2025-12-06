@@ -6,7 +6,30 @@
  * 			https://github.com/Mohamed-ait-alla
  *
  * @description:
- * 			ToDo...
+ * 			This exercise introduces a custom container-like class that manages
+ * 			a collection of integers with a fixed maximum capacity. The class
+ * 			is responsible for storing numbers and computing two metrics:
+ * 				- shortestSpan()
+ * 				- longestSpan()
+ *
+ * 			The class typically uses std::vector internally and provides the
+ * 			following main functionalities:
+ *
+ * 				- addNumber(int n)
+ * 					Adds a single integer to the container. Throws an exception
+ * 					if the maximum capacity has been reached.
+ *
+ * 				- addRangeOfNumbers(Iterator begin, Iterator end)
+ * 					Adds a range of integers from any valid iterator range.
+ * 					Throws an exception if the insertion would exceed capacity.
+ *
+ * 				- shortestSpan()
+ * 					Computes the smallest distance between any two numbers
+ * 					stored in the container. Requires at least two elements.
+ *
+ * 				- longestSpan()
+ * 					Computes the largest possible distance between any two
+ * 					integers in the container. Also requires at least two.
  *
  * @usage:
  * 			1. Compile:	make

@@ -6,7 +6,27 @@
  * 			https://github.com/Mohamed-ait-alla
  *
  * @description:
- * 			ToDo...
+ * 			This exercise introduces the use of STL containers, algorithms, and
+ * 			iterators in modern C++. You must implement a function template
+ * 			called easyfind() that performs a simple search operation on any
+ * 			container holding integers.
+ *
+ * 			The function prototype:
+ * 				- easyfind(T& container, int toFind)
+ *
+ * 			Behavior:
+ * 				- Uses an STL algorithm (in my implementation I used std::find) to
+ * 				  search for the integer 'toFind' inside the given container.
+ *
+ * 				- If the 'toFind' is found, the function prints a confirmation message.
+ *
+ * 				- If the 'toFind' cannot be found, the function throws an exception.
+ *
+ * 			This exercise helps you understand:
+ * 				- How to write template functions that accept any STL container
+ * 				- How iterators allow generic access to container elements
+ * 				- How STL algorithms (like std::find) operate independently of
+ * 				  container type
  *
  * @usage:
  * 			1. Compile:	make
