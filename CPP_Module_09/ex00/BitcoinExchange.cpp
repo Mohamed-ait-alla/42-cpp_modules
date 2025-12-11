@@ -70,10 +70,35 @@ bool	isValidDate(std::string date)
 	return (true);
 }
 
+bool	isValidValue(float value, int& flag)
+{
+	if (value < 0)
+	{
+		flag = -1;
+		return (false);
+	}
+	if (value > 1000)
+	{
+		flag = -2;
+		return (false);
+	}
+	return (true);
+}
+
 void	processLine(std::string key, std::string value)
 {
+	int	flag = 0;
+
 	if (!isValidDate(key) || value.empty())
 		std::cout << "Error: bad input => " << key << std::endl;
+
+	if (!isValidValue(atof(value.c_str()), flag))
+	{
+		if (flag == -1)
+			std::cout << "Error: not a positive number." << std::endl;
+		if (flag == -2)
+			std::cout << "Error: too large a number." << std::endl;
+	}
 }
 
 /**
@@ -90,6 +115,7 @@ void	launch(std::string file)
 	std::string						readedLine;
 	std::string						key;
 	std::string						value;
+	bool							isFound = false;
 
 	if (!f)
 		throw std::runtime_error("Error: could not open file!");
@@ -98,12 +124,14 @@ void	launch(std::string file)
 	while (std::getline(f, readedLine))
 	{
 		key = readedLine.substr(0, readedLine.find("|"));
-		value = readedLine.substr(readedLine.find("|") + 1);
+		isFound = (readedLine.find("|") != std::string::npos) ? true : false;
+		value = isFound ? readedLine.substr(readedLine.find("|") + 1) : "";
 		// skipping first line
-		if (key == "Date" || value == "value")
+		if (key == "date" || value == "value")
 			continue;
 		processLine(key, value);
+		// std::cout << key << " => " << value << std::endl;
 	}
 
-
+	std::cout << "-------------- finish --------------\n";
 }
