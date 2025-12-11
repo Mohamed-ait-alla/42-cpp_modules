@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/08 09:16 by mait-all                   //
-//                        Updated: 2025/12/11 10:19 by mait-all                   //
+//                        Updated: 2025/12/11 12:05 by mait-all                   //
 // ****************************************************************************** //
 
 #include "BitcoinExchange.hpp"
@@ -40,6 +40,42 @@ void	init_db(std::map<std::string, float>& btcPricesDB, std::string btcPricesFil
 	
 }
 
+bool	isValidDate(std::string date)
+{
+
+	int		daysInMonth[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+	int		y, m, d;
+	char	dash1, dash2;
+	bool	leap;
+
+	// basic date checking
+	if (date.size() != 10)
+		return (false);
+	if (date[4] != '-' || date[7] != '-')
+		return (false);
+	// parsing date
+	std::istringstream iss(date);
+	iss >> y >> dash1 >> m >> dash2 >> d;
+	if (iss.fail() || dash1 != '-' || dash2 != '-')
+		return (false);
+	// date's feilds checking
+	if ((y < 0 || y > 9999) || (m < 1 || m > 12))
+		return (false);
+	leap = (y % 4 == 0 && (y % 100 != 0 || y % 400 == 0));
+	if (leap && m == 2)
+		daysInMonth[1] = 29;
+	if (d < 1 || d > daysInMonth[m - 1])
+		return (false);
+ 
+	return (true);
+}
+
+void	processLine(std::string key, std::string value)
+{
+	if (!isValidDate(key) || value.empty())
+		std::cout << "Error: bad input => " << key << std::endl;
+}
+
 /**
 *
 *
@@ -66,7 +102,7 @@ void	launch(std::string file)
 		// skipping first line
 		if (key == "Date" || value == "value")
 			continue;
-		
+		processLine(key, value);
 	}
 
 
