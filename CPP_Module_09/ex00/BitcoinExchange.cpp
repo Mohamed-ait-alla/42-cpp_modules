@@ -3,17 +3,18 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/08 09:16 by mait-all                   //
-//                        Updated: 2025/12/11 12:05 by mait-all                   //
+//                        Updated: 2025/12/12 16:00 by mait-all                   //
 // ****************************************************************************** //
 
 #include "BitcoinExchange.hpp"
 
-
-
-
-
-
-
+/**
+ * Initializes the Bitcoin price database by reading the given CSV file
+ * and filling the provided map with date → price entries.
+ *
+ * @param btcPricesDB   Reference to the map that will store the date/price pairs.
+ * @param btcPricesFile Path to the CSV file (data.csv).
+ */
 void	init_db(std::map<std::string, float>& btcPricesDB, std::string btcPricesFile)
 {
 	std::ifstream	dbFile(btcPricesFile.c_str());
@@ -35,14 +36,32 @@ void	init_db(std::map<std::string, float>& btcPricesDB, std::string btcPricesFil
 		value = readedLine.substr(readedLine.find(",") + 1);
 		btcPricesDB.insert(std::make_pair(key, atof(value.c_str())));
 	}
-	
-	
-	
 }
 
+/**
+ * Trims leading and trailing whitespace characters from the given string.
+ *
+ * @param s The string to be trimmed (input).
+ * @return A new string with surrounding spaces removed.
+ */
+std::string	ft_trim(std::string& s)
+{
+	size_t	start = s.find_first_not_of(" \t\r");
+	if (start == std::string::npos)
+		return "";
+	size_t	end = s.find_last_not_of(" \t\r");
+	return (s.substr(start, end - start + 1));
+}
+
+/**
+ * Validates a date string formatted as YYYY-MM-DD.
+ * Ensures correct format, valid month/day ranges, and leap-year handling.
+ *
+ * @param date The date string to validate.
+ * @return true if the date is valid, false otherwise.
+ */
 bool	isValidDate(std::string date)
 {
-
 	int		daysInMonth[] = {31,28,31,30,31,30,31,31,30,31,30,31};
 	int		y, m, d;
 	char	dash1, dash2;
@@ -70,6 +89,15 @@ bool	isValidDate(std::string date)
 	return (true);
 }
 
+/**
+ * Validates a numeric value from the user input.
+ * Checks that the value is non-negative and between 0 and 1000
+ * The flag parameter is updated to reflect validation status.
+ *
+ * @param value The floating-point value to validate.
+ * @param flag  Reference used to store validation error codes.
+ * @return true if the value is valid, false otherwise.
+ */
 bool	isValidValue(float value, int& flag)
 {
 	if (value < 0)
@@ -85,6 +113,14 @@ bool	isValidValue(float value, int& flag)
 	return (true);
 }
 
+/**
+ * Processes a single input line after splitting key and value.
+ * Validates both date and value, performs the Bitcoin price lookup,
+ * and prints the corresponding result or error message.
+ *
+ * @param key   The date extracted from the input line.
+ * @param value The value extracted from the input line.
+ */
 void	processLine(std::string key, std::string value)
 {
 	int	flag = 0;
@@ -101,13 +137,12 @@ void	processLine(std::string key, std::string value)
 	}
 }
 
-/**
-*
-*
-*
-*
-*/
 
+/**
+ * Starts the main program workflow.
+ *
+ * @param file Path to the user-provided input file.
+ */
 void	launch(std::string file)
 {
 	std::map<std::string, float>	btcDataBase;
@@ -127,9 +162,9 @@ void	launch(std::string file)
 		isFound = (readedLine.find("|") != std::string::npos) ? true : false;
 		value = isFound ? readedLine.substr(readedLine.find("|") + 1) : "";
 		// skipping first line
-		if (key == "date" || value == "value")
+		if (ft_trim(key) == "date" || ft_trim(value) == "value")
 			continue;
-		processLine(key, value);
+		processLine(ft_trim(key), ft_trim(value));
 		// std::cout << key << " => " << value << std::endl;
 	}
 
