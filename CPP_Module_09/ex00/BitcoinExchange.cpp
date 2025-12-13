@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/08 09:16 by mait-all                   //
-//                        Updated: 2025/12/12 16:00 by mait-all                   //
+//                        Updated: 2025/12/13 12:06 by mait-all                   //
 // ****************************************************************************** //
 
 #include "BitcoinExchange.hpp"
@@ -118,15 +118,20 @@ bool	isValidValue(float value, int& flag)
  * Validates both date and value, performs the Bitcoin price lookup,
  * and prints the corresponding result or error message.
  *
+ * @param btcPricesDB The bitcoin database that's stored in a map container
  * @param key   The date extracted from the input line.
  * @param value The value extracted from the input line.
  */
-void	processLine(std::string key, std::string value)
+void	processLine(std::map<std::string, float>& btcPricesDB, std::string key, std::string value)
 {
+	std::map<std::string, float>::iterator	priceIt;
 	int	flag = 0;
 
 	if (!isValidDate(key) || value.empty())
+	{
 		std::cout << "Error: bad input => " << key << std::endl;
+		return ;
+	}
 
 	if (!isValidValue(atof(value.c_str()), flag))
 	{
@@ -134,9 +139,22 @@ void	processLine(std::string key, std::string value)
 			std::cout << "Error: not a positive number." << std::endl;
 		if (flag == -2)
 			std::cout << "Error: too large a number." << std::endl;
+		return ;
+	}
+
+	priceIt = btcPricesDB.upper_bound(key);
+	if (priceIt == btcPricesDB.begin())
+	{
+		std::cout << "Error: date is too early (before bitcoin database starts)" << std::endl;
+		return ;
+	}
+	else
+	{
+		--priceIt;
+		std::cout << key << " => " << value << " = " << atof(value.c_str()) * priceIt->second
+				  << std::endl;
 	}
 }
-
 
 /**
  * Starts the main program workflow.
@@ -164,9 +182,7 @@ void	launch(std::string file)
 		// skipping first line
 		if (ft_trim(key) == "date" || ft_trim(value) == "value")
 			continue;
-		processLine(ft_trim(key), ft_trim(value));
-		// std::cout << key << " => " << value << std::endl;
+		processLine(btcDataBase, ft_trim(key), ft_trim(value));
 	}
-
-	std::cout << "-------------- finish --------------\n";
+	f.close();
 }
