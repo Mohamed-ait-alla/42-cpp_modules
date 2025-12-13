@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/08 09:16 by mait-all                   //
-//                        Updated: 2025/12/13 12:06 by mait-all                   //
+//                        Updated: 2025/12/13 20:01 by mait-all                   //
 // ****************************************************************************** //
 
 #include "BitcoinExchange.hpp"
@@ -151,7 +151,8 @@ void	processLine(std::map<std::string, float>& btcPricesDB, std::string key, std
 	else
 	{
 		--priceIt;
-		std::cout << key << " => " << value << " = " << atof(value.c_str()) * priceIt->second
+		std::cout << std::fixed << std::setprecision(1)
+				  << key << " => " << value << " = " << atof(value.c_str()) * priceIt->second
 				  << std::endl;
 	}
 }
