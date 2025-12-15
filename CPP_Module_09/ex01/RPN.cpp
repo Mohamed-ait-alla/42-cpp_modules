@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/13 20:47 by mait-all                   //
-//                        Updated: 2025/12/15 10:05 by mait-all                   //
+//                        Updated: 2025/12/15 11:37 by mait-all                   //
 // ****************************************************************************** //
 
 #include "RPN.hpp"
@@ -52,7 +52,11 @@ void	calcRPNExpr(std::stack<int>& s, char token)
 	else if (token == '*')
 		result = firstOperand * secondOperand;
 	else
+	{
+		if (secondOperand == 0)
+			throw std::runtime_error("Error: can't devide by 0!");
 		result = firstOperand / secondOperand;
+	}
 	s.push(result);
 }
 
