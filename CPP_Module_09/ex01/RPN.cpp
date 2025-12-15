@@ -10,9 +10,10 @@
 
 
 /**
- * todo...
+ * Validates the expression for white spaces.
+ * returns true if expression has only spaces, false if not.
  * 
- * @param expr todo...
+ * @param expr The entred RPN expression.
 */
 bool	hasOnlySpaces(std::string expr)
 {
@@ -25,9 +26,43 @@ bool	hasOnlySpaces(std::string expr)
 }
 
 /**
- * todo...
+ * Applies an operation on the top two elements of the stack (s).
+ * The applied operation depends on the type of token.
+ * Pushes the operation's result back into the stack.
  * 
- * @param expression todo...
+ * @param s The stack container that's stored operands (elements).
+ * @param token Type of operation (+,-,*,/).
+*/
+void	calcRPNExpr(std::stack<int>& s, char token)
+{
+	int	firstOperand = 0;
+	int	secondOperand = 0;
+	int	result = 0;
+
+	if (s.size() <= 1)
+		throw std::runtime_error("Error: invalid RPN syntax!");
+	secondOperand = s.top();
+	s.pop();
+	firstOperand = s.top();
+	s.pop();
+	if (token == '+')
+		result = firstOperand + secondOperand;
+	else if (token == '-')
+		result = firstOperand - secondOperand;
+	else if (token == '*')
+		result = firstOperand * secondOperand;
+	else
+		result = firstOperand / secondOperand;
+	s.push(result);
+}
+
+/**
+ * Starts the workflow of the RPN program.
+ * Parses user input and checks for proper errors.
+ * Calls calcRPNExpr() when an expression is valid.
+ * If any none error is found, it displays the result on stdout.
+ * 
+ * @param expression The entred RPN expression.
 */
 void	evaluateRPN(std::string expression)
 {
@@ -50,27 +85,9 @@ void	evaluateRPN(std::string expression)
 			s.push(expression[i] - '0');
 		}
 		if (validTokens.find(expression[i]) != std::string::npos)
-		{
-			if (s.size() <= 1)
-				throw std::runtime_error("Error: invalid RPN syntax!");
-			int secondOperand = s.top();
-			s.pop();
-			int firstOperand = s.top();
-			s.pop();
-			std::cout << "f: " << firstOperand << "s: " << secondOperand << std::endl;
-			int result = 0;
-			if (expression[i] == '+')
-				result = firstOperand + secondOperand;
-			else if (expression[i] == '-')
-				result = firstOperand - secondOperand;
-			else if (expression[i] == '*')
-				result = firstOperand * secondOperand;
-			else
-				result = firstOperand / secondOperand;
-			s.push(result);
-		}
+			calcRPNExpr(s, expression[i]);
 	}
 	if (s.size() > 1)
 		throw std::runtime_error("Error: invalid RPN syntax!");
-	std::cout << "result: " << s.top() << std::endl;
+	std::cout << s.top() << std::endl;
 }
