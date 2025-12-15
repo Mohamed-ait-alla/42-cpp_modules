@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/08 09:16 by mait-all                   //
-//                        Updated: 2025/12/13 20:01 by mait-all                   //
+//                        Updated: 2025/12/15 09:14 by mait-all                   //
 // ****************************************************************************** //
 
 #include "BitcoinExchange.hpp"
@@ -98,16 +98,25 @@ bool	isValidDate(std::string date)
  * @param flag  Reference used to store validation error codes.
  * @return true if the value is valid, false otherwise.
  */
-bool	isValidValue(float value, int& flag)
+bool	isValidValue(std::string value, int& flag)
 {
-	if (value < 0)
+	char*		endptr;
+	double		toDouble;
+
+	toDouble = std::strtod(value.c_str(), &endptr);
+	if (endptr == value.c_str() || *endptr != '\0')
 	{
 		flag = -1;
 		return (false);
 	}
-	if (value > 1000)
+	if (toDouble < 0)
 	{
 		flag = -2;
+		return (false);
+	}
+	if (toDouble > 1000)
+	{
+		flag = -3;
 		return (false);
 	}
 	return (true);
@@ -133,11 +142,13 @@ void	processLine(std::map<std::string, float>& btcPricesDB, std::string key, std
 		return ;
 	}
 
-	if (!isValidValue(atof(value.c_str()), flag))
+	if (!isValidValue(value, flag))
 	{
 		if (flag == -1)
-			std::cout << "Error: not a positive number." << std::endl;
+			std::cout << "Error: bad value => " << value << std::endl;
 		if (flag == -2)
+			std::cout << "Error: not a positive number." << std::endl;
+		if (flag == -3)
 			std::cout << "Error: too large a number." << std::endl;
 		return ;
 	}
@@ -151,8 +162,8 @@ void	processLine(std::map<std::string, float>& btcPricesDB, std::string key, std
 	else
 	{
 		--priceIt;
-		std::cout << std::fixed << std::setprecision(1)
-				  << key << " => " << value << " = " << atof(value.c_str()) * priceIt->second
+		std::cout << key << " => " << value << " = "
+				  << static_cast<double>(atof(value.c_str()) * priceIt->second)
 				  << std::endl;
 	}
 }
