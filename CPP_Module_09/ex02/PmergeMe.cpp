@@ -3,19 +3,55 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/19 10:30 by mait-all                   //
+//                        Updated: 2025/12/21 18:36 by mait-all                   //
 // ****************************************************************************** //
 
 #include "PmergeMe.hpp"
 
+Int::Int(int val) : _c(0), _value(val)
+{
+	std::memset(_idxs, 0, sizeof(_idxs));
+}
+
+Int::Int(const Int& other) : _c(other._c), _value(other._value)
+{
+	std::memcpy(_idxs, other._idxs, sizeof(_idxs));
+}
+
+Int&	Int::operator=(const Int& other)
+{
+	if (this != &other)
+	{
+		_value = other._value;
+		_c = other._c;
+		std::memcpy(_idxs, other._idxs, sizeof(_idxs));
+	}
+	return (*this);
+}
+
+Int::Int(const std::string& s)
+{
+	std::memset(_idxs, 0, sizeof(_idxs));
+	_value = atoi(s.c_str());
+}
+
+Int::~Int()
+{
+}
+
+int	Int::getValue()
+{
+	return (_value);
+}
+
 /**
  * todo...
- * 
- * 
+ *
+ *
  * @param ac todo...
  * @param av todo...
-*/
-bool	isValidArg(std::string arg)
+ */
+bool isValidArg(std::string arg)
 {
 	double	toDouble;
 
@@ -28,96 +64,28 @@ bool	isValidArg(std::string arg)
 }
 
 
-bool	compare(size_t a, size_t b)
-{
-	return (a < b);
-}
-
-void	swapPair(std::vector<int>& _vect, int leftPair, int rightPair, int pairLevel)
-{
-	for (int i = 0; i < pairLevel; i++)
-	{
-		std::swap(_vect[leftPair - i], _vect[rightPair - i]);
-	}
-}
-
-
 /**
  * todo...
- * 
- * 
- * @param input todo...
-*/
-void	mergeInsertionSort(std::vector<int>& input, int pairLevel)
-{
-	int totalPairs = input.size() / pairLevel;
-
-	if (totalPairs < 2)
-		return ;
-
-	// step 1: devide into pairs && sorting those pairs
-	bool hasOdd = (totalPairs % 2 != 0);
-
-	int	pairsToCompare = hasOdd ? totalPairs - 1 : totalPairs;
-
-	for (int i = 0; i < pairsToCompare ; i += 2)
-	{
-		// get the last indexes in each pair 
-		int	leftPairLast = (i + 1) * pairLevel - 1;
-		int	rightPairLast = (i + 2) * pairLevel - 1;
-
-		// compare and swap
-		if (compare(input[rightPairLast], input[leftPairLast]))
-			swapPair(input, leftPairLast, rightPairLast, pairLevel);
-	}
-
-	mergeInsertionSort(input, pairLevel * 2);
-
-	// step 2: insertion
-
-	
-
-
-
-
-}
-
-
-/**
- * todo...
- * 
- * 
+ *
+ *
  * @param ac todo...
  * @param av todo...
-*/
-void	processInput(int ac, char **av)
+ */
+void processInput(int ac, char **av)
 {
-	std::vector<int>	_vect;
-	std::deque<int>		_deq;
+	std::vector<Int>	vect;
 
-	if (!av)
-		throw std::runtime_error("Error");
 	for (int i = 1; i < ac; i++)
 	{
 		if (!isValidArg(av[i]))
 			throw std::invalid_argument("Error: invalid argument");
-		_vect.push_back(atoi(av[i]));
-		_deq.push_back(atoi(av[i]));
+		Int	nb(av[i]);
+		vect.push_back(nb);
 	}
 
-	mergeInsertionSort(_vect, 1);
-	for (size_t i = 0; i < _vect.size(); i++)
+	for (size_t i = 0; i < vect.size(); i++)
 	{
-		std::cout << _vect[i] << " ";
+		std::cout << vect[i].getValue() << " ";
 	}
-
-	// std::cout << std::endl;
-	// std::cout << std::endl;
-	
-	// for (size_t i = 0; i < _deq.size(); i++)
-	// {
-	// 	std::cout << _deq[i] << " ";
-	// }
-	// std::cout << std::endl;
-	
+	std::cout << std::endl;
 }
