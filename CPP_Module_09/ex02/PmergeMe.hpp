@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/21 18:39 by mait-all                   //
+//                        Updated: 2025/12/23 12:15 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef PMERGEME_HPP
@@ -39,6 +39,8 @@ class Int {
 		void	saveIndex(int idx);
 		int		getIndex();
 		int		getValue();
+		void 	printIdxs() const;
+		unsigned char	getC() { return _c; };
 	
 	private:
 		unsigned char	_c;
@@ -54,5 +56,8 @@ void	mergeInsert(std::vector<Int>& input);
 void	makePairs(std::vector<Int>& input,
 				  std::vector<Int>& a,
 				  std::vector<Int>& b);
+void	restoreB(std::vector<Int>& a,
+				 std::vector<Int>& b,
+				 std::vector<Int>& restoredB);
 
 #endif /* __PMERGEME_HPP__ */

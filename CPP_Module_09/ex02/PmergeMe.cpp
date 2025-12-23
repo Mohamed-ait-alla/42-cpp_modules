@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/22 11:47 by mait-all                   //
+//                        Updated: 2025/12/23 18:12 by mait-all                   //
 // ****************************************************************************** //
 
 #include "PmergeMe.hpp"
@@ -29,7 +29,7 @@ Int&	Int::operator=(const Int& other)
 	return (*this);
 }
 
-Int::Int(const std::string& s)
+Int::Int(const std::string& s) : _c(0), _value(0)
 {
 	std::memset(_idxs, 0, sizeof(_idxs));
 	_value = atoi(s.c_str());
@@ -44,10 +44,17 @@ int	Int::getValue()
 	return (_value);
 }
 
+int	Int::getIndex()
+{
+	if (_c > 0)
+		return (_idxs[--_c]);
+	return (-1);
+}
+
 void	Int::saveIndex(int idx)
 {
 	if (_c < 35)
-		_idxs[_c++] = idx; 
+		_idxs[_c++] = idx;
 }
 
 bool	Int::operator<(const Int& other)
@@ -102,6 +109,28 @@ void	makePairs(std::vector<Int>& input, std::vector<Int>& a, std::vector<Int>& b
 		b.push_back(input[n]);
 }
 
+void	restoreB(std::vector<Int>& a, std::vector<Int>& b, std::vector<Int>& restoredB)
+{
+	int	n = a.size();
+	restoredB.reserve(b.size());
+
+	for (int i = 0; i < n; i++)
+	{
+		int idx = a[i].getIndex();
+		restoredB.push_back(b[idx]);
+	}
+
+	if (static_cast<int>(b.size()) > n)
+		restoredB.push_back(b[n]);
+}
+
+void Int::printIdxs() const
+{
+    for (int i = 0; i < _c; i++)
+        std::cout << _idxs[i] << ",";
+}
+
+
 void	mergeInsert(std::vector<Int>& input)
 {
 	// base case for recursion
@@ -118,17 +147,32 @@ void	mergeInsert(std::vector<Int>& input)
 	// step 2: sort large elements recursively
 	mergeInsert(a);
 
+	restoreB(a, b, restoredB);
+
+
+	std::cout << " --- after --- \n";
 	std::cout << "a: ";
 	for (size_t i = 0; i < a.size(); i++)
 	{
-		std::cout << a[i].getValue() << " ";
+		std::cout << a[i].getValue() << ":[";
+		a[i].printIdxs();
+		std::cout << "]:" << (int)a[i].getC() <<" | ";
 	}
 	std::cout << "\nb: ";
 	for (size_t i = 0; i < b.size(); i++)
 	{
 		std::cout << b[i].getValue() << " ";
 	}
-
+	std::cout << "\nrestoredB: ";
+	for (size_t i = 0; i < restoredB.size(); i++)
+	{
+		std::cout << restoredB[i].getValue() << " ";
+	}
+	std::cout << "\ninput: ";
+	for (size_t i = 0; i < input.size(); i++)
+	{
+		std::cout << input[i].getValue() << " ";
+	}
 	std::cout << "\n\n";
 	
 	
