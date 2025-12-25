@@ -3,10 +3,12 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/23 18:12 by mait-all                   //
+//                        Updated: 2025/12/25 16:14 by mait-all                   //
 // ****************************************************************************** //
 
 #include "PmergeMe.hpp"
+
+int	Int::compCount = 0;
 
 Int::Int(int val) : _c(0), _value(val)
 {
@@ -59,6 +61,7 @@ void	Int::saveIndex(int idx)
 
 bool	Int::operator<(const Int& other)
 {
+	compCount++;
 	return (this->_value < other._value);
 }
 
@@ -81,6 +84,12 @@ bool isValidArg(std::string arg)
 	return (true);
 }
 
+size_t t_sequence(size_t k) {
+	size_t powerOfTwo = (1 << (k + 1));
+	int sign = (k % 2 == 0) ? 1 : -1;
+	size_t jacobsthal_number = (powerOfTwo + sign) / 3;
+	return jacobsthal_number - 1;
+}
 
 void	makePairs(std::vector<Int>& input, std::vector<Int>& a, std::vector<Int>& b)
 {
@@ -124,13 +133,6 @@ void	restoreB(std::vector<Int>& a, std::vector<Int>& b, std::vector<Int>& restor
 		restoredB.push_back(b[n]);
 }
 
-void Int::printIdxs() const
-{
-    for (int i = 0; i < _c; i++)
-        std::cout << _idxs[i] << ",";
-}
-
-
 void	mergeInsert(std::vector<Int>& input)
 {
 	// base case for recursion
@@ -147,35 +149,41 @@ void	mergeInsert(std::vector<Int>& input)
 	// step 2: sort large elements recursively
 	mergeInsert(a);
 
+	// step 3: restore elements from b in proper order
 	restoreB(a, b, restoredB);
 
+	// step 4: start building the sorted sequence by using jacobse numbers
+	input.clear();
+	input.push_back(restoredB[0]);
 
-	std::cout << " --- after --- \n";
-	std::cout << "a: ";
-	for (size_t i = 0; i < a.size(); i++)
+	int 		previousJNb = 0;
+	int			u = 0;
+	const int	bN = restoredB.size();
+	const int	aN = a.size();
+
+	for(int k = 2; previousJNb < bN - 1; k++)
 	{
-		std::cout << a[i].getValue() << ":[";
-		a[i].printIdxs();
-		std::cout << "]:" << (int)a[i].getC() <<" | ";
+		int	currentJNb = t_sequence(k);
+		int	m = std::min(currentJNb + 1, bN);
+
+		while (u < currentJNb && u < aN)
+		{
+			input.push_back(a[u++]);
+		}
+
+		for(int i = m, j = 0; i > previousJNb + 1; i--, j++)
+		{
+			std::vector<Int>::iterator it = std::lower_bound(input.begin(), input.end() - j, restoredB[i - 1]);
+			input.insert(it, restoredB[i - 1]);
+		}
+		previousJNb = currentJNb;
 	}
-	std::cout << "\nb: ";
-	for (size_t i = 0; i < b.size(); i++)
+
+	// insert any remaining elements from a
+	for(; u < aN; u++)
 	{
-		std::cout << b[i].getValue() << " ";
+		input.push_back(a[u]);
 	}
-	std::cout << "\nrestoredB: ";
-	for (size_t i = 0; i < restoredB.size(); i++)
-	{
-		std::cout << restoredB[i].getValue() << " ";
-	}
-	std::cout << "\ninput: ";
-	for (size_t i = 0; i < input.size(); i++)
-	{
-		std::cout << input[i].getValue() << " ";
-	}
-	std::cout << "\n\n";
-	
-	
 }
 
 /**
@@ -192,14 +200,27 @@ void processInput(int ac, char **av)
 	for (int i = 1; i < ac; i++)
 	{
 		if (!isValidArg(av[i]))
-			throw std::invalid_argument("Error: invalid argument");
+			throw std::invalid_argument("Error: invalid argument!");
 		Int	nb(av[i]);
 		vect.push_back(nb);
 	}
+
+	std::cout << "number of comparisons: " << Int::compCount << std::endl;
+
 	mergeInsert(vect);
+
 	for (size_t i = 0; i < vect.size(); i++)
 	{
 		std::cout << vect[i].getValue() << " ";
 	}
 	std::cout << std::endl;
+
+	std::cout << "number of comparisons: " << Int::compCount << std::endl;
+
+	// check if vector was properly sorted or not
+	for (size_t i = 1; i < vect.size(); i++)
+	{
+		if (vect[i] < vect[i - 1])
+			throw std::runtime_error("Warning: vector not properly sorted!");
+	}
 }
