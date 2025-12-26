@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/26 15:11 by mait-all                   //
+//                        Updated: 2025/12/26 18:05 by mait-all                   //
 // ****************************************************************************** //
 
 #include "PmergeMe.hpp"
@@ -91,6 +91,53 @@ size_t t_sequence(size_t k) {
 	return jacobsthal_number - 1;
 }
 
+double	getCurrentTimeMicroseconds()
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return (time.tv_sec * 1000000.0 + time.tv_usec);
+}
+
+void	display(std::vector<Int>& nums, int status)
+{
+	std::cout << (status ? "Before: " : "After: ");
+	for (size_t i = 0; i < nums.size(); i++)
+	{
+		std::cout << nums[i].getValue() << " ";
+	}
+	std::cout << std::endl;
+}
+
+void	displayTimings(size_t size, double vectTime, double deqTime, int comparisons)
+{
+   std::cout << "Time to process a range of " << size
+              << " elements with std::vector : " << vectTime << " us" << std::endl;
+    std::cout << "Time to process a range of " << size
+              << " elements with std::deque : " << deqTime << " us" << std::endl;
+
+    std::cout << std::endl;
+    std::cout << "number of comparisons: " << comparisons << std::endl;
+}
+
+
+/**
+ * todo...
+ * 
+ * @param ac todo...
+*/
+void parseArguments(int ac, char **av, std::vector<Int>& vect, std::deque<Int>& deq)
+{
+    for (int i = 1; i < ac; i++)
+    {
+        if (!isValidArg(av[i]))
+            throw std::invalid_argument("Error: invalid argument!");
+        Int nb(av[i]);
+        vect.push_back(nb);
+        deq.push_back(nb);
+    }
+}
+
 
 /**
  * todo...
@@ -104,44 +151,20 @@ void processInput(int ac, char **av)
 	std::vector<Int>	vect;
 	std::deque<Int>		deq;
 
-	for (int i = 1; i < ac; i++)
-	{
-		if (!isValidArg(av[i]))
-			throw std::invalid_argument("Error: invalid argument!");
-		Int	nb(av[i]);
-		vect.push_back(nb);
-		deq.push_back(nb);
-	}
+	parseArguments(ac, av, vect, deq);
 
-	std::cout << "number of comparisons: " << Int::compCount << std::endl;
+	display(vect, 1);
 
-	mergeInsert(vect);
+	double	vectElapsedTime = sortAndTime(vect);
 
-	for (size_t i = 0; i < vect.size(); i++)
-	{
-		std::cout << vect[i].getValue() << " ";
-	}
-
-	std::cout << std::endl;
-	std::cout << "number of comparisons: " << Int::compCount << std::endl;
-
-	// check if vector was properly sorted or not
-	isSorted(vect);
-
-	std::cout << std::endl;
-	
 	Int::compCount = 0;
-	std::cout << "number of comparisons: " << Int::compCount << std::endl;
-	
-	mergeInsert(deq);
+	double	deqElapsedTime = sortAndTime(deq);
 
-	for (size_t i = 0; i < deq.size(); i++)
-	{
-		std::cout << deq[i].getValue() << " ";
-	}
-	std::cout << std::endl;
-	std::cout << "number of comparisons: " << Int::compCount << std::endl;
+	display(vect, 0);
+	displayTimings(vect.size(), vectElapsedTime, deqElapsedTime, Int::compCount);
 
-	// check if deque was properly sorted or not
+	// Verify sorting
+	isSorted(vect);
 	isSorted(deq);
+
 }

@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/26 14:53 by mait-all                   //
+//                        Updated: 2025/12/26 17:03 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef PMERGEME_HPP
@@ -15,6 +15,7 @@
 # include <limits>
 # include <cstdlib>
 # include <cstring>
+# include <sys/time.h>
 
 
 class Int {
@@ -55,12 +56,18 @@ template <typename T>
 void	restoreB(T& a, T& b, T& restoredB);
 
 template <typename T>
+double	sortAndTime(T& _Seq);
+
+template <typename T>
 void	isSorted(T _Seq);
 
 // external helper functions
 void	processInput(int ac, char **av);
 bool	isValidArg(std::string arg);
 size_t	t_sequence(size_t k);
+double	getCurrentTimeMicroseconds();
+void	display(std::vector<Int>& nums, int status);
+void	displayTimings(size_t size, double vectTime, double deqTime, int comparisons);
 
 
 # include "PmergeMe.tpp"

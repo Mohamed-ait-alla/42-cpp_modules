@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/26 11:30 by mait-all                   //
-//                        Updated: 2025/12/26 14:48 by mait-all                   //
+//                        Updated: 2025/12/26 17:54 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef PMERGEME_TPP
@@ -98,6 +98,15 @@ void	mergeInsert(T& nums)
 	{
 		nums.push_back(a[u]);
 	}
+}
+
+template <typename T>
+double	sortAndTime(T& _Seq)
+{
+	double start = getCurrentTimeMicroseconds();
+	mergeInsert(_Seq);
+	double end = getCurrentTimeMicroseconds();
+	return (end - start);
 }
 
 template <typename T>
