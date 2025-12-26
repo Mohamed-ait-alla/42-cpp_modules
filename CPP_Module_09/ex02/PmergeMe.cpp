@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/26 18:05 by mait-all                   //
+//                        Updated: 2025/12/26 18:32 by mait-all                   //
 // ****************************************************************************** //
 
 #include "PmergeMe.hpp"
@@ -63,6 +63,11 @@ bool	Int::operator<(const Int& other)
 {
 	compCount++;
 	return (this->_value < other._value);
+}
+
+bool	Int::operator==(const Int& other)
+{
+	return (this->_value == other._value);
 }
 
 /**
@@ -133,6 +138,10 @@ void parseArguments(int ac, char **av, std::vector<Int>& vect, std::deque<Int>& 
         if (!isValidArg(av[i]))
             throw std::invalid_argument("Error: invalid argument!");
         Int nb(av[i]);
+
+		if (std::find(vect.begin(), vect.end(), nb) != vect.end())
+			throw std::invalid_argument("Error: duplicate number!");
+
         vect.push_back(nb);
         deq.push_back(nb);
     }

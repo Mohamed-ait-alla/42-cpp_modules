@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/26 17:03 by mait-all                   //
+//                        Updated: 2025/12/26 18:31 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef PMERGEME_HPP
@@ -32,6 +32,7 @@ class Int {
 		// operators
 		Int&	operator=(const Int& other);
 		bool	operator<(const Int& other);
+		bool	operator==(const Int& other);
 
 		// member functions
 		void	saveIndex(int idx);
