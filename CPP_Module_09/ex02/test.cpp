@@ -34,7 +34,7 @@ int main()
 	// 	std::cout << _jast[i] << " ";
 	// }
 
-	std::cout << t_sequence(3) << std::endl;
+	std::cout << t_sequence(1) << std::endl;
 
 	std::vector<int> vect;
 

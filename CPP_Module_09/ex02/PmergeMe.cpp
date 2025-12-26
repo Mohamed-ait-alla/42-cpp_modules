@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/25 16:14 by mait-all                   //
+//                        Updated: 2025/12/26 15:11 by mait-all                   //
 // ****************************************************************************** //
 
 #include "PmergeMe.hpp"
@@ -91,100 +91,6 @@ size_t t_sequence(size_t k) {
 	return jacobsthal_number - 1;
 }
 
-void	makePairs(std::vector<Int>& input, std::vector<Int>& a, std::vector<Int>& b)
-{
-	int	n = input.size() - 1;
-	a.reserve(n / 2);
-	a.reserve(n / 2 + 1);
-
-	for (int i = 0; i < n; i += 2)
-	{
-		if (input[i] < input[i + 1])
-		{
-			input[i + 1].saveIndex(a.size());
-			a.push_back(input[i + 1]);
-			b.push_back(input[i]);
-		}
-		else
-		{
-			input[i].saveIndex(a.size());
-			a.push_back(input[i]);
-			b.push_back(input[i + 1]);
-		}
-	}
-	
-	// if there is an odd number add it to b
-	if ((n + 1) % 2 != 0)
-		b.push_back(input[n]);
-}
-
-void	restoreB(std::vector<Int>& a, std::vector<Int>& b, std::vector<Int>& restoredB)
-{
-	int	n = a.size();
-	restoredB.reserve(b.size());
-
-	for (int i = 0; i < n; i++)
-	{
-		int idx = a[i].getIndex();
-		restoredB.push_back(b[idx]);
-	}
-
-	if (static_cast<int>(b.size()) > n)
-		restoredB.push_back(b[n]);
-}
-
-void	mergeInsert(std::vector<Int>& input)
-{
-	// base case for recursion
-	if (input.size() < 2)
-		return ;
-
-	std::vector<Int>	a; // store larger nums
-	std::vector<Int>	b; // store small nums
-	std::vector<Int>	restoredB;
-
-	// step 1: make pairs and separate them into a (larger) and b (smaller)
-	makePairs(input, a, b);
-
-	// step 2: sort large elements recursively
-	mergeInsert(a);
-
-	// step 3: restore elements from b in proper order
-	restoreB(a, b, restoredB);
-
-	// step 4: start building the sorted sequence by using jacobse numbers
-	input.clear();
-	input.push_back(restoredB[0]);
-
-	int 		previousJNb = 0;
-	int			u = 0;
-	const int	bN = restoredB.size();
-	const int	aN = a.size();
-
-	for(int k = 2; previousJNb < bN - 1; k++)
-	{
-		int	currentJNb = t_sequence(k);
-		int	m = std::min(currentJNb + 1, bN);
-
-		while (u < currentJNb && u < aN)
-		{
-			input.push_back(a[u++]);
-		}
-
-		for(int i = m, j = 0; i > previousJNb + 1; i--, j++)
-		{
-			std::vector<Int>::iterator it = std::lower_bound(input.begin(), input.end() - j, restoredB[i - 1]);
-			input.insert(it, restoredB[i - 1]);
-		}
-		previousJNb = currentJNb;
-	}
-
-	// insert any remaining elements from a
-	for(; u < aN; u++)
-	{
-		input.push_back(a[u]);
-	}
-}
 
 /**
  * todo...
@@ -196,6 +102,7 @@ void	mergeInsert(std::vector<Int>& input)
 void processInput(int ac, char **av)
 {
 	std::vector<Int>	vect;
+	std::deque<Int>		deq;
 
 	for (int i = 1; i < ac; i++)
 	{
@@ -203,6 +110,7 @@ void processInput(int ac, char **av)
 			throw std::invalid_argument("Error: invalid argument!");
 		Int	nb(av[i]);
 		vect.push_back(nb);
+		deq.push_back(nb);
 	}
 
 	std::cout << "number of comparisons: " << Int::compCount << std::endl;
@@ -213,14 +121,27 @@ void processInput(int ac, char **av)
 	{
 		std::cout << vect[i].getValue() << " ";
 	}
-	std::cout << std::endl;
 
+	std::cout << std::endl;
 	std::cout << "number of comparisons: " << Int::compCount << std::endl;
 
 	// check if vector was properly sorted or not
-	for (size_t i = 1; i < vect.size(); i++)
+	isSorted(vect);
+
+	std::cout << std::endl;
+	
+	Int::compCount = 0;
+	std::cout << "number of comparisons: " << Int::compCount << std::endl;
+	
+	mergeInsert(deq);
+
+	for (size_t i = 0; i < deq.size(); i++)
 	{
-		if (vect[i] < vect[i - 1])
-			throw std::runtime_error("Warning: vector not properly sorted!");
+		std::cout << deq[i].getValue() << " ";
 	}
+	std::cout << std::endl;
+	std::cout << "number of comparisons: " << Int::compCount << std::endl;
+
+	// check if deque was properly sorted or not
+	isSorted(deq);
 }

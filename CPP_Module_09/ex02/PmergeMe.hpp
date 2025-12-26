@@ -3,12 +3,11 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/15 14:25 by mait-all                   //
-//                        Updated: 2025/12/25 16:10 by mait-all                   //
+//                        Updated: 2025/12/26 14:53 by mait-all                   //
 // ****************************************************************************** //
 
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
-
 # include <iostream>
 # include <vector>
 # include <deque>
@@ -45,15 +44,25 @@ class Int {
 
 };
 
+// templates declarations
+template <typename T>
+void	mergeInsert(T& nums);
+
+template <typename T>
+void	makePairs(T& nums, T& a, T& b);
+
+template <typename T>
+void	restoreB(T& a, T& b, T& restoredB);
+
+template <typename T>
+void	isSorted(T _Seq);
+
 // external helper functions
-void processInput(int ac, char **av);
-bool isValidArg(std::string arg);
-void mergeInsert(std::vector<Int> &input);
-void makePairs(std::vector<Int> &input,
-			   std::vector<Int> &a,
-			   std::vector<Int> &b);
-void restoreB(std::vector<Int> &a,
-			  std::vector<Int> &b,
-			  std::vector<Int> &restoredB);
+void	processInput(int ac, char **av);
+bool	isValidArg(std::string arg);
+size_t	t_sequence(size_t k);
+
+
+# include "PmergeMe.tpp"
 
 #endif /* __PMERGEME_HPP__ */
