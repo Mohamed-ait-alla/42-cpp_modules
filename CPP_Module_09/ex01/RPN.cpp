@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/13 20:47 by mait-all                   //
-//                        Updated: 2025/12/15 11:37 by mait-all                   //
+//                        Updated: 2026/01/08 21:28 by mait-all                   //
 // ****************************************************************************** //
 
 #include "RPN.hpp"
@@ -75,6 +75,9 @@ void	evaluateRPN(std::string expression)
 
 	if (expression.empty() || hasOnlySpaces(expression))
 		throw std::runtime_error("Error: empty expression!");
+	
+	if (expression.length() < 5)
+		throw std::runtime_error("Error: invalid RPN syntax!");
 
 	for (size_t i = 0; i < expression.length(); i++)
 	{
@@ -85,11 +88,22 @@ void	evaluateRPN(std::string expression)
 		if (isdigit(expression[i]))
 		{
 			if (isdigit(expression[i + 1]))
-				throw std::runtime_error("Error: digit should be between 0 and 9");
+				throw std::runtime_error("Error: digits should be between 0 and 9");
+			if (i + 1 < expression.length() && expression[i + 1] != ' ')
+			{
+				if (validTokens.find(expression[i + 1]) != std::string::npos)
+					throw std::runtime_error("Error: invalid RPN syntax!");
+				else
+					throw std::runtime_error("Error: not allowed character!");
+			}
 			s.push(expression[i] - '0');
 		}
 		if (validTokens.find(expression[i]) != std::string::npos)
+		{
+			if (i + 1 < expression.length() && expression[i + 1] != ' ')
+				throw std::runtime_error("Error: invalid RPN syntax!");
 			calcRPNExpr(s, expression[i]);
+		}
 	}
 	if (s.size() > 1)
 		throw std::runtime_error("Error: invalid RPN syntax!");
