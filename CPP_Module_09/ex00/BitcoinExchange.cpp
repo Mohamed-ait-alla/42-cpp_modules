@@ -3,7 +3,7 @@
 //                        by: mait-all <mait-all@student.1337.ma>                 //
 //                                                                                //
 //                        Created: 2025/12/08 09:16 by mait-all                   //
-//                        Updated: 2025/12/15 09:14 by mait-all                   //
+//                        Updated: 2026/01/08 10:15 by mait-all                   //
 // ****************************************************************************** //
 
 #include "BitcoinExchange.hpp"
@@ -36,6 +36,7 @@ void	init_db(std::map<std::string, float>& btcPricesDB, std::string btcPricesFil
 		value = readedLine.substr(readedLine.find(",") + 1);
 		btcPricesDB.insert(std::make_pair(key, atof(value.c_str())));
 	}
+	dbFile.close();
 }
 
 /**
