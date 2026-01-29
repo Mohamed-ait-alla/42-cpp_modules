@@ -81,7 +81,7 @@ void	evaluateRPN(std::string expression)
 
 	for (size_t i = 0; i < expression.length(); i++)
 	{
-		if (expression[i] == ' ')
+		if (isspace(expression[i]))
 			continue;
 		if ((!isdigit(expression[i]) && (validTokens.find(expression[i]) == std::string::npos)))
 			throw std::runtime_error("Error: not allowed character!");
